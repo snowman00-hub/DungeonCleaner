@@ -20,7 +20,13 @@ public static class DataTableIds
 
     public static readonly string Item = "ItemTable";
 }
+
 public static class Variables
 {
     public static Languages Language = Languages.Korean;
+}
+
+public class Tag
+{
+    public static readonly string Player = "Player";
 }
