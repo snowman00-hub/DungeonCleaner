@@ -440,7 +440,6 @@ GameObject:
   - component: {fileID: 625482685}
   - component: {fileID: 625482689}
   - component: {fileID: 625482690}
-  - component: {fileID: 625482691}
   - component: {fileID: 625482692}
   m_Layer: 0
   m_Name: Player
@@ -567,24 +566,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 1000
---- !u!114 &625482691
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 625482683}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a0324f4a07e77b4ab9d761593572325, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 30
-  speed: 5
-  radius: 30
-  targetLayer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &625482692
 MonoBehaviour:
   m_ObjectHideFlags: 0

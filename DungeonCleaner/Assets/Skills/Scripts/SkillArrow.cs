@@ -30,8 +30,9 @@ public class SkillArrow : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.collider.tag == Tag.Enemy)
-        {
+        Debug.Log("collisionEnter");
+        if(collision.collider.CompareTag(Tag.Enemy))
+        {            
             var enemyHealth = collision.gameObject.GetComponent<EnemyHealth>();
             enemyHealth.OnDamage(damage, collision.contacts[0].point, collision.contacts[0].normal);
             Destroy(gameObject);

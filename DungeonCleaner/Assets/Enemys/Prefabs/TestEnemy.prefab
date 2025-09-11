@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3821734911771806544}
   - component: {fileID: 5251726934450519134}
   - component: {fileID: 579760861713708980}
+  - component: {fileID: -3886431774001363846}
   m_Layer: 3
   m_Name: TestEnemy
   m_TagString: Enemy
@@ -128,3 +129,16 @@ MonoBehaviour:
   enemyMask:
     serializedVersion: 2
     m_Bits: 8
+--- !u!114 &-3886431774001363846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6523948356704659031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 476859176cc27894389f5f6bbd3b6f2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 100
