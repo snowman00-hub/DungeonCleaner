@@ -28,7 +28,19 @@ public class SkillArrow : MonoBehaviour
         transform.position += dir * speed * Time.deltaTime;
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag(Tag.Enemy))
+        {
+            var enemyHealth = other.gameObject.GetComponent<EnemyHealth>();
 
+            Vector3 hitPoint = other.ClosestPoint(transform.position);
+            Vector3 hitNormal = (other.transform.position - transform.position).normalized;
+            enemyHealth.OnDamage(damage, hitPoint,hitNormal);
+
+            Destroy(gameObject);
+        }
+    }
 
     private void SetDirection()
     {
@@ -41,8 +53,15 @@ public class SkillArrow : MonoBehaviour
             count++;
         }
 
-        Vector3 targetCenter = sum / count;
-        dir = (targetCenter - transform.position).normalized;
-        transform.LookAt(targetCenter);
+        if(count == 0)
+        {
+            dir = Vector3.forward;
+        }
+        else
+        {
+            Vector3 targetCenter = sum / count;
+            dir = (targetCenter - transform.position).normalized;
+            transform.LookAt(targetCenter);
+        }
     }
 }
