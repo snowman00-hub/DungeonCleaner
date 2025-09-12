@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Text.RegularExpressions;
 using UnityEngine;
 
 public class SkillArrow : MonoBehaviour
@@ -10,6 +11,12 @@ public class SkillArrow : MonoBehaviour
     public LayerMask targetLayer;
 
     private Vector3 dir;
+    private CapsuleCollider capsule;
+
+    private void Awake()
+    {
+        capsule = GetComponent<CapsuleCollider>();
+    }
 
     private void Start()
     {
@@ -26,9 +33,23 @@ public class SkillArrow : MonoBehaviour
     private void Update()
     {
         transform.position += dir * speed * Time.deltaTime;
+        UpdateCollision();
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void UpdateCollision()
+    {
+        float overlapRadius = Mathf.Max(capsule.height, capsule.radius * 2) / 2f;
+        Collider[] hits = Physics.OverlapSphere(capsule.bounds.center, overlapRadius, targetLayer);
+
+        foreach (var hit in hits)
+        {
+            hit.GetComponent<EnemyHealth>()?.OnDamage(damage, hit.ClosestPoint(transform.position), (hit.transform.position - transform.position).normalized);
+            Destroy(gameObject);
+            break;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other) // 지우기
     {
         if (other.CompareTag(Tag.Enemy))
         {

@@ -4,8 +4,8 @@ using UnityEngine;
 public class InfiniteMapGenerator : MonoBehaviour
 {
     public GameObject chunkPrefab;
-    public float chunkWidth = 30f;
-    public float chunkHeight = 30f;
+    public float chunkWidth = 200f;
+    public float chunkHeight = 200f;
 
     private Transform player;
 
