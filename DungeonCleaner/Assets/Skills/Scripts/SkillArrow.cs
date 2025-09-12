@@ -28,16 +28,7 @@ public class SkillArrow : MonoBehaviour
         transform.position += dir * speed * Time.deltaTime;
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log("collisionEnter");
-        if(collision.collider.CompareTag(Tag.Enemy))
-        {            
-            var enemyHealth = collision.gameObject.GetComponent<EnemyHealth>();
-            enemyHealth.OnDamage(damage, collision.contacts[0].point, collision.contacts[0].normal);
-            Destroy(gameObject);
-        }
-    }
+
 
     private void SetDirection()
     {
