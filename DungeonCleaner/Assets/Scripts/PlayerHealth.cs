@@ -13,7 +13,7 @@ public class PlayerHealth : LivingEntity
     //private Animator animator;
     //private AudioSource audioSource;
 
-    public override void OnDamage(float damage, Vector3 hitPoint, Vector3 hitNormal)
+    public override void OnDamage(int damage, Vector3 hitPoint, Vector3 hitNormal)
     {
         if (IsDead)
             return;

@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class LivingEntity : MonoBehaviour, IDamagable
 {
-    public float maxHP = 100f;
+    public int maxHP = 100;
 
-    public float HP { get; private set; }
+    public int HP { get; private set; }
     public bool IsDead { get; private set; }
 
     public event Action OnDeath;
@@ -16,7 +16,7 @@ public class LivingEntity : MonoBehaviour, IDamagable
         HP = maxHP;
     }
 
-    public virtual void OnDamage(float damage, Vector3 hitPoint, Vector3 hitNormal)
+    public virtual void OnDamage(int damage, Vector3 hitPoint, Vector3 hitNormal)
     {
         HP -= damage;
 

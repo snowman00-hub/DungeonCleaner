@@ -55,13 +55,14 @@ public class Enemy : LivingEntity
         transform.LookAt(target.position);
     }
 
-    public override void OnDamage(float damage, Vector3 hitPoint, Vector3 hitNormal)
+    public override void OnDamage(int damage, Vector3 hitPoint, Vector3 hitNormal)
     {
         if (IsDead)
             return;
 
         base.OnDamage(damage, hitPoint, hitNormal);
         animator.SetTrigger(hashHurt);
+        DamagePopupManager.Instance.ShowDamage(hitPoint, Mathf.FloorToInt(damage));
     }
 
     protected override void Die()

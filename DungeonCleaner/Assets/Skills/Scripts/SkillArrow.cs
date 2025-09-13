@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SkillArrow : MonoBehaviour
 {
-    public float damage = 30f;
+    public int damage = 30;
     public float speed = 5f;
     public float radius = 30f;
     public float existTime = 5f;
