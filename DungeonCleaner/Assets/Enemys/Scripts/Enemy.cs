@@ -1,8 +1,10 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class Enemy : LivingEntity
 {
     public static readonly int hashHurt = Animator.StringToHash("Hurt");
+    public static readonly int hashDie = Animator.StringToHash("Die");
 
     public float speed = 5f;
     public float avoidWeight = 1f;
@@ -11,6 +13,8 @@ public class Enemy : LivingEntity
 
     private Transform target;
     private CapsuleCollider capsuleCollider;
+    private float timer;
+    private float checkRemoveTime = 10f;
 
     private Animator animator;
 
@@ -25,9 +29,27 @@ public class Enemy : LivingEntity
         target = GameObject.FindWithTag(Tag.Player).transform;
     }
 
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        capsuleCollider.enabled = true;
+    }
+
     private void Update()
     {
+        if(IsDead)
+            return;
+
         UpdateMove();
+
+        if(timer + checkRemoveTime < Time.time)
+        {
+            timer = Time.time;
+            if(Vector3.Distance(transform.position, target.position) > 200f)
+            {
+                Die();
+            }
+        }
     }
 
     private void UpdateMove()
@@ -67,7 +89,17 @@ public class Enemy : LivingEntity
 
     protected override void Die()
     {
+        StartCoroutine(CoDie());
+    }
+
+    private IEnumerator CoDie()
+    {
+        capsuleCollider.enabled = false;
+        IsDead = true;
+        animator.SetTrigger(hashDie);
+        yield return new WaitForSeconds(1.1f);
         base.Die();
+        StageInfoManager.Instance.KillCount++;
     }
 }
 
