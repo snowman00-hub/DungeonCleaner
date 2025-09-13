@@ -549,9 +549,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4174806465637702347}
-  - component: {fileID: 4079452302059474107}
-  - component: {fileID: 6057177547028816705}
   - component: {fileID: 5859557137391360238}
+  - component: {fileID: 1083254636061758100}
   m_Layer: 3
   m_Name: Mushroom
   m_TagString: Enemy
@@ -575,36 +574,6 @@ Transform:
   - {fileID: 204321175040816917}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4079452302059474107
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5737136547460658277}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc23539ab9733cd40a976f4d0b2a212d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 4
-  avoidWeight: 0.5
-  enemyMask:
-    serializedVersion: 2
-    m_Bits: 8
---- !u!114 &6057177547028816705
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5737136547460658277}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 476859176cc27894389f5f6bbd3b6f2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHP: 100
 --- !u!136 &5859557137391360238
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -628,6 +597,25 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &1083254636061758100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5737136547460658277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3df0461a524f9ef4d8f4577ea3ee403f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 100
+  enemyName: 0
+  speed: 4
+  avoidWeight: 0.5
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!1 &6553970803705981279
 GameObject:
   m_ObjectHideFlags: 0

@@ -64,7 +64,7 @@ public class EnemySpawner : MonoBehaviour
     {
         foreach (var monster in normalMonsters)
         {
-            var name = monster.GetComponent<EnemyHealth>().enemyName;
+            var name = monster.GetComponent<Enemy>().enemyName;
             monsterPools[name] = new Queue<GameObject>();
             ExpandMonsterPool(name, monster);
         }
@@ -77,7 +77,7 @@ public class EnemySpawner : MonoBehaviour
             var go = Instantiate(monster, transform);
             go.SetActive(false);
 
-            var enemyHealth = go.GetComponent<EnemyHealth>();
+            var enemyHealth = go.GetComponent<Enemy>();
             enemyHealth.OnDeath += () =>
             {
                 monsterPools[name].Enqueue(go);

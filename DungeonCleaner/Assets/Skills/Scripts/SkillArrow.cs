@@ -7,7 +7,7 @@ public class SkillArrow : MonoBehaviour
     public float damage = 30f;
     public float speed = 5f;
     public float radius = 30f;
-    public float existTime = 4f;
+    public float existTime = 5f;
     public LayerMask targetLayer;
 
     private Vector3 dir;
@@ -21,13 +21,7 @@ public class SkillArrow : MonoBehaviour
     private void Start()
     {
         SetDirection();
-        StartCoroutine(CoDestoryAfterExistTime());
-    }
-
-    private IEnumerator CoDestoryAfterExistTime()
-    {
-        yield return new WaitForSeconds(existTime);
-        Destroy(gameObject);
+        Destroy(gameObject, existTime);
     }
 
     private void Update()
@@ -43,23 +37,9 @@ public class SkillArrow : MonoBehaviour
 
         foreach (var hit in hits)
         {
-            hit.GetComponent<EnemyHealth>()?.OnDamage(damage, hit.ClosestPoint(transform.position), (hit.transform.position - transform.position).normalized);
+            hit.GetComponent<Enemy>()?.OnDamage(damage, hit.ClosestPoint(transform.position), (hit.transform.position - transform.position).normalized);
             Destroy(gameObject);
             break;
-        }
-    }
-
-    private void OnTriggerEnter(Collider other) // 지우기
-    {
-        if (other.CompareTag(Tag.Enemy))
-        {
-            var enemyHealth = other.gameObject.GetComponent<EnemyHealth>();
-
-            Vector3 hitPoint = other.ClosestPoint(transform.position);
-            Vector3 hitNormal = (other.transform.position - transform.position).normalized;
-            enemyHealth.OnDamage(damage, hitPoint,hitNormal);
-
-            Destroy(gameObject);
         }
     }
 
