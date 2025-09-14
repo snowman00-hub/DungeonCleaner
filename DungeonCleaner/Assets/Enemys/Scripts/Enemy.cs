@@ -3,9 +3,11 @@ using UnityEngine;
 
 public class Enemy : LivingEntity
 {
+    public static readonly int hashAttack = Animator.StringToHash("Attack");
     public static readonly int hashHurt = Animator.StringToHash("Hurt");
     public static readonly int hashDie = Animator.StringToHash("Die");
 
+    public int damage = 10;
     public float speed = 5f;
     public float avoidWeight = 1f;
     public EnemyName enemyName;
@@ -37,15 +39,15 @@ public class Enemy : LivingEntity
 
     private void Update()
     {
-        if(IsDead)
+        if (IsDead)
             return;
 
         UpdateMove();
 
-        if(timer + checkRemoveTime < Time.time)
+        if (timer + checkRemoveTime < Time.time)
         {
             timer = Time.time;
-            if(Vector3.Distance(transform.position, target.position) > 200f)
+            if (Vector3.Distance(transform.position, target.position) > 200f)
             {
                 Die();
             }
@@ -100,6 +102,11 @@ public class Enemy : LivingEntity
         yield return new WaitForSeconds(1.1f);
         base.Die();
         StageInfoManager.Instance.KillCount++;
+    }
+
+    public void SetTriggerAttack()
+    {
+        animator.SetTrigger(hashAttack);
     }
 }
 
