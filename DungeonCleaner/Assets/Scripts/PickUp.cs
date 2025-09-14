@@ -20,7 +20,7 @@ public class PickUp : MonoBehaviour
     private Vector3 pullStartPos;
     private float pullStartTime;
 
-    public event Action OnUsed;
+    public Action OnUsed;
 
     private void OnEnable()
     {
@@ -47,11 +47,6 @@ public class PickUp : MonoBehaviour
 
             float t = (Time.time - pullStartTime) / moveTime; 
             transform.position = Vector3.Lerp(pullStartPos, player.position, t);
-
-            if (t >= 1f)
-            {
-                OnUsed?.Invoke();
-            }
         }
     }
 

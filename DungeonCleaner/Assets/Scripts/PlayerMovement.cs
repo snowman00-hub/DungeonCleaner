@@ -57,4 +57,14 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag(Tag.Exp))
+        {
+            var pickup = other.GetComponent<PickUp>();
+            StageInfoManager.Instance.AddExp(pickup.value);
+            pickup.OnUsed?.Invoke();
+        }
+    }
 }

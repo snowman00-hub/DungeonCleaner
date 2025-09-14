@@ -12,6 +12,17 @@ public class StageInfoManager : MonoBehaviour
     private int killCount;
     public int currentXP;
     public int requiredXP;
+    public int level;
+
+    public int Level
+    {
+        get { return level; }
+        set
+        {
+            level = value;
+            stageInfoUI.SetLevelText(level);
+        }
+    }
 
     public int Money
     {
@@ -31,6 +42,28 @@ public class StageInfoManager : MonoBehaviour
             stageInfoUI.SetKillCountText(value);
             killCount = value;
         }
+    }
+
+    public int CurrentXP
+    {
+        get { return currentXP; }
+        set
+        {
+            currentXP = value;
+
+            if(currentXP >= requiredXP)
+            {
+                Level++;
+                currentXP = 0;
+            }
+
+            stageInfoUI.SetExpSliderValue(0, requiredXP, currentXP);
+        }
+    }
+
+    public void AddExp(int add)
+    {
+        CurrentXP += add;
     }
 
     private void Awake()

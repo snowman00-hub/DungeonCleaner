@@ -363,7 +363,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.461
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1942,7 +1942,8 @@ MonoBehaviour:
   stageInfoUI: {fileID: 841312291}
   currentTime: 0
   currentXP: 0
-  requiredXP: 0
+  requiredXP: 70
+  level: 1
 --- !u!1 &864332026
 GameObject:
   m_ObjectHideFlags: 0
