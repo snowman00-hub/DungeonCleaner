@@ -9,6 +9,7 @@ public class Enemy : LivingEntity
 
     public int damage = 10;
     public float speed = 5f;
+    public int Exp = 10;
     public float avoidWeight = 1f;
     public EnemyName enemyName;
     public LayerMask enemyMask;
@@ -102,6 +103,7 @@ public class Enemy : LivingEntity
         yield return new WaitForSeconds(1.1f);
         base.Die();
         StageInfoManager.Instance.KillCount++;
+        PickUpManager.Instance.CreatePickUp(PickUpType.smallExp, transform.position, Exp);
     }
 
     public void SetTriggerAttack()

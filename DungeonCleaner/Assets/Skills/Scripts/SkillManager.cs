@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class SkillManager : MonoBehaviour
 {
+    public GameObject skillChest;
     public List<Skill> skills;
 
     private Dictionary<string, Queue<GameObject>> skillPools = new Dictionary<string, Queue<GameObject>>();
@@ -10,12 +11,14 @@ public class SkillManager : MonoBehaviour
 
     private void Awake()
     {
+        skillChest.transform.position = Vector3.zero;
+
         foreach (var skill in skills)
         {
             var queue = new Queue<GameObject>();
             for (int i = 0; i < poolSize; i++)
             {
-                GameObject obj = Instantiate(skill.gameObject);
+                GameObject obj = Instantiate(skill.gameObject, skillChest.transform);
                 obj.SetActive(false);
                 queue.Enqueue(obj);
 
@@ -56,7 +59,7 @@ public class SkillManager : MonoBehaviour
             {
                 for (int i = 0; i < poolSize; i++)
                 {
-                    GameObject go = Instantiate(skill.gameObject);
+                    GameObject go = Instantiate(skill.gameObject, skillChest.transform);
                     go.SetActive(false);
                     queue.Enqueue(go);
 

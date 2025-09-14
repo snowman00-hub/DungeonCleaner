@@ -25,8 +25,10 @@ public class SkillDustStorm : Skill
     protected override void OnEnable()
     {
         base.OnEnable();
-        var ps = particle.main;
-        //ps.duration = existTime;
+
+        particle.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        var mainModule = particle.main;
+        mainModule.duration = existTime;
 
         capsule.radius = radius;
         particle.transform.localScale = Vector3.one * radius / 3f;
@@ -69,12 +71,10 @@ public class SkillDustStorm : Skill
 
         if (count == 0)
         {
-            Debug.Log("0");
             dir = directions[UnityEngine.Random.Range(0, directions.Length)];
         }
         else
         {
-            Debug.Log("setDir");
             Vector3 targetCenter = sum / count;
             dir = (targetCenter - transform.position).normalized;
             transform.LookAt(targetCenter);
