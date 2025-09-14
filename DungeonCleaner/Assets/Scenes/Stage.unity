@@ -3625,6 +3625,14 @@ PrefabInstance:
       propertyPath: healthSlider
       value: 
       objectReference: {fileID: 433342265}
+    - target: {fileID: 8284988378921404414, guid: ff82fd8887a40af41a4ea10d38991325, type: 3}
+      propertyPath: skills.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8284988378921404414, guid: ff82fd8887a40af41a4ea10d38991325, type: 3}
+      propertyPath: 'skills.Array.data[0]'
+      value: 
+      objectReference: {fileID: 5741604878691092973, guid: c9066b8d4c561a3489b9b8f6dd67af72, type: 3}
     - target: {fileID: 8304105531876670525, guid: ff82fd8887a40af41a4ea10d38991325, type: 3}
       propertyPath: joystick
       value: 
