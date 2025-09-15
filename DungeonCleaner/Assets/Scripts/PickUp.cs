@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PickUp : MonoBehaviour
 {
-    public int value = 10;
+    public int value = 1;
     public float bounceDistance = 3f;
     public float bounceBackTime = 0.25f;
     public float moveTime = 0.5f;

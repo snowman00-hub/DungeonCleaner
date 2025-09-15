@@ -589,8 +589,10 @@ MonoBehaviour:
   maxHP: 100
   damage: 10
   speed: 5
-  Exp: 10
   avoidWeight: 0.5
+  expType: 2
+  expDropRate: 70
+  atkType: 1
   enemyName: 5
   enemyMask:
     serializedVersion: 2

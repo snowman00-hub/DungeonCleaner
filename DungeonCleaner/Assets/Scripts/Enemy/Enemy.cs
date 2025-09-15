@@ -15,8 +15,10 @@ public class Enemy : LivingEntity
 
     public int damage = 10;
     public float speed = 5f;
-    public int Exp = 10;
     public float avoidWeight = 0.5f;    
+
+    public PickUpType expType = PickUpType.smallExp;
+    public float expDropRate = 70f;
 
     public EnemyAttackType atkType = EnemyAttackType.Melee;
     protected float projectileRange = 5f;
@@ -115,7 +117,7 @@ public class Enemy : LivingEntity
         yield return new WaitForSeconds(1.1f);
         base.Die();
         StageInfoManager.Instance.KillCount++;
-        PickUpManager.Instance.CreatePickUp(PickUpType.smallExp, transform.position, Exp);
+        PickUpManager.Instance.CreatePickUp(expType, transform.position);
     }
 
     public void SetTriggerAttack()

@@ -5,12 +5,14 @@ using UnityEngine;
 public enum EnemyProjectileName
 {
     Scorn,
+    BigScorn,
 }
 
 public class EnemyProjectile : MonoBehaviour
 {
     [HideInInspector]
     public int damage;
+    public Transform scornImage;
     public EnemyProjectileName projectilename;
 
     private Vector3 dir;
@@ -43,6 +45,7 @@ public class EnemyProjectile : MonoBehaviour
     {
         transform.position = startPosition;
         dir = target.position - transform.position;
+        scornImage.LookAt(target);
         damage = dmg;
         moveSpeed = speed;
     }

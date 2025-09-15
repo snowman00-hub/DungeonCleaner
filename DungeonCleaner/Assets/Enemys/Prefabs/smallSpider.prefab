@@ -1619,13 +1619,15 @@ MonoBehaviour:
   maxHP: 100
   damage: 10
   speed: 5
-  Exp: 10
   avoidWeight: 0.5
+  expType: 1
+  expDropRate: 70
   atkType: 2
   enemyName: 2
   enemyMask:
     serializedVersion: 2
     m_Bits: 8
+  projectilename: 0
 --- !u!1001 &8147533526990239211
 PrefabInstance:
   m_ObjectHideFlags: 0

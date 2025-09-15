@@ -26,6 +26,10 @@ public static class DataTableManger
             table.Load(id);
             tables.Add(id, table);
         }
+
+        var normalMonsterTable = new NormalMonsterTable();
+        normalMonsterTable.Load(DataTableIds.NormalMonsterTableId);
+        tables.Add(DataTableIds.NormalMonsterTableId, normalMonsterTable);
     }
 
     public static StringTable StringTable
@@ -41,6 +45,14 @@ public static class DataTableManger
         get
         {
             return Get<SpawnTable>(DataTableIds.Spawn);
+        }
+    }
+
+    public static NormalMonsterTable NormalMonsterTable
+    {
+        get
+        {
+            return Get<NormalMonsterTable>(DataTableIds.NormalMonsterTableId);
         }
     }
 

@@ -3,9 +3,9 @@ using UnityEngine;
 
 public enum PickUpType
 {
-    smallExp,
-    mediumExp,
-    largeExp,
+    smallExp = 1,
+    mediumExp = 2,
+    largeExp = 3,
     meat,
 }
 
@@ -13,7 +13,7 @@ public class PickUpManager : MonoBehaviour
 {
     public static PickUpManager Instance { get; private set; }
 
-    public List<PickUp> pickUpPrefabs;
+    public List<GameObject> pickUpPrefabs;
 
     private Dictionary<PickUpType, Queue<PickUp>> pickUpPools = new Dictionary<PickUpType, Queue<PickUp>>();
 
@@ -22,28 +22,29 @@ public class PickUpManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        foreach(var pickup in pickUpPrefabs)
+        foreach (var pickup in pickUpPrefabs)
         {
-            var type = pickup.type;
+            var type = pickup.GetComponent<PickUp>().type;
             pickUpPools[type] = new Queue<PickUp>();
 
             for (int i = 0; i < addPoolCount; i++)
             {
                 var go = Instantiate(pickup, transform);
-                go.gameObject.SetActive(false);
+                var pick_up = go.GetComponent<PickUp>();
+                go.SetActive(false);
 
-                go.OnUsed += () =>
+                pick_up.OnUsed += () =>
                 {
-                    go.gameObject.SetActive(false);
-                    pickUpPools[type].Enqueue(go);
+                    go.SetActive(false);
+                    pickUpPools[type].Enqueue(pick_up);
                 };
 
-                pickUpPools[type].Enqueue(go);
+                pickUpPools[type].Enqueue(pick_up);
             }
         }
     }
 
-    public void CreatePickUp(PickUpType type, Vector3 position, int value)
+    public void CreatePickUp(PickUpType type, Vector3 position)
     {
         var go = pickUpPools[type].Dequeue();
 
@@ -64,7 +65,6 @@ public class PickUpManager : MonoBehaviour
             }
         }
 
-        go.value = value;
         go.gameObject.transform.position = position;
         go.gameObject.SetActive(true);
     }

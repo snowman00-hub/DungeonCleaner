@@ -46,7 +46,7 @@ public class PlayerHealth : LivingEntity
             OnDamage(projectile.damage, other.ClosestPoint(transform.position), (other.transform.position - transform.position).normalized);
         }
     }
-    // test
+
     public override void OnDamage(int damage, Vector3 hitPoint, Vector3 hitNormal)
     {
         if (IsDead)

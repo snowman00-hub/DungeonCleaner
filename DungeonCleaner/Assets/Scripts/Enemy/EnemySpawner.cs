@@ -23,6 +23,7 @@ public enum EnemyType
 
 public class EnemySpawner : MonoBehaviour
 {
+    public DataLoadType loadType;
     public float minRadius = 7f;
     public float maxRadius = 10f;
     public List<GameObject> normalMonsters;
@@ -123,9 +124,19 @@ public class EnemySpawner : MonoBehaviour
     {
         foreach (var monster in normalMonsters)
         {
-            var name = monster.GetComponent<Enemy>().enemyName;
-            monsterPools[name] = new Queue<GameObject>();
-            ExpandMonsterPool(name, monster, 100);
+            var enemy = monster.GetComponent<Enemy>();
+
+            if (loadType == DataLoadType.ScriptableObject)
+            {
+
+            }
+            else if (loadType == DataLoadType.CSV)
+            {
+
+            }
+
+            monsterPools[enemy.enemyName] = new Queue<GameObject>();
+            ExpandMonsterPool(enemy.enemyName, monster, 100);
         }
 
         foreach (var miniBoss in miniBossMonsters)

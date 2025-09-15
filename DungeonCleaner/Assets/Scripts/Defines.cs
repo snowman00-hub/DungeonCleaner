@@ -22,6 +22,8 @@ public static class DataTableIds
         "spawnTable1",
     };
 
+    public static readonly string NormalMonsterTableId = "normalMonsterTable";
+
     public static string String => StringTableIds[(int)Variables.Language];
     public static string Spawn => SpawnTableIds[Variables.CurrentStageNumber - 1];
 
@@ -46,4 +48,10 @@ public class Tag
 public class LayerName
 {
     public static readonly string PickUp = "PickUp";
+}
+
+public enum DataLoadType
+{
+    ScriptableObject,
+    CSV
 }

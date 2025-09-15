@@ -1343,7 +1343,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6399823095648694458}
   - component: {fileID: 962765313770221994}
-  - component: {fileID: 7832731304003461203}
+  - component: {fileID: 2029774545093592941}
   m_Layer: 3
   m_Name: bigSider
   m_TagString: Enemy
@@ -1390,7 +1390,7 @@ CapsuleCollider:
   m_Height: 3
   m_Direction: 1
   m_Center: {x: 0, y: 1.5, z: 0}
---- !u!114 &7832731304003461203
+--- !u!114 &2029774545093592941
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1399,7 +1399,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6601963300322634328}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3df0461a524f9ef4d8f4577ea3ee403f, type: 3}
+  m_Script: {fileID: 11500000, guid: ec00f679e7f952243a5b62be91a495a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 100
@@ -1407,10 +1407,12 @@ MonoBehaviour:
   speed: 5
   Exp: 10
   avoidWeight: 0.5
+  atkType: 2
   enemyName: 4
   enemyMask:
     serializedVersion: 2
     m_Bits: 8
+  projectilename: 1
 --- !u!1 &6978934129278100557
 GameObject:
   m_ObjectHideFlags: 0

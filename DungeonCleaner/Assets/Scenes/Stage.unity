@@ -529,7 +529,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickUpPrefabs:
-  - {fileID: 7160276792038236876, guid: 75c6405437a91034583ab01d2572f526, type: 3}
+  - {fileID: 8610585982064814677, guid: 75c6405437a91034583ab01d2572f526, type: 3}
+  - {fileID: 4168159816525349969, guid: 01f768ecc729ba94bade828694be0aa3, type: 3}
+  - {fileID: 5968140281081969334, guid: e4f0cc8152297e249ae90bf513f01b55, type: 3}
 --- !u!1 &256624721
 GameObject:
   m_ObjectHideFlags: 0
@@ -3560,6 +3562,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectiles:
   - {fileID: 6004056420302476012, guid: d1ca0814c03edfc48b89afa1bf2b97ff, type: 3}
+  - {fileID: 6851888021220410306, guid: 44b9758885a6c264a80c631e03b005f5, type: 3}
 --- !u!1 &2093718789
 GameObject:
   m_ObjectHideFlags: 0
