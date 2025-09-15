@@ -1,6 +1,12 @@
 ﻿using System.Collections;
 using UnityEngine;
 
+public enum EnemyAttackType
+{
+    Melee = 1,
+    Ranged = 2,
+}
+
 public class Enemy : LivingEntity
 {
     public static readonly int hashAttack = Animator.StringToHash("Attack");
@@ -10,16 +16,22 @@ public class Enemy : LivingEntity
     public int damage = 10;
     public float speed = 5f;
     public int Exp = 10;
-    public float avoidWeight = 1f;
+    public float avoidWeight = 0.5f;    
+
+    public EnemyAttackType atkType = EnemyAttackType.Melee;
+    protected float projectileRange = 5f;
+    protected float projectileCoolDown = 2f;
+    protected float projectileSpeed = 3f;
+
     public EnemyName enemyName;
     public LayerMask enemyMask;
 
-    private Transform target;
-    private CapsuleCollider capsuleCollider;
-    private float timer;
-    private float checkRemoveTime = 10f;
+    protected Transform target;
+    protected CapsuleCollider capsuleCollider;
+    protected float timer;
+    protected float checkRemoveTime = 10f;
 
-    private Animator animator;
+    protected Animator animator;
 
     private void Awake()
     {
@@ -38,7 +50,7 @@ public class Enemy : LivingEntity
         capsuleCollider.enabled = true;
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         if (IsDead)
             return;

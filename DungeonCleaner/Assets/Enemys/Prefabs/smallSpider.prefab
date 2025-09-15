@@ -1557,7 +1557,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3796253085456528981}
   - component: {fileID: 4793991775853298395}
-  - component: {fileID: 1946258443671084501}
+  - component: {fileID: 1253273791320637363}
   m_Layer: 3
   m_Name: smallSpider
   m_TagString: Enemy
@@ -1604,7 +1604,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &1946258443671084501
+--- !u!114 &1253273791320637363
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1613,7 +1613,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9222297951128192898}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3df0461a524f9ef4d8f4577ea3ee403f, type: 3}
+  m_Script: {fileID: 11500000, guid: ec00f679e7f952243a5b62be91a495a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 100
@@ -1621,6 +1621,7 @@ MonoBehaviour:
   speed: 5
   Exp: 10
   avoidWeight: 0.5
+  atkType: 2
   enemyName: 2
   enemyMask:
     serializedVersion: 2

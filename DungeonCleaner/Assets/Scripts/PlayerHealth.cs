@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class PlayerHealth : LivingEntity
 {
@@ -36,6 +37,13 @@ public class PlayerHealth : LivingEntity
 
             lastHurtTime = Time.time;
             OnDamage(enemy.damage, other.ClosestPoint(transform.position), (other.transform.position - transform.position).normalized);
+        }
+
+        if (other.CompareTag(Tag.EnemyAttack))
+        {
+            var projectile = other.GetComponent<EnemyProjectile>();
+            projectile.OnUsed?.Invoke();
+            OnDamage(projectile.damage, other.ClosestPoint(transform.position), (other.transform.position - transform.position).normalized);
         }
     }
 

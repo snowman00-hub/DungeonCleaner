@@ -8,6 +8,7 @@ TagManager:
   - OreNode
   - OrePickup
   - Exp
+  - EnemyAttack
   layers:
   - Default
   - TransparentFX

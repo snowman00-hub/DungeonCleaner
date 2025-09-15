@@ -23,8 +23,8 @@ public enum EnemyType
 
 public class EnemySpawner : MonoBehaviour
 {
-    public float minRadius = 5f;
-    public float maxRadius = 7f;
+    public float minRadius = 7f;
+    public float maxRadius = 10f;
     public List<GameObject> normalMonsters;
     public List<GameObject> miniBossMonsters;
     public GameObject bossMonster;

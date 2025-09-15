@@ -39,6 +39,8 @@ public class Tag
     public static readonly string Player = "Player";
     public static readonly string Enemy = "Enemy";
     public static readonly string Exp = "Exp";
+    public static readonly string EnemyAttack = "EnemyAttack";
+
 }
 
 public class LayerName
