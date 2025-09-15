@@ -159,4 +159,4 @@ MonoBehaviour:
   bounceDistance: 4
   bounceBackTime: 0.25
   moveTime: 0.5
-  type: 0
+  type: 1

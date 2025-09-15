@@ -27,9 +27,17 @@ public static class DataTableManger
             tables.Add(id, table);
         }
 
-        var normalMonsterTable = new NormalMonsterTable();
-        normalMonsterTable.Load(DataTableIds.NormalMonsterTableId);
-        tables.Add(DataTableIds.NormalMonsterTableId, normalMonsterTable);
+        {
+            var MonsterTable = new MonsterDataTable();
+            MonsterTable.Load(DataTableIds.MonsterTableId);
+            tables.Add(DataTableIds.MonsterTableId, MonsterTable);
+        }
+
+        {
+            var table = new BossMonsterDataTable();
+            table.Load(DataTableIds.BossMonsterTableId);
+            tables.Add(DataTableIds.BossMonsterTableId, table);
+        }
     }
 
     public static StringTable StringTable
@@ -48,21 +56,21 @@ public static class DataTableManger
         }
     }
 
-    public static NormalMonsterTable NormalMonsterTable
+    public static MonsterDataTable MonsterTable
     {
         get
         {
-            return Get<NormalMonsterTable>(DataTableIds.NormalMonsterTableId);
+            return Get<MonsterDataTable>(DataTableIds.MonsterTableId);
         }
     }
 
-    //public static ItemTable ItemTable
-    //{
-    //    get
-    //    {
-    //        return Get<ItemTable>(DataTableIds.Item);
-    //    }
-    //}
+    public static BossMonsterDataTable BossMonsterTable
+    {
+        get
+        {
+            return Get<BossMonsterDataTable>(DataTableIds.BossMonsterTableId);
+        }
+    }
 
     public static T Get<T>(string id) where T : DataTable
     {

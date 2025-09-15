@@ -22,7 +22,8 @@ public static class DataTableIds
         "spawnTable1",
     };
 
-    public static readonly string NormalMonsterTableId = "normalMonsterTable";
+    public static readonly string MonsterTableId = "MonsterTable";
+    public static readonly string BossMonsterTableId = "BossMonsterTable";
 
     public static string String => StringTableIds[(int)Variables.Language];
     public static string Spawn => SpawnTableIds[Variables.CurrentStageNumber - 1];
@@ -42,16 +43,9 @@ public class Tag
     public static readonly string Enemy = "Enemy";
     public static readonly string Exp = "Exp";
     public static readonly string EnemyAttack = "EnemyAttack";
-
 }
 
 public class LayerName
 {
     public static readonly string PickUp = "PickUp";
-}
-
-public enum DataLoadType
-{
-    ScriptableObject,
-    CSV
 }

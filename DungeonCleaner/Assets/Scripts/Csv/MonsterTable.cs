@@ -1,13 +1,13 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class NormalMonsterData
+public class MonsterData
 {
-    public string MON_ID {  get; set; }
+    public EnemyName MON_ID {  get; set; }
     public string MON_NAME { get; set; }
     public EnemyAttackType MON_ATK_TYPE { get; set; }
     public int ATK { get; set; }
-    public int HP { get; set; }
+    public int MAXHP { get; set; }
     public float MOVE_SPEED { get; set; }
     public PickUpType DROP_EXP {  get; set; }
     public float DROP_PER {  get; set; }
@@ -16,9 +16,9 @@ public class NormalMonsterData
     public float PROJECTILE_MOVE_SPEED {  get; set; }
 }
 
-public class NormalMonsterTable : DataTable
+public class MonsterDataTable : DataTable
 {
-    private readonly Dictionary<string, NormalMonsterData> dictionary = new Dictionary<string, NormalMonsterData>();
+    private readonly Dictionary<EnemyName, MonsterData> dictionary = new Dictionary<EnemyName, MonsterData>();
 
     public override void Load(string filename)
     {
@@ -26,7 +26,7 @@ public class NormalMonsterTable : DataTable
 
         var path = string.Format(FormatPath, filename);
         var textAsset = Resources.Load<TextAsset>(path);
-        var list = LoadCSV<NormalMonsterData>(textAsset.text);
+        var list = LoadCSV<MonsterData>(textAsset.text);
         foreach (var item in list)
         {
             if (!dictionary.ContainsKey(item.MON_ID))
@@ -35,12 +35,12 @@ public class NormalMonsterTable : DataTable
             }
             else
             {
-                Debug.LogError($"Ű �ߺ�: {item.MON_ID}");
+                Debug.LogError($"키 중복: {item.MON_ID}");
             }
         }
     }
 
-    public NormalMonsterData Get(string id)
+    public MonsterData Get(EnemyName id)
     {
         return dictionary[id];
     }

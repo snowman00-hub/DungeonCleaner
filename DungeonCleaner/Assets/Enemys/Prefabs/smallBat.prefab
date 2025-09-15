@@ -452,10 +452,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 100
-  damage: 10
-  speed: 6
-  Exp: 10
+  enemyData: {fileID: 11400000, guid: db3c94c32b67f3a489d52ef3f54798b8, type: 2}
   avoidWeight: 0.5
+  atkType: 1
   enemyName: 1
   enemyMask:
     serializedVersion: 2

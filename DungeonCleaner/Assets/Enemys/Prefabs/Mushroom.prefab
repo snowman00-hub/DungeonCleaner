@@ -610,8 +610,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 100
-  speed: 4
+  enemyData: {fileID: 11400000, guid: 0feb5dc737ee5b84cbb0d9e93cc34381, type: 2}
   avoidWeight: 0.5
+  atkType: 1
   enemyName: 0
   enemyMask:
     serializedVersion: 2

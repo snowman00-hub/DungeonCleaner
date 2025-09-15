@@ -11,9 +11,8 @@ GameObject:
   - component: {fileID: 2411413703909535148}
   - component: {fileID: 1059430232402944445}
   - component: {fileID: 8098293245982009982}
-  - component: {fileID: 8304105531876670525}
-  - component: {fileID: 7255204589628562691}
   - component: {fileID: 8284988378921404414}
+  - component: {fileID: 8266844959073657999}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -87,34 +86,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 0
---- !u!114 &8304105531876670525
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1516303866179152407}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42b127d4956dda24d930ca953bfc846d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 2776856061754242228}
-  joystick: {fileID: 0}
-  speed: 7
---- !u!114 &7255204589628562691
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1516303866179152407}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8289a5dca660a7343a09e19aa1af1729, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHP: 200
 --- !u!114 &8284988378921404414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,7 +98,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d799e64d47c25248b19de7f6f77fb97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillOne: {fileID: 8232969065322979458, guid: ce65b7e0b2cbc824b8720549365adea9, type: 3}
+  skillChest: {fileID: 0}
+  skills:
+  - {fileID: 5741604878691092973, guid: c9066b8d4c561a3489b9b8f6dd67af72, type: 3}
+--- !u!114 &8266844959073657999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516303866179152407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dae74d00d8cd2847a8c4db99f7c646b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 200
+  player: {fileID: 2776856061754242228}
+  joystick: {fileID: 0}
+  speed: 7
+  pickUpRadius: 2
+  healthSlider: {fileID: 0}
 --- !u!1001 &2776073199455257020
 PrefabInstance:
   m_ObjectHideFlags: 0

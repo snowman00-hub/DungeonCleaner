@@ -13,17 +13,10 @@ public class Enemy : LivingEntity
     public static readonly int hashHurt = Animator.StringToHash("Hurt");
     public static readonly int hashDie = Animator.StringToHash("Die");
 
-    public int damage = 10;
-    public float speed = 5f;
-    public float avoidWeight = 0.5f;    
+    public EnemyData enemyData;
 
-    public PickUpType expType = PickUpType.smallExp;
-    public float expDropRate = 70f;
-
+    public float avoidWeight = 0.5f;
     public EnemyAttackType atkType = EnemyAttackType.Melee;
-    protected float projectileRange = 5f;
-    protected float projectileCoolDown = 2f;
-    protected float projectileSpeed = 3f;
 
     public EnemyName enemyName;
     public LayerMask enemyMask;
@@ -48,8 +41,9 @@ public class Enemy : LivingEntity
 
     protected override void OnEnable()
     {
-        base.OnEnable();
+        maxHP = enemyData.maxHp;
         capsuleCollider.enabled = true;
+        base.OnEnable();
     }
 
     protected virtual void Update()
@@ -90,7 +84,7 @@ public class Enemy : LivingEntity
         }
 
         Vector3 finalDir = (dir + avoid * avoidWeight).normalized;
-        transform.position += finalDir * speed * Time.deltaTime;
+        transform.position += finalDir * enemyData.moveSpeed * Time.deltaTime;
         transform.LookAt(target.position);
     }
 
@@ -117,7 +111,7 @@ public class Enemy : LivingEntity
         yield return new WaitForSeconds(1.1f);
         base.Die();
         StageInfoManager.Instance.KillCount++;
-        PickUpManager.Instance.CreatePickUp(expType, transform.position);
+        PickUpManager.Instance.CreatePickUp(enemyData.dropExp, transform.position);
     }
 
     public void SetTriggerAttack()

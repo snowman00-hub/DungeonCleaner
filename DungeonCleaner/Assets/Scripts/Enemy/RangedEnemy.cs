@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 public class RangedEnemy : Enemy
@@ -21,11 +21,11 @@ public class RangedEnemy : Enemy
 
         base.Update();
 
-        if(Vector3.Distance(target.position, transform.position) < projectileRange
-            && lastRangedAttackTime + projectileCoolDown < Time.time)
+        if (Vector3.Distance(target.position, transform.position) < enemyData.projectileRange
+            && lastRangedAttackTime + enemyData.projectileCooldown < Time.time)
         {
             lastRangedAttackTime = Time.time;
-            EnemyProjectileManager.Instance.Fire(projectilename, transform.position, target, damage, projectileSpeed);
+            EnemyProjectileManager.Instance.Fire(projectilename, transform.position, target, enemyData.damage, enemyData.projectileSpeed);
             animator.SetTrigger(hashAttack);
             StartCoroutine(CoWait(1f));
         }

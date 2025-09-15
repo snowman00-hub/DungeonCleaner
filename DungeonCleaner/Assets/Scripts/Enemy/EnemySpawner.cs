@@ -23,7 +23,6 @@ public enum EnemyType
 
 public class EnemySpawner : MonoBehaviour
 {
-    public DataLoadType loadType;
     public float minRadius = 7f;
     public float maxRadius = 10f;
     public List<GameObject> normalMonsters;
@@ -126,14 +125,15 @@ public class EnemySpawner : MonoBehaviour
         {
             var enemy = monster.GetComponent<Enemy>();
 
-            if (loadType == DataLoadType.ScriptableObject)
-            {
-
-            }
-            else if (loadType == DataLoadType.CSV)
-            {
-
-            }
+            var csvData = DataTableManger.MonsterTable.Get(enemy.enemyName);
+            enemy.enemyData.damage = csvData.ATK;
+            enemy.enemyData.maxHp = csvData.MAXHP;
+            enemy.enemyData.moveSpeed = csvData.MOVE_SPEED;
+            enemy.enemyData.dropExp = csvData.DROP_EXP;
+            enemy.enemyData.dropPercent = csvData.DROP_PER;
+            enemy.enemyData.projectileRange = csvData.PROJECTILE_RANGE;
+            enemy.enemyData.projectileCooldown = csvData.PROJECTILE_COOLTIME;
+            enemy.enemyData.projectileSpeed = csvData.PROJECTILE_MOVE_SPEED;
 
             monsterPools[enemy.enemyName] = new Queue<GameObject>();
             ExpandMonsterPool(enemy.enemyName, monster, 100);
@@ -141,14 +141,46 @@ public class EnemySpawner : MonoBehaviour
 
         foreach (var miniBoss in miniBossMonsters)
         {
-            var name = miniBoss.GetComponent<Enemy>().enemyName;
-            monsterPools[name] = new Queue<GameObject>();
-            ExpandMonsterPool(name, miniBoss, 10);
+            var enemy = miniBoss.GetComponent<Enemy>();
+
+            var csvData = DataTableManger.BossMonsterTable.Get(enemy.enemyName);
+            var enemyData = enemy.enemyData as BossEnemyData;
+            enemyData.damage = csvData.ATK;
+            enemyData.maxHp = csvData.MAXHP;
+            enemyData.moveSpeed = csvData.MOVE_SPEED;
+            enemyData.dropExp = csvData.DROP_EXP;
+            enemyData.dropPercent = csvData.DROP_PER;
+            enemyData.projectileRange = csvData.PROJECTILE_RANGE;
+            enemyData.projectileCooldown = csvData.PROJECTILE_COOLTIME;
+            enemyData.projectileSpeed = csvData.PROJECTILE_MOVE_SPEED;
+            enemyData.projectile_count = csvData.PROJECTILE_COUNT;
+            enemyData.dropItem = csvData.DROP_ITEM;
+            enemyData.dropItemValue = csvData.DROP_ITEM_VALUE;
+
+            monsterPools[enemy.enemyName] = new Queue<GameObject>();
+            ExpandMonsterPool(enemy.enemyName, miniBoss, 10);
         }
 
-        var bossName = bossMonster.GetComponent<Enemy>().enemyName;
-        monsterPools[bossName] = new Queue<GameObject>();
-        ExpandMonsterPool(bossName, bossMonster, 2);
+        {
+            var boss = bossMonster.GetComponent<Enemy>();
+
+            var csvData = DataTableManger.BossMonsterTable.Get(boss.enemyName);
+            var enemyData = boss.enemyData as BossEnemyData;
+            enemyData.damage = csvData.ATK;
+            enemyData.maxHp = csvData.MAXHP;
+            enemyData.moveSpeed = csvData.MOVE_SPEED;
+            enemyData.dropExp = csvData.DROP_EXP;
+            enemyData.dropPercent = csvData.DROP_PER;
+            enemyData.projectileRange = csvData.PROJECTILE_RANGE;
+            enemyData.projectileCooldown = csvData.PROJECTILE_COOLTIME;
+            enemyData.projectileSpeed = csvData.PROJECTILE_MOVE_SPEED;
+            enemyData.projectile_count = csvData.PROJECTILE_COUNT;
+            enemyData.dropItem = csvData.DROP_ITEM;
+            enemyData.dropItemValue = csvData.DROP_ITEM_VALUE;
+
+            monsterPools[boss.enemyName] = new Queue<GameObject>();
+            ExpandMonsterPool(boss.enemyName, bossMonster, 2);
+        }
     }
 
     private void ExpandMonsterPool(EnemyName name, GameObject monster, int count)

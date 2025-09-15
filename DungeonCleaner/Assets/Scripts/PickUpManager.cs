@@ -6,6 +6,7 @@ public enum PickUpType
     smallExp = 1,
     mediumExp = 2,
     largeExp = 3,
+    gold = 4,
     meat,
 }
 
