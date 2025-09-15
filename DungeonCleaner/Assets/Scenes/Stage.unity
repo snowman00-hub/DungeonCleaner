@@ -1509,7 +1509,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 0.8999939, y: 0}
+  m_AnchoredPosition: {x: 0.9000244, y: 0}
   m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &635786450
@@ -1940,10 +1940,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stageInfoUI: {fileID: 841312291}
-  currentTime: 0
   currentXP: 0
   requiredXP: 70
   level: 1
+  gameTimer: 0
 --- !u!1 &864332026
 GameObject:
   m_ObjectHideFlags: 0
@@ -3135,11 +3135,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRadius: 10
   maxRadius: 13
-  spawnCount: 10
   normalMonsters:
   - {fileID: 5737136547460658277, guid: 8623e0eb3fa9cd84e8bb01950ba15f07, type: 3}
-  miniBossMonsters: []
-  bossMonster: {fileID: 0}
+  - {fileID: 4555614353155938855, guid: 415014426c8ee26418b9eea59fcb9494, type: 3}
+  - {fileID: 9222297951128192898, guid: 3abb2ef5907d88c4db44d3add34a3cd3, type: 3}
+  - {fileID: 2877593347762209564, guid: c88741d6b182c7c4790b9e598a089eb2, type: 3}
+  miniBossMonsters:
+  - {fileID: 6601963300322634328, guid: 30b982edfdd4cf14588b85fcf817aa3e, type: 3}
+  bossMonster: {fileID: 5013700678895200139, guid: 6738b690e1205684e9cf71ddfe1a4ecf, type: 3}
 --- !u!4 &1898903993
 Transform:
   m_ObjectHideFlags: 0
@@ -3703,6 +3706,10 @@ PrefabInstance:
       propertyPath: healthSlider
       value: 
       objectReference: {fileID: 433342265}
+    - target: {fileID: 8284988378921404414, guid: ff82fd8887a40af41a4ea10d38991325, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8284988378921404414, guid: ff82fd8887a40af41a4ea10d38991325, type: 3}
       propertyPath: skillChest
       value: 

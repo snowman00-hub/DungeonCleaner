@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 public class StageInfoManager : MonoBehaviour
 {
@@ -21,7 +22,7 @@ public class StageInfoManager : MonoBehaviour
         get { return currentSeconds; }
         set
         {
-            currentSeconds = value;
+            currentSeconds = Mathf.Clamp(value, 0, 600);
             stageInfoUI.SetTimeText(currentSeconds);
         }
     }
@@ -38,7 +39,7 @@ public class StageInfoManager : MonoBehaviour
 
     public int Money
     {
-        get {  return money; }
+        get { return money; }
         set
         {
             stageInfoUI.SetGoldText(value);
@@ -63,7 +64,7 @@ public class StageInfoManager : MonoBehaviour
         {
             currentXP = value;
 
-            if(currentXP >= requiredXP)
+            if (currentXP >= requiredXP)
             {
                 Level++;
                 currentXP = 0;
@@ -88,19 +89,19 @@ public class StageInfoManager : MonoBehaviour
 #if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            gameTimer += 60f;
+            gameTimer = Mathf.Clamp(gameTimer + 60f, 0, 600);
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            gameTimer -= 60f;
+            gameTimer = Mathf.Clamp(gameTimer - 60f, 0, 600);
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            gameTimer += 10f;
+            gameTimer = Mathf.Clamp(gameTimer + 10f, 0, 600);
         }
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-            gameTimer -= 10f;
+            gameTimer = Mathf.Clamp(gameTimer - 10f, 0, 600);
         }
 #endif
 
