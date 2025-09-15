@@ -16,7 +16,14 @@ public static class DataTableIds
     {
         "StringTableKr",
     };
+
+    public static readonly string[] SpawnTableIds =
+    {
+        "spawnTable1",
+    };
+
     public static string String => StringTableIds[(int)Variables.Language];
+    public static string Spawn => SpawnTableIds[Variables.CurrentStageNumber - 1];
 
     public static readonly string Item = "ItemTable";
 }
@@ -24,6 +31,7 @@ public static class DataTableIds
 public static class Variables
 {
     public static Languages Language = Languages.Korean;
+    public static int CurrentStageNumber = 1;
 }
 
 public class Tag

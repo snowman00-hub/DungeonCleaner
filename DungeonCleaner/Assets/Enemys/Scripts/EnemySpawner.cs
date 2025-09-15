@@ -1,12 +1,30 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+
+public enum EnemyName
+{
+    smallMushroom,
+    smallBat,
+    smallSpider,    
+    mediumSpider,
+    bigSpider,
+    earthGolem
+}
+
+public enum EnemyType
+{
+    None,
+    Normal,
+    MiniBoss,
+    Boss
+}
 
 public class EnemySpawner : MonoBehaviour
 {
     public float minRadius = 5f;
     public float maxRadius = 7f;
-    public int spawnCount = 10;
     public List<GameObject> normalMonsters;
     public List<GameObject> miniBossMonsters;
     public GameObject bossMonster;
@@ -15,24 +33,52 @@ public class EnemySpawner : MonoBehaviour
     private Dictionary<EnemyName, Queue<GameObject>> monsterPools = new Dictionary<EnemyName, Queue<GameObject>>();
     private int normalMonsterCount = 0;
 
-    private void Start()
+    private List<SpawnData> spawnDatas;
+
+    private void Awake()
     {
-        player = GameObject.FindWithTag(Tag.Player).transform;
-        Init();
+        spawnDatas = DataTableManger.SpawnTable.GetList();
     }
 
-    private void Update()
+    private void Start()
+    {        
+        player = GameObject.FindWithTag(Tag.Player).transform;
+        Init();
+        StartCoroutines();
+    }
+
+    private void StartCoroutines()
     {
-#if UNITY_EDITOR
-        if (Input.GetKeyDown(KeyCode.Space))
+        foreach(var spawnData in  spawnDatas)
         {
-            SpawnEnemy(EnemyName.Mushroom, spawnCount, minRadius, maxRadius);
+            StartCoroutine(CoSpawn(spawnData));
         }
-#endif
+    }
+
+    private IEnumerator CoSpawn(SpawnData data)
+    {
+        while (true)
+        {
+            float t = StageInfoManager.Instance.gameTimer;
+
+            if (t >= data.START_TIME && t < data.END_TIME)
+            {
+                if (Random.Range(0f, 100f) <= data.WEIGHT)
+                    SpawnEnemy(data.MON_NAME, data.MON_COUNT, minRadius, maxRadius);
+            }
+
+            yield return new WaitForSeconds(data.INTERVAL);
+        }
     }
 
     public void SpawnEnemy(EnemyName name, int count, float minRadius, float maxRadius)
     {
+        if (!monsterPools.ContainsKey(name))
+        {
+            Debug.Log("몬스터 키 없음");
+            return;
+        }
+
         for (int i = 0; i < count; i++)
         {
             var spawnPos = GetRandomPositionInRing3D(player.position, minRadius, maxRadius);

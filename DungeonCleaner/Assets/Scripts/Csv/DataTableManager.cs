@@ -13,21 +13,19 @@ public static class DataTableManger
 
     private static void Init()
     {
-#if UNITY_EDITOR
         foreach (var id in DataTableIds.StringTableIds)
         {
             var table = new StringTable();
             table.Load(id);
             tables.Add(id, table);
         }
-#else
-        var stringTable = new StringTable();
-        stringTable.Load(DataTableIds.String);
-        tables.Add(DataTableIds.String, stringTable);
-#endif
-        //var itemTable = new ItemTable();
-        //itemTable.Load(DataTableIds.Item);
-        //tables.Add(DataTableIds.Item, itemTable);
+
+        foreach(var id in DataTableIds.SpawnTableIds)
+        {
+            var table = new SpawnTable();
+            table.Load(id);
+            tables.Add(id, table);
+        }
     }
 
     public static StringTable StringTable
@@ -35,6 +33,14 @@ public static class DataTableManger
         get
         {
             return Get<StringTable>(DataTableIds.String);
+        }
+    }
+
+    public static SpawnTable SpawnTable
+    {
+        get
+        {
+            return Get<SpawnTable>(DataTableIds.Spawn);
         }
     }
 

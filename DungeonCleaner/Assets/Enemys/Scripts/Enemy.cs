@@ -112,7 +112,3 @@ public class Enemy : LivingEntity
     }
 }
 
-public enum EnemyName
-{
-    Mushroom,
-}

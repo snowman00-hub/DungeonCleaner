@@ -7,12 +7,24 @@ public class StageInfoManager : MonoBehaviour
     [SerializeField]
     private StageInfoUI stageInfoUI;
 
-    public float currentTime;
+    private int currentSeconds;
     private int money;
     private int killCount;
     public int currentXP;
     public int requiredXP;
     public int level;
+
+    public float gameTimer;
+
+    public int CurrentSeconds
+    {
+        get { return currentSeconds; }
+        set
+        {
+            currentSeconds = value;
+            stageInfoUI.SetTimeText(currentSeconds);
+        }
+    }
 
     public int Level
     {
@@ -69,5 +81,35 @@ public class StageInfoManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+    }
+
+    private void Update()
+    {
+#if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            gameTimer += 60f;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            gameTimer -= 60f;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            gameTimer += 10f;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            gameTimer -= 10f;
+        }
+#endif
+
+        gameTimer += Time.deltaTime;
+        int seconds = Mathf.FloorToInt(gameTimer);
+
+        if (seconds != CurrentSeconds)
+        {
+            CurrentSeconds = seconds;
+        }
     }
 }
