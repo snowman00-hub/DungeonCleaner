@@ -1,12 +1,17 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+public enum SkillName
+{
+    dustStorm,
+}
+
 public class SkillManager : MonoBehaviour
 {
     public GameObject skillChest;
     public List<Skill> skills;
 
-    private Dictionary<string, Queue<GameObject>> skillPools = new Dictionary<string, Queue<GameObject>>();
+    private Dictionary<SkillName, Queue<GameObject>> skillPools = new Dictionary<SkillName, Queue<GameObject>>();
     private int poolSize = 10;
 
     private void Awake()
@@ -46,35 +51,38 @@ public class SkillManager : MonoBehaviour
             {
                 // 쿨타임이 다 됐으면 스킬 발동
                 UseSkill(skill);
-                skill.currentCoolDown = skill.coolDown;
+                skill.currentCoolDown = skill.skillData.coolDown;
             }
         }
     }
 
     private void UseSkill(Skill skill)
     {
-        if (skillPools.TryGetValue(skill.skillName, out var queue))
+        for (int projectileCount = 0; projectileCount < skill.skillData.projectileCount; projectileCount++)
         {
-            if (queue.Count == 0)
+            if (skillPools.TryGetValue(skill.skillName, out var queue))
             {
-                for (int i = 0; i < poolSize; i++)
+                if (queue.Count == 0)
                 {
-                    GameObject go = Instantiate(skill.gameObject, skillChest.transform);
-                    go.SetActive(false);
-                    queue.Enqueue(go);
-
-                    var sk = go.GetComponent<Skill>();
-                    sk.OnUsed += () =>
+                    for (int i = 0; i < poolSize; i++)
                     {
-                        queue.Enqueue(go);
+                        GameObject go = Instantiate(skill.gameObject, skillChest.transform);
                         go.SetActive(false);
-                    };
-                }
-            }
+                        queue.Enqueue(go);
 
-            var temp = queue.Dequeue().gameObject;
-            temp.transform.position = transform.position;
-            temp.SetActive(true);
+                        var sk = go.GetComponent<Skill>();
+                        sk.OnUsed += () =>
+                        {
+                            queue.Enqueue(go);
+                            go.SetActive(false);
+                        };
+                    }
+                }
+
+                var temp = queue.Dequeue().gameObject;
+                temp.transform.position = transform.position;
+                temp.SetActive(true);
+            }
         }
     }
 }

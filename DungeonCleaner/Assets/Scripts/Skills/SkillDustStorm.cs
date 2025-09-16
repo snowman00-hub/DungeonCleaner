@@ -4,16 +4,6 @@ using UnityEngine;
 
 public class SkillDustStorm : Skill
 {
-    public float speed = 2f;
-    public float radius = 3f;
-
-    private float findEnemyRadius = 30f;
-    private Vector3 dir;
-
-    private float lastAttackTime;
-    [HideInInspector]
-    public float attackTick = 0.5f;
-
     private ParticleSystem particle;
 
     protected override void Awake()
@@ -28,10 +18,10 @@ public class SkillDustStorm : Skill
 
         particle.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
         var mainModule = particle.main;
-        mainModule.duration = existTime;
+        mainModule.duration = skillData.duration;
 
-        capsule.radius = radius;
-        particle.transform.localScale = Vector3.one * radius / 3f;
+        capsule.radius = skillData.radius;
+        particle.transform.localScale = Vector3.one * skillData.radius;
 
         SetDirection();
         particle.Play();
@@ -39,45 +29,25 @@ public class SkillDustStorm : Skill
 
     private void Update()
     {
-        transform.position += dir * speed * Time.deltaTime;
+        transform.position += dir * skillData.projectileSpeed * Time.deltaTime;
         UpdateCollision();
     }
 
     private void UpdateCollision()
     {
+        if (lastAttackTime + skillData.tickInterval > Time.time)
+            return;
+
         float overlapRadius = Mathf.Max(capsule.height, capsule.radius * 2) / 2f;
         Collider[] hits = Physics.OverlapSphere(capsule.bounds.center, overlapRadius, targetLayer);
 
-        if (hits.Length == 0 || lastAttackTime + attackTick > Time.time)
+        if (hits.Length == 0)
             return;
 
         lastAttackTime = Time.time;
         foreach (var hit in hits)
         {
-            hit.GetComponent<Enemy>()?.OnDamage(damage, hit.ClosestPoint(transform.position), (hit.transform.position - transform.position).normalized);
-        }
-    }
-
-    private void SetDirection()
-    {
-        var colliders = Physics.OverlapSphere(transform.position, findEnemyRadius, targetLayer);
-        Vector3 sum = Vector3.zero;
-        int count = 0;
-        foreach (Collider col in colliders)
-        {
-            sum += col.transform.position;
-            count++;
-        }
-
-        if (count == 0)
-        {
-            dir = directions[UnityEngine.Random.Range(0, directions.Length)];
-        }
-        else
-        {
-            Vector3 targetCenter = sum / count;
-            dir = (targetCenter - transform.position).normalized;
-            transform.LookAt(targetCenter);
+            hit.GetComponent<Enemy>()?.OnDamage(skillData.damage, hit.ClosestPoint(transform.position), (hit.transform.position - transform.position).normalized);
         }
     }
 }

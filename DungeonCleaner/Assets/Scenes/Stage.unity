@@ -3767,6 +3767,14 @@ PrefabInstance:
       propertyPath: skillChest
       value: 
       objectReference: {fileID: 1345996923}
+    - target: {fileID: 8284988378921404414, guid: ff82fd8887a40af41a4ea10d38991325, type: 3}
+      propertyPath: skills.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8284988378921404414, guid: ff82fd8887a40af41a4ea10d38991325, type: 3}
+      propertyPath: 'skills.Array.data[0]'
+      value: 
+      objectReference: {fileID: 5567857689544871050, guid: db74522911a1c4d41a1f0fe5b7b79717, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
