@@ -1,9 +1,13 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
+using UnityEngine.UI;
 using static UnityEngine.Rendering.DebugUI;
 
 public class StageInfoManager : MonoBehaviour
 {
     public static StageInfoManager Instance { get; private set; }
+
+    public GameObject skillChoiceWindow;
 
     [SerializeField]
     private StageInfoUI stageInfoUI;
@@ -14,7 +18,7 @@ public class StageInfoManager : MonoBehaviour
     public int currentXP;
     public int requiredXP;
     public int level;
-
+        
     public float gameTimer;
 
     public int CurrentSeconds
@@ -34,6 +38,7 @@ public class StageInfoManager : MonoBehaviour
         {
             level = value;
             stageInfoUI.SetLevelText(level);
+            OpenSkillChoice();
         }
     }
 
@@ -103,6 +108,14 @@ public class StageInfoManager : MonoBehaviour
         {
             gameTimer = Mathf.Clamp(gameTimer - 10f, 0, 600);
         }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            Level++;
+        }
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            CurrentXP += 20;
+        }
 #endif
 
         gameTimer += Time.deltaTime;
@@ -112,5 +125,17 @@ public class StageInfoManager : MonoBehaviour
         {
             CurrentSeconds = seconds;
         }
+    }
+
+    public void OpenSkillChoice()
+    {
+        skillChoiceWindow.SetActive(true);
+        Time.timeScale = 0f;
+    }
+
+    public void CloseSkillChoice()
+    {
+        skillChoiceWindow.SetActive(false);
+        Time.timeScale = 1f;
     }
 }

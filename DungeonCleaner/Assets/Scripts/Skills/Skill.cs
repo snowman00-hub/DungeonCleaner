@@ -3,7 +3,8 @@ using System.Collections;
 using UnityEngine;
 
 public class Skill : MonoBehaviour
-{    
+{
+    public Sprite skillSprite;
     public SkillName skillName;
     public SkillData skillData;
     public LayerMask targetLayer;
