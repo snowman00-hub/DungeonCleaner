@@ -25,6 +25,8 @@ public static class DataTableIds
     public static readonly string MonsterTableId = "MonsterTable";
     public static readonly string BossMonsterTableId = "BossMonsterTable";
 
+    public static readonly string ActiveSkillTableId = "ActiveSkillTable";
+
     public static string String => StringTableIds[(int)Variables.Language];
     public static string Spawn => SpawnTableIds[Variables.CurrentStageNumber - 1];
 

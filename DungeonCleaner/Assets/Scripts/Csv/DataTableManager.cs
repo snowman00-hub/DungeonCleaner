@@ -38,6 +38,12 @@ public static class DataTableManger
             table.Load(DataTableIds.BossMonsterTableId);
             tables.Add(DataTableIds.BossMonsterTableId, table);
         }
+
+        {
+            var table = new ActiveSkillTable();
+            table.Load(DataTableIds.ActiveSkillTableId);
+            tables.Add(DataTableIds.ActiveSkillTableId, table);
+        }
     }
 
     public static StringTable StringTable
@@ -69,6 +75,14 @@ public static class DataTableManger
         get
         {
             return Get<BossMonsterDataTable>(DataTableIds.BossMonsterTableId);
+        }
+    }
+
+    public static ActiveSkillTable ActiveSkillTable
+    {
+        get
+        {
+            return Get<ActiveSkillTable>(DataTableIds.ActiveSkillTableId);
         }
     }
 

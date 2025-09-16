@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 
 public class Skill : MonoBehaviour
-{
+{    
     public SkillName skillName;
     public SkillData skillData;
     public LayerMask targetLayer;
@@ -70,5 +70,10 @@ public class Skill : MonoBehaviour
             dir = (targetCenter - transform.position).normalized;
             transform.LookAt(targetCenter);
         }
+    }
+
+    public string GetSkillLevelId(int level)
+    {
+        return $"{skillName}{level}";
     }
 }

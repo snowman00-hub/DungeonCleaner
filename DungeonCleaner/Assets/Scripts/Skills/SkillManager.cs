@@ -20,6 +20,7 @@ public class SkillManager : MonoBehaviour
 
         foreach (var skill in skills)
         {
+            ApplySkillLevel(skill, 1);
             var queue = new Queue<GameObject>();
             for (int i = 0; i < poolSize; i++)
             {
@@ -37,6 +38,21 @@ public class SkillManager : MonoBehaviour
 
             skillPools[skill.skillName] = queue;
         }
+    }
+
+    public void ApplySkillLevel(Skill skill, int level)
+    {
+        var skillTable = DataTableManger.ActiveSkillTable;
+        var levelData = skillTable.Get(skill.GetSkillLevelId(level));
+
+        skill.skillData.skillLevel = levelData.CURRENT_LEVEL;
+        skill.skillData.damage = levelData.DAMAGE;
+        skill.skillData.radius = levelData.SKILL_RADIAL;
+        skill.skillData.coolDown = levelData.SKILL_COOLTIME;
+        skill.skillData.duration = levelData.SKILL_DURATION;
+        skill.skillData.tickInterval = levelData.TICK_INTERVAL;
+        skill.skillData.projectileCount = levelData.PROJECTILE_COUNT;
+        skill.skillData.projectileSpeed = levelData.SKILL_SPEED;
     }
 
     private void Update()

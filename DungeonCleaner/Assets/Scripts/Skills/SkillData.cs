@@ -10,5 +10,5 @@ public class SkillData : ScriptableObject
     public float duration;
     public float tickInterval;
     public int projectileCount;
-    public int projectileSpeed;
+    public float projectileSpeed;
 }
