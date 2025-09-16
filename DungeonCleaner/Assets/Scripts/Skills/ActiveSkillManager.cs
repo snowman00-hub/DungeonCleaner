@@ -6,15 +6,15 @@ public enum SkillName
     dustStorm,
 }
 
-public class SkillManager : MonoBehaviour
+public class ActiveSkillManager : MonoBehaviour
 {
-    public static SkillManager Instance;
+    public static ActiveSkillManager Instance;
     public GameObject skillChest;
-    public List<Skill> allSkillList;
+    public List<ActiveSkill> allSkillList;
 
-    public Skill defaultSkill;
+    public ActiveSkill defaultSkill;
     [HideInInspector]
-    public List<Skill> equippedSkills = new List<Skill>();
+    public List<ActiveSkill> equippedSkills = new List<ActiveSkill>();
 
     private Dictionary<SkillName, Queue<GameObject>> skillPools = new Dictionary<SkillName, Queue<GameObject>>();
     private int poolSize = 10;
@@ -35,7 +35,7 @@ public class SkillManager : MonoBehaviour
                 obj.SetActive(false);
                 queue.Enqueue(obj);
 
-                var sk = obj.GetComponent<Skill>();
+                var sk = obj.GetComponent<ActiveSkill>();
                 sk.OnUsed += () =>
                 {
                     queue.Enqueue(obj);
@@ -47,7 +47,7 @@ public class SkillManager : MonoBehaviour
         }
     }
 
-    public void ApplySkillLevel(Skill skill, int level)
+    public void ApplySkillLevel(ActiveSkill skill, int level)
     {
         var skillTable = DataTableManger.ActiveSkillTable;
         var levelData = skillTable.Get(skill.GetSkillLevelId(level));
@@ -79,7 +79,7 @@ public class SkillManager : MonoBehaviour
         }
     }
 
-    private void UseSkill(Skill skill)
+    private void UseSkill(ActiveSkill skill)
     {
         for (int projectileCount = 0; projectileCount < skill.skillData.projectileCount; projectileCount++)
         {
@@ -93,7 +93,7 @@ public class SkillManager : MonoBehaviour
                         go.SetActive(false);
                         queue.Enqueue(go);
 
-                        var sk = go.GetComponent<Skill>();
+                        var sk = go.GetComponent<ActiveSkill>();
                         sk.OnUsed += () =>
                         {
                             queue.Enqueue(go);

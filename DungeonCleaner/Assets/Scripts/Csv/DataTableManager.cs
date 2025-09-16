@@ -44,6 +44,12 @@ public static class DataTableManger
             table.Load(DataTableIds.ActiveSkillTableId);
             tables.Add(DataTableIds.ActiveSkillTableId, table);
         }
+
+        {
+            var table = new PassiveSkillTable();
+            table.Load(DataTableIds.PassiveSkillTableId);
+            tables.Add(DataTableIds.PassiveSkillTableId, table);
+        }
     }
 
     public static StringTable StringTable
@@ -83,6 +89,14 @@ public static class DataTableManger
         get
         {
             return Get<ActiveSkillTable>(DataTableIds.ActiveSkillTableId);
+        }
+    }
+
+    public static PassiveSkillTable PassiveSkillTable
+    {
+        get
+        {
+            return Get<PassiveSkillTable>(DataTableIds.PassiveSkillTableId);
         }
     }
 

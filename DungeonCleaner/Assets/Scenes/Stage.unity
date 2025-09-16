@@ -712,8 +712,6 @@ MonoBehaviour:
   - {fileID: 205838876}
   - {fileID: 1335573250}
   - {fileID: 526008718}
-  skillList:
-  - {fileID: 5567857689544871050, guid: db74522911a1c4d41a1f0fe5b7b79717, type: 3}
 --- !u!114 &102288979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3975,8 +3973,6 @@ MonoBehaviour:
   - {fileID: 1271702896}
   - {fileID: 1064948290}
   - {fileID: 998166257}
-  skillList:
-  - {fileID: 5567857689544871050, guid: db74522911a1c4d41a1f0fe5b7b79717, type: 3}
 --- !u!114 &498873176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8079,8 +8075,6 @@ MonoBehaviour:
   - {fileID: 386856148}
   - {fileID: 1226961220}
   - {fileID: 1075270684}
-  skillList:
-  - {fileID: 5567857689544871050, guid: db74522911a1c4d41a1f0fe5b7b79717, type: 3}
 --- !u!1 &1131698692
 GameObject:
   m_ObjectHideFlags: 0

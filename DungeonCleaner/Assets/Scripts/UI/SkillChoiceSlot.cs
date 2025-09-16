@@ -1,3 +1,4 @@
+﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -10,10 +11,9 @@ public class SkillChoiceSlot : MonoBehaviour
     public TextMeshProUGUI skillDescText;
     public List<Image> starImages;
 
-    public List<Skill> skillList;
-
     private Button button;
-    private Skill currentSkill;
+    private ActiveSkill currentSkill;
+    private int currentSkillLevel;
 
     private void Awake()
     {
@@ -23,24 +23,76 @@ public class SkillChoiceSlot : MonoBehaviour
 
     private void OnEnable()
     {
-        int rand = Random.Range(0,skillList.Count);
-        var skill = skillList[rand];
+        int rand = Random.Range(0, ActiveSkillManager.Instance.allSkillList.Count);
+        var skill = ActiveSkillManager.Instance.allSkillList[rand];
+
         currentSkill = skill;
         var skillTable = DataTableManger.ActiveSkillTable;
-        var levelData = skillTable.Get(skill.GetSkillLevelId(skill.skillData.skillLevel));
+        ActiveSkillData levelData;
+        if (ActiveSkillManager.Instance.equippedSkills.Contains(skill))
+        {
+            levelData = skillTable.Get(skill.GetSkillLevelId(skill.skillData.skillLevel + 1));
+        }
+        else
+        {
+            levelData = skillTable.Get(skill.GetSkillLevelId(1));
+        }
 
         skillImage.sprite = skill.skillSprite;
         skillNameText.text = levelData.SKILL_NAME;
         skillDescText.text = levelData.DESCRIPTION;
-        for(int i= 0; i < levelData.CURRENT_LEVEL; i++) 
+        currentSkillLevel = levelData.CURRENT_LEVEL;
+        for (int i = 0; i < currentSkillLevel; i++)
         {
             starImages[i].enabled = true;
         }
+        StartCoroutine(FadeLoop());
     }
 
     private void OnSlotChoice()
     {
         StageInfoManager.Instance.CloseSkillChoice();
-        SkillManager.Instance.ApplySkillLevel(currentSkill,currentSkill.skillData.skillLevel + 1);
+        ActiveSkillManager.Instance.ApplySkillLevel(currentSkill, currentSkill.skillData.skillLevel + 1);
+    }
+
+    private void OnDisable()
+    {
+        Color c = starImages[currentSkillLevel - 1].color;
+        c.a = 1f;
+        starImages[currentSkillLevel - 1].color = c;
+    }
+
+    private float elaspedTime = 0.4f;
+    private float waitTime = 0.1f;
+
+    private IEnumerator FadeLoop()
+    {
+        while (true)
+        {
+            yield return StartCoroutine(Fade(0f, 1f));
+            yield return new WaitForSecondsRealtime(waitTime);
+
+            yield return StartCoroutine(Fade(1f, 0f));
+            yield return new WaitForSecondsRealtime(waitTime);
+        }
+    }
+
+    private IEnumerator Fade(float from, float to)
+    {
+        float elapsed = 0f;
+
+        while (elapsed < elaspedTime)
+        {
+            elapsed += Time.unscaledDeltaTime;
+            float t = elapsed / elaspedTime;
+            Color c = starImages[currentSkillLevel - 1].color;
+            c.a = Mathf.Lerp(from, to, t);  
+            starImages[currentSkillLevel - 1].color = c;      
+            yield return null;
+        }
+
+        Color color = starImages[currentSkillLevel - 1].color;
+        color.a = to;
+        starImages[currentSkillLevel - 1].color = color;
     }
 }

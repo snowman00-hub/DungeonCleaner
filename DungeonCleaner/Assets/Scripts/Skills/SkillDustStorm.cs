@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class SkillDustStorm : Skill
+public class SkillDustStorm : ActiveSkill
 {
     private ParticleSystem particle;
 

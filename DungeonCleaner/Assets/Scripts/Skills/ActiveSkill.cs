@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class Skill : MonoBehaviour
+public class ActiveSkill : MonoBehaviour
 {
     public Sprite skillSprite;
     public SkillName skillName;
