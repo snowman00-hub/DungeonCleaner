@@ -8,15 +8,12 @@ public class jsonTest : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Return))
         {
             Debug.Log("asdf");
-            SaveLoadManager.Data.PlayerName = "TEST";
             SaveLoadManager.Save();            
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
             SaveLoadManager.Load();
-
-            Debug.Log(SaveLoadManager.Data.PlayerName);
         }
     }
 }

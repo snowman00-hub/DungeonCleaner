@@ -8,17 +8,24 @@ public enum SkillName
 
 public class SkillManager : MonoBehaviour
 {
+    public static SkillManager Instance;
     public GameObject skillChest;
-    public List<Skill> skills;
+    public List<Skill> allSkillList;
+
+    public Skill defaultSkill;
+    [HideInInspector]
+    public List<Skill> equippedSkills = new List<Skill>();
 
     private Dictionary<SkillName, Queue<GameObject>> skillPools = new Dictionary<SkillName, Queue<GameObject>>();
     private int poolSize = 10;
 
     private void Awake()
     {
+        Instance = this;
+        equippedSkills.Add(defaultSkill);
         skillChest.transform.position = Vector3.zero;
 
-        foreach (var skill in skills)
+        foreach (var skill in allSkillList)
         {
             ApplySkillLevel(skill, 1);
             var queue = new Queue<GameObject>();
@@ -57,7 +64,7 @@ public class SkillManager : MonoBehaviour
 
     private void Update()
     {
-        foreach (var skill in skills)
+        foreach (var skill in equippedSkills)
         {
             if (skill.currentCoolDown > 0)
             {

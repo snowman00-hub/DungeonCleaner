@@ -12,7 +12,9 @@ public abstract class SaveData
 [Serializable]
 public class SaveDataV1 : SaveData
 {
-    public string PlayerName { get; set; } = string.Empty;
+    public int maxHP;
+    public float speed;
+    public float pickUpRadius;
 
     public SaveDataV1()
     {

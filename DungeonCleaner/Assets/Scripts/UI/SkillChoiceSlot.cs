@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,17 +13,19 @@ public class SkillChoiceSlot : MonoBehaviour
     public List<Skill> skillList;
 
     private Button button;
+    private Skill currentSkill;
 
     private void Awake()
     {
         button = GetComponent<Button>();
-        button.onClick.AddListener(() => StageInfoManager.Instance.CloseSkillChoice());
+        button.onClick.AddListener(OnSlotChoice);
     }
 
     private void OnEnable()
     {
         int rand = Random.Range(0,skillList.Count);
         var skill = skillList[rand];
+        currentSkill = skill;
         var skillTable = DataTableManger.ActiveSkillTable;
         var levelData = skillTable.Get(skill.GetSkillLevelId(skill.skillData.skillLevel));
 
@@ -35,5 +36,11 @@ public class SkillChoiceSlot : MonoBehaviour
         {
             starImages[i].enabled = true;
         }
+    }
+
+    private void OnSlotChoice()
+    {
+        StageInfoManager.Instance.CloseSkillChoice();
+        SkillManager.Instance.ApplySkillLevel(currentSkill,currentSkill.skillData.skillLevel + 1);
     }
 }

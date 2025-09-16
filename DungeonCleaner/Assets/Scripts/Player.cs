@@ -21,6 +21,11 @@ public class Player : LivingEntity
 
     private void Awake()
     {
+        SaveLoadManager.Load();
+        data.maxHP = SaveLoadManager.Data.maxHP;
+        data.speed = SaveLoadManager.Data.speed;
+        data.pickUpRadius = SaveLoadManager.Data.pickUpRadius;
+
         anim = GetComponentInChildren<Animation>();
         anim.wrapMode = WrapMode.Loop;
         maxHP = data.maxHP;
