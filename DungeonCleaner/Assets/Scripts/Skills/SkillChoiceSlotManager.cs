@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class SkillChoiceSlotManager : MonoBehaviour
 {
-    public List<SkillChoiceSlot> slots;
+    public GameObject slotPrefab;
 
     private List<Object> selectableSkills = new List<Object>();
 
@@ -24,6 +24,21 @@ public class SkillChoiceSlotManager : MonoBehaviour
                 continue;
 
             selectableSkills.Add(skill);
+        }
+
+        for (int i = 0; i < selectableSkills.Count && i < 3; i++)
+        {
+            var slot = Instantiate(slotPrefab, transform).GetComponent<SkillChoiceSlot>();
+            if (selectableSkills[i] is ActiveSkill active)
+            {
+                slot.IsActive = true;
+                slot.ShowActiveSkill(active);
+            }
+            else if (selectableSkills[i] is PassiveSkill passive)
+            {
+                slot.IsActive = false;
+                slot.ShowPassiveSkill(passive);
+            }
         }
     }
 }

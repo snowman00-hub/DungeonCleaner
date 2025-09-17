@@ -17,11 +17,6 @@ public class PassiveSkill : MonoBehaviour
     [HideInInspector]
     public PassiveSkillData data;
 
-    private void Awake()
-    {
-        data = DataTableManger.PassiveSkillTable.Get($"{passiveSkillName}{1}");
-    }
-
     public string GetSkillLevelId(int level)
     {
         return $"{passiveSkillName}{level}";

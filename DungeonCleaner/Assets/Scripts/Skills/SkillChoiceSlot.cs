@@ -16,7 +16,7 @@ public class SkillChoiceSlot : MonoBehaviour
     private PassiveSkill passiveSkill;
     private int currentSkillLevel;
 
-    private bool IsActive;
+    public bool IsActive;
 
     private void Awake()
     {
@@ -73,15 +73,20 @@ public class SkillChoiceSlot : MonoBehaviour
         }
         else
         {
-            PassiveSkillManager.Instance.EquipSkill(passiveSkill,passiveSkill.data.SKILL_LEVEL + 1);
+            if (PassiveSkillManager.Instance.equippedSkills.Contains(passiveSkill))
+            {
+                PassiveSkillManager.Instance.EquipSkill(passiveSkill, passiveSkill.data.SKILL_LEVEL + 1);
+            }
+            else
+            {
+                PassiveSkillManager.Instance.EquipSkill(passiveSkill, 1);
+            }
         }
     }
 
     private void OnDisable()
     {
-        Color c = starImages[currentSkillLevel - 1].color;
-        c.a = 1f;
-        starImages[currentSkillLevel - 1].color = c;
+        Destroy(gameObject);
     }
 
     private float elaspedTime = 0.4f;

@@ -20,6 +20,10 @@ public class PassiveSkillManager : MonoBehaviour
     {
         Instance = this;
         player = GetComponent<Player>();
+        foreach(var passiveSkill  in allSkillList)
+        {
+            passiveSkill.data = DataTableManger.PassiveSkillTable.Get($"{passiveSkill.passiveSkillName}{1}");            
+        }
     }
 
     public void EquipSkill(PassiveSkill skill, int skillLevel)
