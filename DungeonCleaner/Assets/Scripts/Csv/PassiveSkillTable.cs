@@ -9,6 +9,7 @@ public class PassiveSkillData
     public float PASSIVE_VALUE { get; set; }
     public int CRAFT_CODE { get; set; }
     public string DESCRIPTION { get; set; }
+    public int SKILL_LEVEL { get; set; }
 }
 
 public class PassiveSkillTable : DataTable

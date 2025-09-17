@@ -27,7 +27,7 @@ public class ActiveSkillManager : MonoBehaviour
 
         foreach (var skill in allSkillList)
         {
-            ApplySkillLevel(skill, 1);
+            EquipSkill(skill, 1);
             var queue = new Queue<GameObject>();
             for (int i = 0; i < poolSize; i++)
             {
@@ -47,7 +47,7 @@ public class ActiveSkillManager : MonoBehaviour
         }
     }
 
-    public void ApplySkillLevel(ActiveSkill skill, int level)
+    public void EquipSkill(ActiveSkill skill, int level)
     {
         var skillTable = DataTableManger.ActiveSkillTable;
         var levelData = skillTable.Get(skill.GetSkillLevelId(level));

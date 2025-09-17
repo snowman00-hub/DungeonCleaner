@@ -24,8 +24,18 @@ public class Player : LivingEntity
         if (SaveLoadManager.Load())
         {
             data.maxHP = SaveLoadManager.Data.maxHP;
+            data.atk = SaveLoadManager.Data.atk;
+            data.def = SaveLoadManager.Data.def;
             data.speed = SaveLoadManager.Data.speed;
-            data.pickUpRadius = SaveLoadManager.Data.pickUpRadius;
+            data.pickUpRadius = SaveLoadManager.Data.pickUpRadius;            
+        }
+        else
+        {
+            data.maxHP = 200;
+            data.atk = 0;
+            data.def = 0;
+            data.speed = 7;
+            data.pickUpRadius = 2f;
         }
 
         anim = GetComponentInChildren<Animation>();
@@ -126,5 +136,12 @@ public class Player : LivingEntity
                 anim.CrossFade(Idle, 0.3f);
             }
         }
+    }
+
+    public void MaxHpUp(int add)
+    {
+        data.maxHP += add;
+        maxHP = data.maxHP;
+        HP += add;
     }
 }

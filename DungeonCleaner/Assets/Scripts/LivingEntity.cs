@@ -5,7 +5,7 @@ public class LivingEntity : MonoBehaviour, IDamagable
 {
     public int maxHP = 100;
 
-    public int HP { get; private set; }
+    public int HP { get; protected set; }
     public bool IsDead { get; protected set; }
 
     public event Action OnDeath;
