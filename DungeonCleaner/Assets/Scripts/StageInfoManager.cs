@@ -25,6 +25,11 @@ public class StageInfoManager : MonoBehaviour
         {
             currentSeconds = Mathf.Clamp(value, 0, 600);
             stageInfoUI.SetTimeText(currentSeconds);
+
+            if(currentSeconds == 235 ||  currentSeconds == 475)
+            {
+                stageInfoUI.StartWarningMessage();
+            }
         }
     }
 
@@ -111,7 +116,11 @@ public class StageInfoManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.W))
         {
-            CurrentXP += 20;
+            stageInfoUI.StartWarningMessage();
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            stageInfoUI.StartBombFlashEffect();
         }
 #endif
 
@@ -134,5 +143,10 @@ public class StageInfoManager : MonoBehaviour
     {
         skillChoiceWindow.SetActive(false);
         Time.timeScale = 1f;
+    }
+
+    public void StartBombFlash()
+    {
+        stageInfoUI.StartBombFlashEffect();
     }
 }

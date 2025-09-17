@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using UnityEngine;
 
@@ -20,7 +20,7 @@ public class ItemBox : MonoBehaviour
 
     private IEnumerator CoExist()
     {
-        yield return new WaitForSeconds(20f);
+        yield return new WaitForSeconds(180f);
         OnDestroy?.Invoke();
     }
 }

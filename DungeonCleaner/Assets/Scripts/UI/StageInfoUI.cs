@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,6 +16,11 @@ public class StageInfoUI : MonoBehaviour
     private TextMeshProUGUI levelText;
     [SerializeField]
     private Slider expSlider;
+
+    [SerializeField]
+    private GameObject warningMessage;
+    [SerializeField]
+    private Image bombFlash;
 
     public void SetTimeText(int seconds)
     {
@@ -42,5 +48,42 @@ public class StageInfoUI : MonoBehaviour
         expSlider.minValue = minValue;
         expSlider.maxValue = maxValue;
         expSlider.value = value;
+    }
+
+    public void StartWarningMessage()
+    {
+        StartCoroutine(CoWarning());
+    }
+
+    private IEnumerator CoWarning()
+    {
+        warningMessage.SetActive(true);
+        yield return new WaitForSeconds(50f);
+        warningMessage.SetActive(false);
+    }
+
+    public void StartBombFlashEffect()
+    {
+        StartCoroutine(CoBombFlash());
+    }
+
+    private IEnumerator CoBombFlash()
+    {
+        yield return StartCoroutine(FadeAlpha(0f, 1f, 0.125f));
+        yield return StartCoroutine(FadeAlpha(1f, 0f, 0.125f));
+    }
+
+    private IEnumerator FadeAlpha(float from, float to, float time)
+    {
+        float t = 0f;
+        Color c = bombFlash.color;
+
+        while (t < 1f)
+        {
+            t += Time.deltaTime / time;
+            c.a = Mathf.Lerp(from, to, t);
+            bombFlash.color = c;
+            yield return null;
+        }
     }
 }

@@ -85,9 +85,11 @@ public class PickUp : MonoBehaviour
                 OnUsed?.Invoke();
                 break;
             case PickUpType.magnet:
+                PickUpManager.Instance.GetMagnet(value);
                 OnUsed?.Invoke();
                 break;
             case PickUpType.bomb:
+                Player.Instance.BombAttack(value);
                 OnUsed?.Invoke();
                 break;
             case PickUpType.expPotion:

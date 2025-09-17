@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 // 4에서 9까지 아이템박스에서 랜덤생성
@@ -76,5 +77,18 @@ public class PickUpManager : MonoBehaviour
 
         go.gameObject.transform.position = position;
         go.gameObject.SetActive(true);
+    }
+
+    public void GetMagnet(int value)
+    {
+        StartCoroutine(CoMagnet(value));
+    }
+
+    private IEnumerator CoMagnet(int value)
+    {
+        var radius = Player.Instance.data.pickUpRadius;
+        Player.Instance.data.pickUpRadius = 100f;
+        yield return new WaitForSeconds(value);
+        Player.Instance.data.pickUpRadius = radius;
     }
 }

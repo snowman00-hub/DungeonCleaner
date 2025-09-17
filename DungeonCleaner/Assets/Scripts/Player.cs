@@ -163,4 +163,24 @@ public class Player : LivingEntity
         if (HP > maxHP)
             HP = maxHP;
     }
+
+    public void BombAttack(float bombRadius)
+    {
+        Collider[] enemys = Physics.OverlapSphere(transform.position, bombRadius, LayerMask.GetMask(LayerName.Enemy));
+
+        foreach(var monster in enemys)
+        {
+            var enemy = monster.gameObject.GetComponent<Enemy>();
+            if(enemy.enemyData is BossEnemyData)
+            {
+                enemy.OnDamage(Mathf.FloorToInt(enemy.maxHP * 0.2f), enemy.transform.position, transform.position);
+            }
+            else
+            {
+                enemy.OnDamage(enemy.maxHP, enemy.transform.position, transform.position);
+            }
+        }
+
+        StageInfoManager.Instance.StartBombFlash();
+    }
 }

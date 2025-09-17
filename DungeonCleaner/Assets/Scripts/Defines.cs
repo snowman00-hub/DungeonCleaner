@@ -52,4 +52,5 @@ public class Tag
 public class LayerName
 {
     public static readonly string PickUp = "PickUp";
+    public static readonly string Enemy = "Enemy";
 }

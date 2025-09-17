@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 0}
-  value: 5
+  value: 40
   bounceDistance: 3
   bounceBackTime: 0.25
   moveTime: 0.5
