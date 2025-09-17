@@ -112,6 +112,11 @@ public class Enemy : LivingEntity
         base.Die();
         StageInfoManager.Instance.KillCount++;
         PickUpManager.Instance.CreatePickUp(enemyData.dropExp, transform.position);
+
+        if(enemyData is BossEnemyData bossData)
+        {
+            PickUpManager.Instance.CreatePickUp(bossData.dropItem, transform.position);
+        }
     }
 
     public void SetTriggerAttack()

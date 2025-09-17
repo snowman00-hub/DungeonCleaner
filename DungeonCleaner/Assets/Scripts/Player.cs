@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class Player : LivingEntity
 {
+    public static Player Instance { get; private set; }
+
     private static readonly string Run = "Run";
     private static readonly string Idle = "Idle";
 
@@ -21,26 +23,36 @@ public class Player : LivingEntity
 
     private void Awake()
     {
+        Instance = this;
+
         if (SaveLoadManager.Load())
         {
             data.maxHP = SaveLoadManager.Data.maxHP;
             data.atk = SaveLoadManager.Data.atk;
+            data.finalAttackMultiplier = SaveLoadManager.Data.finalAttackMultiplier;
+            data.finalDamageReduction = SaveLoadManager.Data.finalDamageReduction;
             data.def = SaveLoadManager.Data.def;
             data.speed = SaveLoadManager.Data.speed;
+            data.activeSkillDurationMultiplier = SaveLoadManager.Data.activeSkillDurationMultiplier;
             data.pickUpRadius = SaveLoadManager.Data.pickUpRadius;            
         }
         else
         {
             data.maxHP = 200;
-            data.atk = 0;
-            data.def = 0;
+            data.atk = 10;
+            data.finalAttackMultiplier = 1f;
+            data.finalDamageReduction = 0f;
+            data.def = 5;
             data.speed = 7;
+            data.activeSkillDurationMultiplier = 1f;
             data.pickUpRadius = 2f;
         }
 
         anim = GetComponentInChildren<Animation>();
         anim.wrapMode = WrapMode.Loop;
         maxHP = data.maxHP;
+        data.InitialMaxHP = data.maxHP;
+        data.InitialSpeed = data.speed;
     }
 
     private void Update()
@@ -83,11 +95,10 @@ public class Player : LivingEntity
             OnDamage(projectile.damage, other.ClosestPoint(transform.position), (other.transform.position - transform.position).normalized);
         }
 
-        if (other.CompareTag(Tag.Exp))
+        if (other.CompareTag(Tag.Exp) || other.CompareTag(Tag.Item))
         {
             var pickup = other.GetComponent<PickUp>();
-            StageInfoManager.Instance.AddExp(pickup.value);
-            pickup.OnUsed?.Invoke();
+            pickup.TakeEffect();
         }
     }
 
@@ -96,7 +107,8 @@ public class Player : LivingEntity
         if (IsDead)
             return;
 
-        base.OnDamage(damage, hitPoint, hitNormal);
+        int finalDamage = Mathf.FloorToInt((damage - data.def) * (1f - data.finalDamageReduction));
+        base.OnDamage(finalDamage, hitPoint, hitNormal);
         OnHurt?.Invoke();
     }
 
@@ -143,5 +155,12 @@ public class Player : LivingEntity
         data.maxHP += add;
         maxHP = data.maxHP;
         HP += add;
+    }
+
+    public void Heal(int amount)
+    {
+        HP += amount;
+        if (HP > maxHP)
+            HP = maxHP;
     }
 }

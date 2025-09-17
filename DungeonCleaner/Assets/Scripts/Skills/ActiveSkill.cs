@@ -35,7 +35,7 @@ public class ActiveSkill : MonoBehaviour
         if(skillData.duration == 0f)
             yield break;
 
-        yield return new WaitForSeconds(skillData.duration);
+        yield return new WaitForSeconds(skillData.duration * Player.Instance.data.activeSkillDurationMultiplier);
         OnUsed?.Invoke();
     }
 

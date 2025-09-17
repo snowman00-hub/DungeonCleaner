@@ -5,10 +5,9 @@ TagManager:
   serializedVersion: 3
   tags:
   - Enemy
-  - OreNode
-  - OrePickup
   - Exp
   - EnemyAttack
+  - Item
   layers:
   - Default
   - TransparentFX
@@ -20,7 +19,7 @@ TagManager:
   - EnemyAttack
   - Player
   - PickUp
-  - 
+  - ItemBox
   - 
   - 
   - 

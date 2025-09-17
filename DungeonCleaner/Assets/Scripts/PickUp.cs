@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class PickUp : MonoBehaviour
 {
+    public Sprite sprite;
     public int value = 1;
     public float bounceDistance = 3f;
     public float bounceBackTime = 0.25f;
@@ -45,7 +46,7 @@ public class PickUp : MonoBehaviour
                 pullStartTime = Time.time;
             }
 
-            float t = (Time.time - pullStartTime) / moveTime; 
+            float t = (Time.time - pullStartTime) / moveTime;
             transform.position = Vector3.Lerp(pullStartPos, player.position, t);
         }
     }
@@ -61,5 +62,43 @@ public class PickUp : MonoBehaviour
         reverseDir = (transform.position - player.position).normalized;
         speed = bounceDistance / bounceBackTime;
         timer = Time.time;
+    }
+
+    public void TakeEffect()
+    {
+        switch (type)
+        {
+            case PickUpType.smallExp:
+            case PickUpType.mediumExp:
+            case PickUpType.largeExp:
+                StageInfoManager.Instance.AddExp(value);
+                OnUsed?.Invoke();
+                break;
+            case PickUpType.smallGold:
+            case PickUpType.mediumGold:
+            case PickUpType.largeGold:
+                StageInfoManager.Instance.Money += value;
+                OnUsed?.Invoke();
+                break;
+            case PickUpType.food:
+                Player.Instance.Heal(value);
+                OnUsed?.Invoke();
+                break;
+            case PickUpType.magnet:
+                OnUsed?.Invoke();
+                break;
+            case PickUpType.bomb:
+                OnUsed?.Invoke();
+                break;
+            case PickUpType.expPotion:
+                OnUsed?.Invoke();
+                break;
+            case PickUpType.atkPotion:
+                OnUsed?.Invoke();
+                break;
+            case PickUpType.invinciblePotion:
+                OnUsed?.Invoke();
+                break;
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -56,11 +57,21 @@ public class SkillChoiceSlot : MonoBehaviour
 
     public void ShowPassiveSkill(PassiveSkill skill)
     {
+        PassiveSkillData showSkillData;
+        if(PassiveSkillManager.Instance.equippedSkills.Contains(skill))
+        {
+            showSkillData = DataTableManger.PassiveSkillTable.Get(skill.GetSkillLevelId(skill.data.SKILL_LEVEL + 1));
+        }
+        else
+        {
+            showSkillData = skill.data;
+        }
+
         passiveSkill = skill;
         skillImage.sprite = skill.sprite;
-        skillNameText.text = skill.data.SKILL_NAME;
-        skillDescText.text = skill.data.DESCRIPTION;
-        currentSkillLevel = skill.data.SKILL_LEVEL;
+        skillNameText.text = showSkillData.SKILL_NAME;
+        skillDescText.text = showSkillData.DESCRIPTION;
+        currentSkillLevel = showSkillData.SKILL_LEVEL;
         StartEffect();
     }
 

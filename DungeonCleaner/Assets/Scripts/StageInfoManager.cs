@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
-using UnityEngine.UI;
-using static UnityEngine.Rendering.DebugUI;
+﻿using UnityEngine;
 
 public class StageInfoManager : MonoBehaviour
 {

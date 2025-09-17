@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Diagnostics;
 
 public class SkillChoiceSlotManager : MonoBehaviour
 {
@@ -26,18 +27,39 @@ public class SkillChoiceSlotManager : MonoBehaviour
             selectableSkills.Add(skill);
         }
 
-        for (int i = 0; i < selectableSkills.Count && i < 3; i++)
+        if (selectableSkills.Count <= 3)
         {
-            var slot = Instantiate(slotPrefab, transform).GetComponent<SkillChoiceSlot>();
-            if (selectableSkills[i] is ActiveSkill active)
+            for (int i = 0; i < selectableSkills.Count; i++)
             {
-                slot.IsActive = true;
-                slot.ShowActiveSkill(active);
+                var slot = Instantiate(slotPrefab, transform).GetComponent<SkillChoiceSlot>();
+                if (selectableSkills[i] is ActiveSkill active)
+                {
+                    slot.IsActive = true;
+                    slot.ShowActiveSkill(active);
+                }
+                else if (selectableSkills[i] is PassiveSkill passive)
+                {
+                    slot.IsActive = false;
+                    slot.ShowPassiveSkill(passive);
+                }
             }
-            else if (selectableSkills[i] is PassiveSkill passive)
+        }
+        else
+        {
+            var pickList = MyUtils.PickUnique(selectableSkills.Count, 3);
+            foreach(var index in pickList)
             {
-                slot.IsActive = false;
-                slot.ShowPassiveSkill(passive);
+                var slot = Instantiate(slotPrefab, transform).GetComponent<SkillChoiceSlot>();
+                if (selectableSkills[index] is ActiveSkill active)
+                {
+                    slot.IsActive = true;
+                    slot.ShowActiveSkill(active);
+                }
+                else if (selectableSkills[index] is PassiveSkill passive)
+                {
+                    slot.IsActive = false;
+                    slot.ShowPassiveSkill(passive);
+                }
             }
         }
     }

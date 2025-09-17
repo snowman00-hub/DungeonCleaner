@@ -986,6 +986,7 @@ GameObject:
   m_Component:
   - component: {fileID: 245597933}
   - component: {fileID: 245597934}
+  - component: {fileID: 245597935}
   m_Layer: 0
   m_Name: PickUpManager
   m_TagString: Untagged
@@ -1024,6 +1025,28 @@ MonoBehaviour:
   - {fileID: 8610585982064814677, guid: 75c6405437a91034583ab01d2572f526, type: 3}
   - {fileID: 4168159816525349969, guid: 01f768ecc729ba94bade828694be0aa3, type: 3}
   - {fileID: 5968140281081969334, guid: e4f0cc8152297e249ae90bf513f01b55, type: 3}
+  - {fileID: 1687938666906836169, guid: 91b5868ec1332484da795c5b8ea7aa38, type: 3}
+  - {fileID: 2909899601684547012, guid: 095dcefaa3ce54343b00924a8595675c, type: 3}
+  - {fileID: 1713596432989508175, guid: 0c86c4611fe3ca941972135b1cd59caa, type: 3}
+  - {fileID: 660542026203959920, guid: b68846b1ead1c8145b2cadb8f57aa90c, type: 3}
+  - {fileID: 8047298743212824457, guid: 8b559d769beaa6c4aa6c327acd88ffeb, type: 3}
+  - {fileID: 5847694379764040502, guid: 25030bf0c5e3c9440a9ba7e80ebbc177, type: 3}
+--- !u!114 &245597935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 245597932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4ada974969bc4f418af8fbd8ee05811, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ItemBox: {fileID: 5459802233332470536, guid: b8e902f32b424504a8947501ff23fd07, type: 3}
+  generateInterval: 5
+  minGenerateRadius: 25
+  maxGenerateRadius: 30
 --- !u!1 &256624721
 GameObject:
   m_ObjectHideFlags: 0
@@ -3632,7 +3655,7 @@ MonoBehaviour:
   skillChoiceWindow: {fileID: 1527558662}
   stageInfoUI: {fileID: 841312291}
   currentXP: 0
-  requiredXP: 70
+  requiredXP: 35
   level: 1
   gameTimer: 0
 --- !u!1 &864332026
@@ -3749,6 +3772,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allSkillList:
   - {fileID: 8724882274592320401, guid: 0a72457fab2d7064baba3293e2ad26ab, type: 3}
+  - {fileID: 3639642838329911355, guid: 834bf92a0b242db4caa7219eac4224d8, type: 3}
+  - {fileID: 7780271091655930935, guid: 74ab1459a21aa684486c95dec9a8afdf, type: 3}
+  - {fileID: 6514665148050524431, guid: cf6bb51f784da9147ba0d2c6d2a1b06a, type: 3}
+  - {fileID: 2772234627618639198, guid: e1227bf8d381d9a438f923b428748492, type: 3}
   equippedSkills: []
 --- !u!1 &965655557
 GameObject:
@@ -5476,7 +5503,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 30000
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f211043b972fe4f98b5c94e67819fdf3, type: 2}
   m_sharedMaterial: {fileID: -3783615141150169689, guid: f211043b972fe4f98b5c94e67819fdf3, type: 2}

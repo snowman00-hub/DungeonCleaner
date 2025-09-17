@@ -14,8 +14,11 @@ public class SaveDataV1 : SaveData
 {
     public int maxHP;
     public int atk;
+    public float finalAttackMultiplier;
     public int def;
+    public float finalDamageReduction;
     public float speed;
+    public float activeSkillDurationMultiplier;
     public float pickUpRadius;
 
     public SaveDataV1()

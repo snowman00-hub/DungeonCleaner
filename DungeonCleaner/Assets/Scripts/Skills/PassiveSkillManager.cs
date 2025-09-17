@@ -4,6 +4,10 @@ using UnityEngine;
 public enum PassiveSkillName
 {
     atkIncrease,
+    defIncrease,
+    hpIncrease,
+    msIncrease,
+    skilltimeIncrease,
 }
 
 public class PassiveSkillManager : MonoBehaviour
@@ -20,9 +24,9 @@ public class PassiveSkillManager : MonoBehaviour
     {
         Instance = this;
         player = GetComponent<Player>();
-        foreach(var passiveSkill  in allSkillList)
+        foreach (var passiveSkill in allSkillList)
         {
-            passiveSkill.data = DataTableManger.PassiveSkillTable.Get($"{passiveSkill.passiveSkillName}{1}");            
+            passiveSkill.data = DataTableManger.PassiveSkillTable.Get($"{passiveSkill.passiveSkillName}{1}");
         }
     }
 
@@ -42,19 +46,19 @@ public class PassiveSkillManager : MonoBehaviour
         switch (skill.data.AFFECT_ABILITY)
         {
             case StatType.Attack:
-                player.data.atk += Mathf.FloorToInt(skill.data.PASSIVE_VALUE);
+                player.data.finalAttackMultiplier += skill.data.PASSIVE_VALUE / 100;
                 break;
             case StatType.Defense:
-                player.data.def += Mathf.FloorToInt(skill.data.PASSIVE_VALUE);
+                player.data.finalDamageReduction += skill.data.PASSIVE_VALUE / 100;
                 break;
             case StatType.MaxHp:
-                player.MaxHpUp(Mathf.FloorToInt(skill.data.PASSIVE_VALUE));
+                player.MaxHpUp((int)(player.data.InitialMaxHP * (skill.data.PASSIVE_VALUE / 100)));
                 break;
             case StatType.Speed:
-                player.data.speed += skill.data.PASSIVE_VALUE;
+                player.data.speed += player.data.InitialSpeed * (skill.data.PASSIVE_VALUE / 100);
                 break;
             case StatType.ActiveSkillDuration:
-                player.data.pickUpRadius += skill.data.PASSIVE_VALUE;
+                player.data.activeSkillDurationMultiplier += skill.data.PASSIVE_VALUE / 100;
                 break;
         }
     }

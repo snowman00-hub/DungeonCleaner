@@ -47,7 +47,8 @@ public class SkillDustStorm : ActiveSkill
         lastAttackTime = Time.time;
         foreach (var hit in hits)
         {
-            hit.GetComponent<Enemy>()?.OnDamage(skillData.damage, hit.ClosestPoint(transform.position), (hit.transform.position - transform.position).normalized);
+            int finalDamage = Mathf.FloorToInt((skillData.damage + Player.Instance.data.atk) * Player.Instance.data.finalAttackMultiplier);
+            hit.GetComponent<Enemy>()?.OnDamage(finalDamage, hit.ClosestPoint(transform.position), (hit.transform.position - transform.position).normalized);
         }
     }
 }

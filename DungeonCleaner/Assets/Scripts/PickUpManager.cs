@@ -1,13 +1,21 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+// 4에서 9까지 아이템박스에서 랜덤생성
 public enum PickUpType
 {
     smallExp = 1,
     mediumExp = 2,
     largeExp = 3,
-    gold = 4,
-    meat,
+    smallGold = 4,
+    mediumGold,
+    largeGold,
+    food,
+    magnet,
+    bomb = 9,
+    expPotion,
+    atkPotion,
+    invinciblePotion,
 }
 
 public class PickUpManager : MonoBehaviour
