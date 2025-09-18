@@ -124,6 +124,7 @@ public class Enemy : LivingEntity
         if(enemyData is BossEnemyData bossData)
         {
             PickUpManager.Instance.CreatePickUp(bossData.dropItem, transform.position);
+            StageInfoManager.Instance.Victory();
         }
     }
 

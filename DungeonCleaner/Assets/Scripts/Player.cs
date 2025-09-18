@@ -74,7 +74,7 @@ public class Player : LivingEntity
         healthSlider.transform.rotation = Quaternion.LookRotation(healthSlider.transform.position - Camera.main.transform.position);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag(Tag.Enemy))
         {
@@ -87,7 +87,10 @@ public class Player : LivingEntity
             lastHurtTime = Time.time;
             OnDamage(enemy.enemyData.damage, other.ClosestPoint(transform.position), (other.transform.position - transform.position).normalized);
         }
+    }
 
+    private void OnTriggerEnter(Collider other)
+    {
         if (other.CompareTag(Tag.EnemyAttack))
         {
             var projectile = other.GetComponent<EnemyProjectile>();
@@ -137,11 +140,13 @@ public class Player : LivingEntity
         int finalDamage = Mathf.FloorToInt((damage - data.def) * (1f - data.finalDamageReduction));
         base.OnDamage(finalDamage, hitPoint, hitNormal);
         OnHurt?.Invoke();
+        Handheld.Vibrate();
     }
 
     protected override void Die()
     {
         base.Die();
+        StageInfoManager.Instance.Defeat();
     }
 
     private void PickUpNearbyItems()

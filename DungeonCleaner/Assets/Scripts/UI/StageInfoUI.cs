@@ -6,12 +6,10 @@ using UnityEngine.UI;
 
 public class StageInfoUI : MonoBehaviour
 {
-    [SerializeField]
-    private TextMeshProUGUI timeText;
+    public TextMeshProUGUI timeText;
     [SerializeField]
     private TextMeshProUGUI goldText;
-    [SerializeField]
-    private TextMeshProUGUI killCountText;
+    public TextMeshProUGUI killCountText;
     [SerializeField]
     private TextMeshProUGUI levelText;
     [SerializeField]

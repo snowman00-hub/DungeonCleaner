@@ -1,4 +1,5 @@
-﻿using System.Buffers.Text;
+﻿using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,6 +12,15 @@ public class StageInfoManager : MonoBehaviour
 
     [SerializeField]
     private StageInfoUI stageInfoUI;
+
+    [SerializeField]
+    private GameObject defeatWindow;
+    public TextMeshProUGUI defeatTimeText;
+    public TextMeshProUGUI defeatKillCount;
+
+    [SerializeField]
+    private GameObject victoryWindow;
+    public TextMeshProUGUI victoryKillCount;
 
     private int currentSeconds;
     private int money;
@@ -161,6 +171,27 @@ public class StageInfoManager : MonoBehaviour
         Time.timeScale = 1f;
     }
 
+    public void Defeat()
+    {
+        Time.timeScale = 0f;
+        defeatWindow.SetActive(true);
+        defeatKillCount.text = stageInfoUI.killCountText.text;
+        defeatTimeText.text = stageInfoUI.timeText.text;
+    }
+
+    public void Victory()
+    {
+        StartCoroutine(CoVictory());
+    }
+
+    private IEnumerator CoVictory()
+    {
+        yield return new WaitForSeconds(3f);
+        Time.timeScale = 0f;
+        victoryWindow.SetActive(true);
+        victoryKillCount.text = stageInfoUI.killCountText.text;
+    }
+
     public void StartBombFlash()
     {
         stageInfoUI.StartBombFlashEffect();
@@ -177,6 +208,7 @@ public class StageInfoManager : MonoBehaviour
     }
     public void RestartScene()
     {
+        Time.timeScale = 1f;
         Scene currentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currentScene.name);
     }
