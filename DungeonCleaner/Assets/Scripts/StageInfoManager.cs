@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Buffers.Text;
+using UnityEngine;
 
 public class StageInfoManager : MonoBehaviour
 {
@@ -17,6 +18,9 @@ public class StageInfoManager : MonoBehaviour
     public int level;
         
     public float gameTimer;
+
+    public int baseXP = 10;
+    public float expUpRate = 1.2f;
 
     public int CurrentSeconds
     {
@@ -75,6 +79,7 @@ public class StageInfoManager : MonoBehaviour
             {
                 Level++;
                 currentXP = 0;
+                requiredXP = Mathf.FloorToInt(baseXP * Level * expUpRate);                
             }
 
             stageInfoUI.SetExpSliderValue(0, requiredXP, currentXP);
@@ -149,4 +154,15 @@ public class StageInfoManager : MonoBehaviour
     {
         stageInfoUI.StartBombFlashEffect();
     }
+
+    // 빌드 테스트 코드
+    public void AddOneMinute()
+    {
+        gameTimer = Mathf.Clamp(gameTimer + 60f, 0, 600);
+    }
+    public void LevelUp()
+    {
+        Level++;
+    }
+    //        
 }

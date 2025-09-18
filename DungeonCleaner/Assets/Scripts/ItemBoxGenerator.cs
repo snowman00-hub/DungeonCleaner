@@ -66,4 +66,15 @@ public class ItemBoxGenerator : MonoBehaviour
 
         return new Vector3(x, center.y, z);
     }
+
+    public void CreateNearByItemBox()
+    {
+        if (itemBoxPool.Count == 0)
+            CreatePool(50);
+
+        var box = itemBoxPool.Dequeue();
+        var generatePos = GetRandomPositionInRing3D(target.position, 5f, 10f);
+        box.transform.position = generatePos;
+        box.SetActive(true);
+    }
 }
