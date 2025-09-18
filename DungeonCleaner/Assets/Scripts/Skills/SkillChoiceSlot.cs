@@ -80,7 +80,7 @@ public class SkillChoiceSlot : MonoBehaviour
         StageInfoManager.Instance.CloseSkillChoice();
         if (IsActive)
         {
-            ActiveSkillManager.Instance.EquipSkill(activeSkill, activeSkill.skillData.skillLevel + 1);
+            ActiveSkillManager.Instance.EquipSkill(activeSkill, currentSkillLevel);
         }
         else
         {

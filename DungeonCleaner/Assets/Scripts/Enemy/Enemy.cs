@@ -68,6 +68,11 @@ public class Enemy : LivingEntity
         // target과 y좌표는 같다고 가정
         Vector3 dir = (target.position - transform.position).normalized;
 
+        if (dir.magnitude > 0.1f)
+            dir = dir.normalized;
+        else
+            dir = Vector3.zero;
+
         var neighbors = Physics.OverlapSphere(transform.position, capsuleCollider.radius * 2f, enemyMask);
 
         Vector3 avoid = Vector3.zero;
@@ -85,7 +90,9 @@ public class Enemy : LivingEntity
 
         Vector3 finalDir = (dir + avoid * avoidWeight).normalized;
         transform.position += finalDir * enemyData.moveSpeed * Time.deltaTime;
-        transform.LookAt(target.position);
+
+        if ((target.position - transform.position).sqrMagnitude > 0.01f)
+            transform.LookAt(target.position);
     }
 
     public override void OnDamage(int damage, Vector3 hitPoint, Vector3 hitNormal)

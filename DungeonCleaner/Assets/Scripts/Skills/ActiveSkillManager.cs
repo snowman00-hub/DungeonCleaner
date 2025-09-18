@@ -4,6 +4,7 @@ using UnityEngine;
 public enum SkillName
 {
     dustStorm,
+    bubbleShield,
 }
 
 public class ActiveSkillManager : MonoBehaviour
@@ -27,7 +28,11 @@ public class ActiveSkillManager : MonoBehaviour
 
         foreach (var skill in allSkillList)
         {
-            EquipSkill(skill, 1);
+            UpdateSkillData(skill, 1);
+
+            if (skill.skillAttribute == SkillAttribute.Aura)
+                continue;
+
             var queue = new Queue<GameObject>();
             for (int i = 0; i < poolSize; i++)
             {
@@ -47,7 +52,7 @@ public class ActiveSkillManager : MonoBehaviour
         }
     }
 
-    public void EquipSkill(ActiveSkill skill, int level)
+    public void UpdateSkillData(ActiveSkill skill, int level)
     {
         var skillTable = DataTableManger.ActiveSkillTable;
         var levelData = skillTable.Get(skill.GetSkillLevelId(level));
@@ -62,10 +67,24 @@ public class ActiveSkillManager : MonoBehaviour
         skill.skillData.projectileSpeed = levelData.SKILL_SPEED;
     }
 
+    public void EquipSkill(ActiveSkill skill,int level)
+    {
+        if(level == 1)
+            equippedSkills.Add(skill);
+
+        if (level == 1 && skill.skillAttribute == SkillAttribute.Aura)
+            Instantiate(skill, Player.Instance.transform);
+
+        UpdateSkillData(skill, level);
+    }
+
     private void Update()
     {
         foreach (var skill in equippedSkills)
         {
+            if (skill.skillAttribute == SkillAttribute.Aura)
+                continue;
+
             if (skill.currentCoolDown > 0)
             {
                 skill.currentCoolDown -= Time.deltaTime;
@@ -107,5 +126,5 @@ public class ActiveSkillManager : MonoBehaviour
                 temp.SetActive(true);
             }
         }
-    }
+    }    
 }

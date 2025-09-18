@@ -2,14 +2,26 @@
 using System.Collections;
 using UnityEngine;
 
+public enum SkillAttribute
+{
+    Instant,
+    Projectile,
+    PersistentProjectile,
+    Aura,
+    PlacedAura,
+}
+
 public class ActiveSkill : MonoBehaviour
 {
     public Sprite skillSprite;
     public SkillName skillName;
+    public SkillAttribute skillAttribute;
     public SkillData skillData;
     public LayerMask targetLayer;
     [HideInInspector]
     public float currentCoolDown;
+
+    public float baseRadius;
 
     protected float lastAttackTime;
 
@@ -49,6 +61,25 @@ public class ActiveSkill : MonoBehaviour
         new Vector3(1, 0, -1).normalized,  // 남동
         new Vector3(-1, 0, -1).normalized  // 남서
     };
+
+    protected void CheckCollision()
+    {
+        if (lastAttackTime + skillData.tickInterval > Time.time)
+            return;
+
+        float overlapRadius = Mathf.Max(capsule.height, capsule.radius * 2) / 2f;
+        Collider[] hits = Physics.OverlapSphere(capsule.bounds.center, overlapRadius, targetLayer);
+
+        if (hits.Length == 0)
+            return;
+
+        lastAttackTime = Time.time;
+        foreach (var hit in hits)
+        {
+            int finalDamage = Mathf.FloorToInt((skillData.damage + Player.Instance.data.atk) * Player.Instance.data.finalAttackMultiplier);
+            hit.GetComponent<Enemy>()?.OnDamage(finalDamage, hit.ClosestPoint(transform.position), (hit.transform.position - transform.position).normalized);
+        }
+    }
 
     protected void SetDirection()
     {

@@ -58,7 +58,7 @@ public class StageInfoUI : MonoBehaviour
     private IEnumerator CoWarning()
     {
         warningMessage.SetActive(true);
-        yield return new WaitForSeconds(50f);
+        yield return new WaitForSeconds(5f);
         warningMessage.SetActive(false);
     }
 
