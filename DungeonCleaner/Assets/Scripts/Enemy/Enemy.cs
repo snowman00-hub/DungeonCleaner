@@ -103,6 +103,7 @@ public class Enemy : LivingEntity
         base.OnDamage(damage, hitPoint, hitNormal);
         animator.SetTrigger(hashHurt);
         DamagePopupManager.Instance.ShowDamage(hitPoint, Mathf.FloorToInt(damage));
+        AudioManager.Instance.EnemyHurt(transform.position);
     }
 
     protected override void Die()

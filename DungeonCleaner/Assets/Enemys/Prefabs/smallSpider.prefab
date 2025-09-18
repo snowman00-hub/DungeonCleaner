@@ -1624,6 +1624,7 @@ MonoBehaviour:
   enemyMask:
     serializedVersion: 2
     m_Bits: 8
+  hurtClip: {fileID: 8300000, guid: e8da9f657fb411b46a2605835910f54a, type: 3}
   projectilename: 0
 --- !u!1001 &8147533526990239211
 PrefabInstance:

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillLevel: 1
   damage: 5
-  radius: 1
+  radius: 5
   coolDown: 0
   duration: 1000
   tickInterval: 0.1

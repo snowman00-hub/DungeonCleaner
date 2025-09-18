@@ -99,6 +99,33 @@ public class Player : LivingEntity
         {
             var pickup = other.GetComponent<PickUp>();
             pickup.TakeEffect();
+
+            switch (pickup.type)
+            {
+                case PickUpType.smallExp:
+                case PickUpType.mediumExp:
+                case PickUpType.largeExp:
+                    AudioManager.Instance.ExpGet(transform.position);
+                    break;
+                case PickUpType.smallGold:
+                case PickUpType.mediumGold:
+                case PickUpType.largeGold:
+                    AudioManager.Instance.GoldGet(transform.position);
+                    break;
+                case PickUpType.food:
+                    AudioManager.Instance.FoodGet(transform.position);
+                    break;
+                case PickUpType.magnet:
+                    break;
+                case PickUpType.bomb:
+                    break;
+                case PickUpType.expPotion:
+                    break;
+                case PickUpType.atkPotion:
+                    break;
+                case PickUpType.invinciblePotion:
+                    break;
+            }
         }
     }
 
@@ -129,11 +156,16 @@ public class Player : LivingEntity
     private void UpdateMove()
     {
         Vector2 input = new Vector2(joystick.Input.x, joystick.Input.y);
-        Vector3 move = new Vector3(input.x, 0, input.y);
-        transform.position += move * data.speed * Time.deltaTime;
+        Vector3 move = new Vector3(input.x, 0, input.y) * data.speed * Time.deltaTime;
 
         if (move != Vector3.zero)
         {
+            Vector3 rayPos = transform.position + Vector3.up * 0.5f;
+            if (!Physics.Raycast(rayPos, move.normalized, move.magnitude, LayerMask.GetMask(LayerName.Wall)))
+            {
+                transform.position += move;
+            }
+
             player.rotation = Quaternion.LookRotation(move);
 
             if (!anim.IsPlaying(Run))

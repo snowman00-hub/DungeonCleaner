@@ -26,7 +26,7 @@ public class PickUp : MonoBehaviour
     private void OnEnable()
     {
         isAcquired = false;
-    }
+    }    
 
     private void Update()
     {

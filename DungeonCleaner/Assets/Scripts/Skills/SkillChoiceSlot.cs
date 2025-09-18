@@ -93,6 +93,8 @@ public class SkillChoiceSlot : MonoBehaviour
                 PassiveSkillManager.Instance.EquipSkill(passiveSkill, 1);
             }
         }
+
+        AudioManager.Instance.Click();
     }
 
     private void OnDisable()

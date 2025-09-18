@@ -1,11 +1,13 @@
 ﻿using System.Buffers.Text;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StageInfoManager : MonoBehaviour
 {
     public static StageInfoManager Instance { get; private set; }
 
     public GameObject skillChoiceWindow;
+    public GameObject BossWall;
 
     [SerializeField]
     private StageInfoUI stageInfoUI;
@@ -22,6 +24,8 @@ public class StageInfoManager : MonoBehaviour
     public int baseXP = 10;
     public float expUpRate = 1.2f;
 
+    private bool IsExistWall = false;
+
     public int CurrentSeconds
     {
         get { return currentSeconds; }
@@ -34,6 +38,12 @@ public class StageInfoManager : MonoBehaviour
             {
                 stageInfoUI.StartWarningMessage();
             }
+
+            if(CurrentSeconds == 600 && !IsExistWall)
+            {
+                IsExistWall = true;
+                Instantiate(BossWall, Player.Instance.transform.position, Quaternion.identity);
+            }
         }
     }
 
@@ -45,6 +55,7 @@ public class StageInfoManager : MonoBehaviour
             level = value;
             stageInfoUI.SetLevelText(level);
             OpenSkillChoice();
+            AudioManager.Instance.LevelUp();
         }
     }
 
@@ -163,6 +174,11 @@ public class StageInfoManager : MonoBehaviour
     public void LevelUp()
     {
         Level++;
+    }
+    public void RestartScene()
+    {
+        Scene currentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(currentScene.name);
     }
     //        
 }

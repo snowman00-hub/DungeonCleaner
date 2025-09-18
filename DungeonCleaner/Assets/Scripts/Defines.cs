@@ -53,4 +53,5 @@ public class LayerName
 {
     public static readonly string PickUp = "PickUp";
     public static readonly string Enemy = "Enemy";
+    public static readonly string Wall = "Wall";
 }

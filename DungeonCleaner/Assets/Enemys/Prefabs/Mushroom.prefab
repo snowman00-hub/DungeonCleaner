@@ -617,6 +617,7 @@ MonoBehaviour:
   enemyMask:
     serializedVersion: 2
     m_Bits: 8
+  hurtClip: {fileID: 8300000, guid: e8da9f657fb411b46a2605835910f54a, type: 3}
 --- !u!1 &6553970803705981279
 GameObject:
   m_ObjectHideFlags: 0

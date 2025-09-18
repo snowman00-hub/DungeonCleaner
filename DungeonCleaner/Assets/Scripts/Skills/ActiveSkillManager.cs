@@ -72,6 +72,9 @@ public class ActiveSkillManager : MonoBehaviour
         if(level == 1)
             equippedSkills.Add(skill);
 
+        if (skill.skillName == SkillName.bubbleShield)
+            AudioManager.Instance.BubbleShield();
+
         if (level == 1 && skill.skillAttribute == SkillAttribute.Aura)
             Instantiate(skill, Player.Instance.transform);
 
