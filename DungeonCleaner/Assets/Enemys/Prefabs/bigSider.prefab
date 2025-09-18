@@ -1386,7 +1386,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 2
+  m_Radius: 1.4
   m_Height: 3
   m_Direction: 1
   m_Center: {x: 0, y: 1.5, z: 0}
@@ -1410,7 +1410,6 @@ MonoBehaviour:
   enemyMask:
     serializedVersion: 2
     m_Bits: 8
-  hurtClip: {fileID: 8300000, guid: 3df82f2aa2ecc6a438441c0385c0dcdb, type: 3}
   projectilename: 1
 --- !u!1 &6978934129278100557
 GameObject:

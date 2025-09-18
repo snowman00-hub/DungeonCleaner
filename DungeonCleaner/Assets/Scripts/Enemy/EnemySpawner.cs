@@ -156,6 +156,7 @@ public class EnemySpawner : MonoBehaviour
             enemyData.projectile_count = csvData.PROJECTILE_COUNT;
             enemyData.dropItem = csvData.DROP_ITEM;
             enemyData.dropItemValue = csvData.DROP_ITEM_VALUE;
+            enemyData.bossType = csvData.BMON_TYPE;
 
             monsterPools[enemy.enemyName] = new Queue<GameObject>();
             ExpandMonsterPool(enemy.enemyName, miniBoss, 10);
@@ -177,6 +178,7 @@ public class EnemySpawner : MonoBehaviour
             enemyData.projectile_count = csvData.PROJECTILE_COUNT;
             enemyData.dropItem = csvData.DROP_ITEM;
             enemyData.dropItemValue = csvData.DROP_ITEM_VALUE;
+            enemyData.bossType = csvData.BMON_TYPE;
 
             monsterPools[boss.enemyName] = new Queue<GameObject>();
             ExpandMonsterPool(boss.enemyName, bossMonster, 2);

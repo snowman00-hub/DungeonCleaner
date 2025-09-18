@@ -6,4 +6,5 @@ public class BossEnemyData : EnemyData
     public int projectile_count;
     public PickUpType dropItem;
     public float dropItemValue;
+    public BossType bossType;
 }
