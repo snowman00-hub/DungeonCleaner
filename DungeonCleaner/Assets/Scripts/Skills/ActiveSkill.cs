@@ -25,7 +25,6 @@ public class ActiveSkill : MonoBehaviour
 
     protected float lastAttackTime;
 
-    protected float findEnemyRadius = 30f;
     protected Vector3 dir;
 
     public event Action OnUsed;
@@ -83,7 +82,7 @@ public class ActiveSkill : MonoBehaviour
 
     protected void SetDirection()
     {
-        var colliders = Physics.OverlapSphere(transform.position, findEnemyRadius, targetLayer);
+        var colliders = Physics.OverlapSphere(transform.position, skillData.projectileSpeed * skillData.duration, targetLayer);
         Vector3 sum = Vector3.zero;
         int count = 0;
         foreach (Collider col in colliders)

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,6 +22,11 @@ public class Player : LivingEntity
 
     private Animation anim;
 
+    public GameObject attackAura;
+    public GameObject powerAura;
+
+    private bool isPowerOn = false;
+
     private void Awake()
     {
         Instance = this;
@@ -34,7 +40,7 @@ public class Player : LivingEntity
             data.def = SaveLoadManager.Data.def;
             data.speed = SaveLoadManager.Data.speed;
             data.activeSkillDurationMultiplier = SaveLoadManager.Data.activeSkillDurationMultiplier;
-            data.pickUpRadius = SaveLoadManager.Data.pickUpRadius;            
+            data.pickUpRadius = SaveLoadManager.Data.pickUpRadius;
         }
         else
         {
@@ -134,7 +140,7 @@ public class Player : LivingEntity
 
     public override void OnDamage(int damage, Vector3 hitPoint, Vector3 hitNormal)
     {
-        if (IsDead)
+        if (IsDead || isPowerOn)
             return;
 
         int finalDamage = Mathf.FloorToInt((damage - data.def) * (1f - data.finalDamageReduction));
@@ -203,14 +209,52 @@ public class Player : LivingEntity
             HP = maxHP;
     }
 
+    public void UsePotion(StorePotion potion)
+    {
+        switch (potion.potionType)
+        {
+            case PotionType.atkPotion:
+                StartCoroutine(CoAttackAuraOn(potion.value));
+                break;
+            case PotionType.expPotion:
+                for (int i = 0; i < 20; i++)
+                {
+                    PickUpManager.Instance.CreatePickUp(PickUpType.largeExp, MyUtils.GetRandomPositionInRing3D(transform.position, 2f, 3f));
+                }
+                break;
+            case PotionType.powerPotion:
+                StartCoroutine(CoPowerAuraOn(potion.value));
+                break;
+        }
+    }
+
+    private IEnumerator CoAttackAuraOn(float value)
+    {
+        attackAura.SetActive(true);
+        data.finalAttackMultiplier += value / 100;
+        yield return new WaitForSeconds(30f);
+        data.finalAttackMultiplier -= value / 100;
+        attackAura.SetActive(false);
+    }
+
+    private IEnumerator CoPowerAuraOn(float value)
+    {
+        powerAura.SetActive(true);
+        isPowerOn = true;
+        yield return new WaitForSeconds(value);
+        isPowerOn = false;
+        powerAura.SetActive(false);
+    }
+
+
     public void BombAttack(float bombRadius)
     {
         Collider[] enemys = Physics.OverlapSphere(transform.position, bombRadius, LayerMask.GetMask(LayerName.Enemy));
 
-        foreach(var monster in enemys)
+        foreach (var monster in enemys)
         {
             var enemy = monster.gameObject.GetComponent<Enemy>();
-            if(enemy.enemyData is BossEnemyData)
+            if (enemy.enemyData is BossEnemyData)
             {
                 enemy.OnDamage(Mathf.FloorToInt(enemy.maxHP * 0.2f), enemy.transform.position, transform.position);
             }

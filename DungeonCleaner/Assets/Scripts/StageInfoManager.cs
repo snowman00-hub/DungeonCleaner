@@ -22,6 +22,8 @@ public class StageInfoManager : MonoBehaviour
     private GameObject victoryWindow;
     public TextMeshProUGUI victoryKillCount;
 
+    public GameObject storeWindow;
+
     private int currentSeconds;
     private int money;
     private int killCount;
@@ -49,10 +51,15 @@ public class StageInfoManager : MonoBehaviour
                 stageInfoUI.StartWarningMessage();
             }
 
-            if(CurrentSeconds == 600 && !IsExistWall)
+            if(currentSeconds == 600 && !IsExistWall)
             {
                 IsExistWall = true;
                 Instantiate(BossWall, Player.Instance.transform.position, Quaternion.identity);
+            }
+
+            if(currentSeconds == 180 || currentSeconds == 360 || currentSeconds == 540)
+            {
+                OpenStore();
             }
         }
     }
@@ -197,6 +204,18 @@ public class StageInfoManager : MonoBehaviour
         stageInfoUI.StartBombFlashEffect();
     }
 
+    public void OpenStore()
+    {
+        Time.timeScale = 0f;
+        storeWindow.SetActive(true);
+    }
+
+    public void CloseStore()
+    {
+        Time.timeScale = 1f;
+        storeWindow.SetActive(false);
+    }
+
     // 빌드 테스트 코드
     public void AddOneMinute()
     {
@@ -211,6 +230,10 @@ public class StageInfoManager : MonoBehaviour
         Time.timeScale = 1f;
         Scene currentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currentScene.name);
+    }
+    public void GoldGet()
+    {
+        Money += 5000;
     }
     //        
 }

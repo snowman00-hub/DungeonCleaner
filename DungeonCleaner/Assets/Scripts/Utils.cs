@@ -21,4 +21,14 @@ public static class MyUtils
 
         return picked;
     }
+    public static Vector3 GetRandomPositionInRing3D(Vector3 center, float minRadius, float maxRadius)
+    {
+        float radius = Random.Range(minRadius, maxRadius);
+        float angle = Random.Range(0f, 360f) * Mathf.Deg2Rad;
+
+        float x = center.x + radius * Mathf.Cos(angle);
+        float z = center.z + radius * Mathf.Sin(angle);
+
+        return new Vector3(x, center.y, z);
+    }
 }

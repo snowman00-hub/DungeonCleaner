@@ -94,7 +94,7 @@ public class EnemySpawner : MonoBehaviour
 
         for (int i = 0; i < count; i++)
         {
-            var spawnPos = GetRandomPositionInRing3D(player.position, minRadius, maxRadius);
+            var spawnPos = MyUtils.GetRandomPositionInRing3D(player.position, minRadius, maxRadius);
             var monster = monsterPools[name].Dequeue();
             monster.transform.position = spawnPos;
             monster.SetActive(true);
@@ -106,17 +106,6 @@ public class EnemySpawner : MonoBehaviour
             var go = monsterPools[name].Peek();
             ExpandMonsterPool(name, go, 100);
         }
-    }
-
-    private Vector3 GetRandomPositionInRing3D(Vector3 center, float minRadius, float maxRadius)
-    {
-        float radius = Random.Range(minRadius, maxRadius);
-        float angle = Random.Range(0f, 360f) * Mathf.Deg2Rad;
-
-        float x = center.x + radius * Mathf.Cos(angle);
-        float z = center.z + radius * Mathf.Sin(angle);
-
-        return new Vector3(x, center.y, z);
     }
 
     private void Init()
