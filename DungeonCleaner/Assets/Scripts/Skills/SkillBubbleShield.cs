@@ -19,6 +19,8 @@ public class SkillBubbleShield : ActiveSkill
 
     private void Update()
     {
+        transform.position = Player.Instance.transform.position;
+
         if(capsule.radius != skillData.radius)
         {
             capsule.radius = skillData.radius;

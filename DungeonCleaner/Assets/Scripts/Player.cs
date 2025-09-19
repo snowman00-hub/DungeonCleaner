@@ -39,7 +39,7 @@ public class Player : LivingEntity
         else
         {
             data.maxHP = 200;
-            data.atk = 10;
+            data.atk = 20;
             data.finalAttackMultiplier = 1f;
             data.finalDamageReduction = 0f;
             data.def = 5;
@@ -166,10 +166,12 @@ public class Player : LivingEntity
         if (move != Vector3.zero)
         {
             Vector3 rayPos = transform.position + Vector3.up * 0.5f;
-            if (!Physics.Raycast(rayPos, move.normalized, move.magnitude, LayerMask.GetMask(LayerName.Wall)))
+            if (Physics.Raycast(rayPos, move.normalized, out RaycastHit hit, 1f, LayerMask.GetMask(LayerName.Wall)))
             {
-                transform.position += move;
+                move = Vector3.ProjectOnPlane(move, hit.normal);
             }
+
+            transform.position += move;
 
             player.rotation = Quaternion.LookRotation(move);
 
