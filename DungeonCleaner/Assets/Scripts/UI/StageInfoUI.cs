@@ -18,6 +18,8 @@ public class StageInfoUI : MonoBehaviour
     [SerializeField]
     private GameObject warningMessage;
     [SerializeField]
+    private GameObject finalBossWarningMessage;
+    [SerializeField]
     private Image bombFlash;
 
     public void SetTimeText(int seconds)
@@ -58,6 +60,18 @@ public class StageInfoUI : MonoBehaviour
         warningMessage.SetActive(true);
         yield return new WaitForSeconds(5f);
         warningMessage.SetActive(false);
+    }
+
+    public void StartFinalBossWarningMessage()
+    {
+        StartCoroutine(CoFinalWarning());
+    }
+
+    private IEnumerator CoFinalWarning()
+    {
+        finalBossWarningMessage.SetActive(true);
+        yield return new WaitForSeconds(5f);
+        finalBossWarningMessage.SetActive(false);
     }
 
     public void StartBombFlashEffect()

@@ -127,6 +127,7 @@ public class Player : LivingEntity
                 case PickUpType.magnet:
                     break;
                 case PickUpType.bomb:
+                    AudioManager.Instance.Bomb(transform.position);
                     break;
                 case PickUpType.expPotion:
                     break;

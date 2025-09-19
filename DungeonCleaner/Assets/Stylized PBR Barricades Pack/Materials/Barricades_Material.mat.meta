@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: e87c50ba22ccd044789ee83a92f20b1f
+timeCreated: 1539990443
+licenseType: Store
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 131217
+  packageName: Stylized PBR Barricades Pack
+  packageVersion: 1.0
+  assetPath: Assets/Stylized PBR Barricades Pack/Materials/Barricades_Material.mat
+  uploadId: 274212

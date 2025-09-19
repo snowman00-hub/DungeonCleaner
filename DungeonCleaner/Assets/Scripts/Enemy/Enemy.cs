@@ -28,13 +28,13 @@ public class Enemy : LivingEntity
 
     protected Animator animator;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         animator = GetComponentInChildren<Animator>();
         capsuleCollider = GetComponent<CapsuleCollider>();
     }
 
-    private void Start()
+    protected virtual void Start()
     {
         target = GameObject.FindWithTag(Tag.Player).transform;
     }
@@ -63,7 +63,7 @@ public class Enemy : LivingEntity
         }
     }
 
-    private void UpdateMove()
+    protected void UpdateMove()
     {
         // target과 y좌표는 같다고 가정
         Vector3 dir = (target.position - transform.position).normalized;

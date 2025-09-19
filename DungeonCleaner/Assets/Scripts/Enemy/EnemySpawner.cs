@@ -77,6 +77,15 @@ public class EnemySpawner : MonoBehaviour
             while (StageInfoManager.Instance.gameTimer < data.START_TIME)
                 yield return null;
 
+            if(data.MON_TYPE == EnemyType.Boss)
+            {
+                var spawnPos = Player.Instance.transform.position + new Vector3(0, 0, 18);
+                var monster = monsterPools[data.MON_NAME].Dequeue();
+                monster.transform.position = spawnPos;
+                monster.SetActive(true);
+                yield break;
+            }
+
             if (Random.Range(0f, 100f) <= data.WEIGHT)
                 SpawnEnemy(data.MON_NAME, data.MON_COUNT, minRadius, maxRadius);
 

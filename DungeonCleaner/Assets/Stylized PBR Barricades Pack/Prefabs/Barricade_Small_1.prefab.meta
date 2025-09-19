@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: adac92e6567a44b48881265eb73ebfe1
+timeCreated: 1540206137
+licenseType: Store
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 131217
+  packageName: Stylized PBR Barricades Pack
+  packageVersion: 1.0
+  assetPath: Assets/Stylized PBR Barricades Pack/Prefabs/Barricade_Small_1.prefab
+  uploadId: 274212

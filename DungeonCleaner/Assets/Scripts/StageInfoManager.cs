@@ -51,7 +51,12 @@ public class StageInfoManager : MonoBehaviour
                 stageInfoUI.StartWarningMessage();
             }
 
-            if(currentSeconds == 600 && !IsExistWall)
+            if(currentSeconds == 595)
+            {
+                stageInfoUI.StartFinalBossWarningMessage();
+            }
+
+            if (currentSeconds == 600 && !IsExistWall)
             {
                 IsExistWall = true;
                 Instantiate(BossWall, Player.Instance.transform.position, Quaternion.identity);

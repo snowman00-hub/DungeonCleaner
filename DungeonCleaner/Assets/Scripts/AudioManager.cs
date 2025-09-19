@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,6 +12,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip expGetClip;
     public AudioClip goldGetClip;
     public AudioClip healClip;
+    public AudioClip bombClip;
     public AudioClip levelUpClip;
     public AudioClip buttonClickClip;
     public AudioClip bubbleShieldUpgradeClip;
@@ -62,6 +63,11 @@ public class AudioManager : MonoBehaviour
     public void FoodGet(Vector3 pos)
     {
         PlaySound(pos, healClip);
+    }
+
+    public void Bomb(Vector3 pos)
+    {
+        PlaySound(pos, bombClip);
     }
 
     public void LevelUp()
