@@ -527,7 +527,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5756472455158908339}
   - component: {fileID: 977460594503487421}
-  - component: {fileID: 733848885741537159}
+  - component: {fileID: 7639989448009445976}
   m_Layer: 3
   m_Name: earthGolem
   m_TagString: Enemy
@@ -574,7 +574,7 @@ CapsuleCollider:
   m_Height: 6
   m_Direction: 1
   m_Center: {x: 0, y: 2, z: 0.111106396}
---- !u!114 &733848885741537159
+--- !u!114 &7639989448009445976
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -583,10 +583,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5013700678895200139}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3df0461a524f9ef4d8f4577ea3ee403f, type: 3}
+  m_Script: {fileID: 11500000, guid: 5706bb4b8080eaa499044df02dce4952, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 100
+  maxHP: 4000
   enemyData: {fileID: 11400000, guid: 6f1a8a78fd28a7240bb241c42e711013, type: 2}
   avoidWeight: 0.5
   atkType: 1
@@ -594,6 +594,16 @@ MonoBehaviour:
   enemyMask:
     serializedVersion: 2
     m_Bits: 8
+  dashLine: {fileID: 4388815875878783003, guid: 8f6b1b094a4ab3841b5026dda89719f5, type: 3}
+  Rock: {fileID: 3302153810903460181, guid: 5f5be36e08b24614f9480260202728df, type: 3}
+  skillCoolDown: 6
+  dashChargeTime: 1
+  dashTime: 0.5
+  dashDistance: 40
+  fireCount: 3
+  fireInterval: 0.3
+  fireChargeTime: 1
+  fireSpeed: 1.7
 --- !u!1 &5192231601500171002
 GameObject:
   m_ObjectHideFlags: 0

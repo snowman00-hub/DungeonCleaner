@@ -25,7 +25,7 @@ public class PickUpManager : MonoBehaviour
 
     public List<GameObject> pickUpPrefabs;
 
-    private Dictionary<PickUpType, Queue<PickUp>> pickUpPools = new Dictionary<PickUpType, Queue<PickUp>>();
+    private Dictionary<PickUpType?, Queue<PickUp>> pickUpPools = new Dictionary<PickUpType?, Queue<PickUp>>();
 
     private int addPoolCount = 100;
 
@@ -54,8 +54,11 @@ public class PickUpManager : MonoBehaviour
         }
     }
 
-    public void CreatePickUp(PickUpType type, Vector3 position)
+    public void CreatePickUp(PickUpType? type, Vector3 position)
     {
+        if(type == null) 
+            return;
+
         var go = pickUpPools[type].Dequeue();
 
         if (pickUpPools[type].Count == 0)

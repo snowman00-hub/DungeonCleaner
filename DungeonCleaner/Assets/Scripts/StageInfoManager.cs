@@ -23,6 +23,9 @@ public class StageInfoManager : MonoBehaviour
     public TextMeshProUGUI victoryKillCount;
 
     public GameObject storeWindow;
+    public GameObject pauseWindow;
+
+    public GameObject bossHpBar;
 
     private int currentSeconds;
     private int money;
@@ -60,6 +63,7 @@ public class StageInfoManager : MonoBehaviour
             {
                 IsExistWall = true;
                 Instantiate(BossWall, Player.Instance.transform.position, Quaternion.identity);
+                bossHpBar.SetActive(true);
             }
 
             if(currentSeconds == 180 || currentSeconds == 360 || currentSeconds == 540)
@@ -221,6 +225,18 @@ public class StageInfoManager : MonoBehaviour
         storeWindow.SetActive(false);
     }
 
+    public void OpenPauseWindow()
+    {
+        Time.timeScale = 0f;
+        pauseWindow.SetActive(true);
+    }
+
+    public void ClosePauseWindow()
+    {
+        Time.timeScale = 1f;
+        pauseWindow.SetActive(false);
+    }
+
     // 빌드 테스트 코드
     public void AddOneMinute()
     {
@@ -239,6 +255,10 @@ public class StageInfoManager : MonoBehaviour
     public void GoldGet()
     {
         Money += 5000;
+    }
+    public void MeetBoss()
+    {
+        gameTimer = 595f;
     }
     //        
 }

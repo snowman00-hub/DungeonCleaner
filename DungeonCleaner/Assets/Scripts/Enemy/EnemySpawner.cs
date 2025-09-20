@@ -10,7 +10,35 @@ public enum EnemyName
     smallSpider,
     mediumSpider,
     bigSpider,
-    earthGolem
+    earthGolem,
+
+    egglet,
+    ghost, 
+    spook, 
+    shade,  
+    phantom,
+    shadow,
+    
+    vampireBat,
+    gloom, 
+    grimReaper, 
+    batLord,  
+    fireGolem,
+    wraith,
+    
+    seed, 
+    spore, 
+    bumble, 
+    bee,  
+    plantChewer,
+    sting,
+    
+    scorpling, 
+    scorpion, 
+    seed2,
+    flowerPot,
+    toadstool,
+    scorpionKing
 }
 
 public enum EnemyType
@@ -152,8 +180,12 @@ public class EnemySpawner : MonoBehaviour
             enemyData.projectileCooldown = csvData.PROJECTILE_COOLTIME;
             enemyData.projectileSpeed = csvData.PROJECTILE_MOVE_SPEED;
             enemyData.projectile_count = csvData.PROJECTILE_COUNT;
-            enemyData.dropItem = csvData.DROP_ITEM;
-            enemyData.dropItemValue = csvData.DROP_ITEM_VALUE;
+            enemyData.dropItem1 = csvData.DROP_ITEM1;
+            enemyData.dropItemValue1 = csvData.DROP_ITEM_VALUE1;
+            enemyData.dropItem2 = csvData.DROP_ITEM2;
+            enemyData.dropItemValue2 = csvData.DROP_ITEM_VALUE2;
+            enemyData.dropItem3 = csvData.DROP_ITEM3;
+            enemyData.dropItemValue3 = csvData.DROP_ITEM_VALUE3;
             enemyData.bossType = csvData.BMON_TYPE;
 
             monsterPools[enemy.enemyName] = new Queue<GameObject>();
@@ -174,8 +206,12 @@ public class EnemySpawner : MonoBehaviour
             enemyData.projectileCooldown = csvData.PROJECTILE_COOLTIME;
             enemyData.projectileSpeed = csvData.PROJECTILE_MOVE_SPEED;
             enemyData.projectile_count = csvData.PROJECTILE_COUNT;
-            enemyData.dropItem = csvData.DROP_ITEM;
-            enemyData.dropItemValue = csvData.DROP_ITEM_VALUE;
+            enemyData.dropItem1 = csvData.DROP_ITEM1;
+            enemyData.dropItemValue1= csvData.DROP_ITEM_VALUE1;
+            enemyData.dropItem2 = csvData.DROP_ITEM2;
+            enemyData.dropItemValue2 = csvData.DROP_ITEM_VALUE2;
+            enemyData.dropItem3 = csvData.DROP_ITEM3;
+            enemyData.dropItemValue3 = csvData.DROP_ITEM_VALUE3;
             enemyData.bossType = csvData.BMON_TYPE;
 
             monsterPools[boss.enemyName] = new Queue<GameObject>();

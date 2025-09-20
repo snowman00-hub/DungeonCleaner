@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using UnityEngine;
 
@@ -6,6 +6,7 @@ public enum EnemyProjectileName
 {
     Scorn,
     BigScorn,
+    Rock,
 }
 
 public class EnemyProjectile : MonoBehaviour

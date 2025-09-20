@@ -21,8 +21,12 @@ public class BossMonsterData
     public float PROJECTILE_RANGE { get; set; }
     public float PROJECTILE_COOLTIME { get; set; }
     public float PROJECTILE_MOVE_SPEED { get; set; }
-    public PickUpType DROP_ITEM { get; set; }
-    public float DROP_ITEM_VALUE { get; set; }
+    public PickUpType? DROP_ITEM1 { get; set; }
+    public float? DROP_ITEM_VALUE1 { get; set; }
+    public PickUpType? DROP_ITEM2 { get; set; }
+    public float? DROP_ITEM_VALUE2 { get; set; }
+    public PickUpType? DROP_ITEM3 { get; set; }
+    public float? DROP_ITEM_VALUE3 { get; set; }
     public PickUpType DROP_EXP { get; set; }
     public float DROP_PER { get; set; }
 }

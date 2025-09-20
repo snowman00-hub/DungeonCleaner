@@ -1,23 +1,27 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.UI;
 
 public class FinalBoss : Enemy
 {
     public static readonly int hashDashStart = Animator.StringToHash("DashStart");
     public static readonly int hashDashEnd = Animator.StringToHash("DashEnd");
+    public static readonly int hashCasting = Animator.StringToHash("Casting");
+    public static readonly int hashShoot = Animator.StringToHash("Shoot");
 
     public GameObject dashLine;
+    public GameObject Rock;
 
-    public float dashCoolDown = 25f;
+    public float skillCoolDown = 5f;
     public float dashChargeTime =1f;
-    public float dashTime = 2f;
+    public float dashTime = 0.5f;
     public float dashDistance = 40f;
 
-    public int fireCount;
-    public float fireCoolDown;
-    public float fireInterval;
-    public float fireChargeTime;
+    public int fireCount =3;
+    public float fireInterval = 0.3f;
+    public float fireChargeTime = 1f;
+    public float fireSpeed = 10f;
 
     private bool isUsingSkill;
 
@@ -26,34 +30,58 @@ public class FinalBoss : Enemy
         base.Awake();
     }
 
+    protected override void Start()
+    {
+        base.Start();
+    }
+
     protected override void OnEnable()
     {
         base.OnEnable();
-        StartCoroutine(CoCheckDash());
+        StartCoroutine(CoCheckSkillCoolDown());
     }
 
     protected override void Update()
     {
+        BossHpBar.Instance.hpBar.maxValue = maxHP;
+        BossHpBar.Instance.hpBar.value = HP;
+
         if (IsDead || isUsingSkill)
             return;
-
-        if (Input.GetKeyDown(KeyCode.V) && !isUsingSkill)
-        {
-            StartCoroutine(CoDash());
-        }
 
         UpdateMove();
     }
 
-    private IEnumerator CoCheckDash()
+    private IEnumerator CoFire()
+    {
+        animator.SetTrigger(hashCasting);
+        yield return new WaitForSeconds(fireChargeTime);
+        for(int i=0;i<fireCount;i++)
+        {
+            animator.SetTrigger(hashShoot);
+            yield return new WaitForSeconds(0.3f);
+            var rock = Instantiate(Rock).GetComponent<EnemyProjectile>();
+            rock.SetFireInfo(transform.position + transform.forward, target, enemyData.damage * 2, fireSpeed);
+            yield return new WaitForSeconds(fireInterval);
+        }
+
+        animator.ResetTrigger(hashAttack);
+        animator.ResetTrigger(hashHurt);
+    }
+
+    private IEnumerator CoCheckSkillCoolDown()
     {
         float timer = Time.time;
         while (true)
         {
-            if(timer + dashCoolDown < Time.time && !isUsingSkill)
+            if(timer + skillCoolDown < Time.time && !isUsingSkill)
             {
                 timer = Time.time;
-                StartCoroutine(CoDash());
+                var rand = Random.Range(0, 1f);
+                if(rand > 0.5f)
+                    StartCoroutine(CoDash());
+                else
+                    StartCoroutine(CoFire());
             }
 
             yield return null;
@@ -99,12 +127,14 @@ public class FinalBoss : Enemy
         float timer = 0f;
         var decalprojector = projector.GetComponentInChildren<DecalProjector>();
         var size = decalprojector.size;
+        var pivot = new Vector3(0, 0,0.1f);
         size.y = 0;
         while(timer < dashChargeTime)
         {
             timer += Time.deltaTime;
             size.y += dashDistance * Time.deltaTime;
-            Vector3 pivot = new Vector3(0, size.y / -2, 0.1f);
+            pivot.y = size.y / -2f;
+
             decalprojector.size = size;
             decalprojector.pivot = pivot;
             yield return null;

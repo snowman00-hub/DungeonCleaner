@@ -123,8 +123,10 @@ public class Enemy : LivingEntity
 
         if(enemyData is BossEnemyData bossData)
         {
-            PickUpManager.Instance.CreatePickUp(bossData.dropItem, transform.position);
-            if(bossData.bossType == BossType.Boss)
+            PickUpManager.Instance.CreatePickUp(bossData.dropItem1, transform.position);
+            PickUpManager.Instance.CreatePickUp(bossData.dropItem2, transform.position);
+            PickUpManager.Instance.CreatePickUp(bossData.dropItem3, transform.position);
+            if (bossData.bossType == BossType.Boss)
             {
                 StageInfoManager.Instance.Victory();
             }
