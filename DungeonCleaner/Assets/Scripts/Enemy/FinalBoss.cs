@@ -1,9 +1,14 @@
 ﻿using System.Collections;
 using UnityEngine;
-using static UnityEditor.Searcher.SearcherWindow;
+using UnityEngine.Rendering.Universal;
 
 public class FinalBoss : Enemy
 {
+    public static readonly int hashDashStart = Animator.StringToHash("DashStart");
+    public static readonly int hashDashEnd = Animator.StringToHash("DashEnd");
+
+    public GameObject dashLine;
+
     public float dashCoolDown = 25f;
     public float dashChargeTime =1f;
     public float dashTime = 2f;
@@ -32,7 +37,7 @@ public class FinalBoss : Enemy
         if (IsDead || isUsingSkill)
             return;
 
-        if (Input.GetKeyDown(KeyCode.V))
+        if (Input.GetKeyDown(KeyCode.V) && !isUsingSkill)
         {
             StartCoroutine(CoDash());
         }
@@ -59,10 +64,14 @@ public class FinalBoss : Enemy
     {
         isUsingSkill = true;
         capsuleCollider.radius = 3f;
-
+        enemyData.damage *= 2;
+       
         Vector3 dir = (target.position - transform.position).normalized;
         transform.LookAt(target.position);
+        animator.SetTrigger(hashDashStart);
+        animator.ResetTrigger(hashDashEnd);  
 
+        StartCoroutine(CoDashLine());
         yield return new WaitForSeconds(dashChargeTime);
 
         float timer = 0f;
@@ -73,7 +82,35 @@ public class FinalBoss : Enemy
             yield return null;
         }
 
-        capsuleCollider.radius = 1.5f;
         isUsingSkill = false;
+        capsuleCollider.radius = 1.5f;
+        enemyData.damage /= 2;
+        animator.SetTrigger(hashDashEnd);
+        animator.ResetTrigger(hashAttack);
+        animator.ResetTrigger(hashHurt);
+    }
+
+    private IEnumerator CoDashLine()
+    {
+        var projector = Instantiate(dashLine);
+        projector.transform.position = transform.position;
+        projector.transform.LookAt(target);
+
+        float timer = 0f;
+        var decalprojector = projector.GetComponentInChildren<DecalProjector>();
+        var size = decalprojector.size;
+        size.y = 0;
+        while(timer < dashChargeTime)
+        {
+            timer += Time.deltaTime;
+            size.y += dashDistance * Time.deltaTime;
+            Vector3 pivot = new Vector3(0, size.y / -2, 0.1f);
+            decalprojector.size = size;
+            decalprojector.pivot = pivot;
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(dashTime);
+        Destroy(projector);
     }
 }
