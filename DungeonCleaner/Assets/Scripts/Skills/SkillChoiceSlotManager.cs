@@ -1,10 +1,12 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Diagnostics;
 
 public class SkillChoiceSlotManager : MonoBehaviour
 {
     public GameObject slotPrefab;
+    public GameObject bonusGoldPrefab;
+    public GameObject bonusHealPrefab;
 
     private List<Object> selectableSkills = new List<Object>();
 
@@ -25,6 +27,15 @@ public class SkillChoiceSlotManager : MonoBehaviour
                 continue;
 
             selectableSkills.Add(skill);
+        }
+
+        if (selectableSkills.Count == 0)
+        {
+            var goldSlot = Instantiate(bonusGoldPrefab, transform).GetComponent<BonusSkill>();
+            goldSlot.AddGold();
+            var healSlot = Instantiate(bonusHealPrefab, transform).GetComponent<BonusSkill>();
+            healSlot.Heal();
+            return;
         }
 
         if (selectableSkills.Count <= 3)
