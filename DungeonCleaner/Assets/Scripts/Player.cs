@@ -40,6 +40,7 @@ public class Player : LivingEntity
             data.def = SaveLoadManager.Data.def;
             data.speed = SaveLoadManager.Data.speed;
             data.activeSkillDurationMultiplier = SaveLoadManager.Data.activeSkillDurationMultiplier;
+            data.recoveryPercent = SaveLoadManager.Data.recoveryPercent;
             data.pickUpRadius = SaveLoadManager.Data.pickUpRadius;
         }
         else
@@ -51,6 +52,7 @@ public class Player : LivingEntity
             data.def = 5;
             data.speed = 7;
             data.activeSkillDurationMultiplier = 1f;
+            data.recoveryPercent = 0f;
             data.pickUpRadius = 2f;
         }
 
@@ -59,6 +61,8 @@ public class Player : LivingEntity
         maxHP = data.maxHP;
         data.InitialMaxHP = data.maxHP;
         data.InitialSpeed = data.speed;
+
+        StartCoroutine(CoRecovery());
     }
 
     private void Update()
@@ -208,6 +212,24 @@ public class Player : LivingEntity
         HP += amount;
         if (HP > maxHP)
             HP = maxHP;
+    }
+
+    private IEnumerator CoRecovery()
+    {
+        float timer = 0f;
+        while (true)
+        {
+            if(timer + 5f < Time.time && data.recoveryPercent != 0)
+            {
+                timer = Time.time;
+
+                int healAmount = Mathf.FloorToInt(maxHP * data.recoveryPercent);
+                Debug.Log(healAmount);
+                Heal(healAmount);
+            }
+
+            yield return null;
+        }
     }
 
     public void UsePotion(StorePotion potion)

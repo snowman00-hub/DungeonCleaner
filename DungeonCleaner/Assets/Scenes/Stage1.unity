@@ -6477,7 +6477,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.063611224, y: 0}
   m_AnchorMax: {x: 0.9504557, y: 1}
-  m_AnchoredPosition: {x: -1.5676155, y: 0}
+  m_AnchoredPosition: {x: -1.5676193, y: 0}
   m_SizeDelta: {x: -1.0263004, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &445862470
@@ -33830,6 +33830,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5161693719382903199, guid: ff82fd8887a40af41a4ea10d38991325, type: 3}
+      propertyPath: allSkillList.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5161693719382903199, guid: ff82fd8887a40af41a4ea10d38991325, type: 3}
+      propertyPath: 'allSkillList.Array.data[5]'
+      value: 
+      objectReference: {fileID: 1953151600241847339, guid: 31ab1faca6830784eaf8ccbfdf9e9291, type: 3}
     - target: {fileID: 8266844959073657999, guid: ff82fd8887a40af41a4ea10d38991325, type: 3}
       propertyPath: joystick
       value: 

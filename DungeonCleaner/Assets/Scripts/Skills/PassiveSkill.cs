@@ -7,6 +7,7 @@ public enum StatType
     MaxHp = 3,
     Speed = 4,
     ActiveSkillDuration = 5,
+    Recovery = 6,
 }
 
 public class PassiveSkill : MonoBehaviour

@@ -10,6 +10,7 @@ public class PlayerData : ScriptableObject
     public float finalDamageReduction;
     public float speed;
     public float activeSkillDurationMultiplier;
+    public float recoveryPercent;
     public float pickUpRadius;
 
     public int InitialMaxHP;

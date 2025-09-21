@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public enum PassiveSkillName
@@ -8,6 +8,7 @@ public enum PassiveSkillName
     hpIncrease,
     msIncrease,
     skilltimeIncrease,
+    hpHeal,
 }
 
 public class PassiveSkillManager : MonoBehaviour
@@ -59,6 +60,9 @@ public class PassiveSkillManager : MonoBehaviour
                 break;
             case StatType.ActiveSkillDuration:
                 player.data.activeSkillDurationMultiplier += skill.data.PASSIVE_VALUE / 100;
+                break;
+            case StatType.Recovery:
+                player.data.recoveryPercent = skill.data.PASSIVE_VALUE / 100f;
                 break;
         }
     }
