@@ -79,6 +79,7 @@ public class StageInfoManager : MonoBehaviour
         set
         {
             level = value;
+            requiredXP = Mathf.FloorToInt(baseXP * Level * expUpRate);
             stageInfoUI.SetLevelText(level);
             OpenSkillChoice();
             AudioManager.Instance.LevelUp();
@@ -115,8 +116,7 @@ public class StageInfoManager : MonoBehaviour
             if (currentXP >= requiredXP)
             {
                 Level++;
-                currentXP = 0;
-                requiredXP = Mathf.FloorToInt(baseXP * Level * expUpRate);                
+                currentXP = 0;            
             }
 
             stageInfoUI.SetExpSliderValue(0, requiredXP, currentXP);
@@ -235,6 +235,12 @@ public class StageInfoManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         pauseWindow.SetActive(false);
+    }
+
+    public void GoToMainHome()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(0);
     }
 
     // 빌드 테스트 코드

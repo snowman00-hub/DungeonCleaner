@@ -1,10 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public enum SkillName
 {
     dustStorm,
+    broomSlash,
     bubbleShield,
+    cleanGuardian,
+    waterDrop,
+    detergentBomb
 }
 
 public class ActiveSkillManager : MonoBehaviour
@@ -127,6 +132,13 @@ public class ActiveSkillManager : MonoBehaviour
                 var temp = queue.Dequeue().gameObject;
                 temp.transform.position = transform.position;
                 temp.SetActive(true);
+
+                if(skill.skillName == SkillName.cleanGuardian)
+                {
+                    var guard = temp.GetComponent<SkillCleanGuardian>();
+                    var addAngle = (2 * Mathf.PI) / skill.skillData.projectileCount;
+                    guard.angle = addAngle * projectileCount;
+                }
             }
         }
     }    
