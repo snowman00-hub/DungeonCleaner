@@ -598,7 +598,7 @@ MonoBehaviour:
   Rock: {fileID: 3302153810903460181, guid: 5f5be36e08b24614f9480260202728df, type: 3}
   skillCoolDown: 6
   dashChargeTime: 1
-  dashTime: 0.5
+  dashTime: 1
   dashDistance: 40
   fireCount: 3
   fireInterval: 0.3

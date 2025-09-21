@@ -1,45 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
-
-public enum EnemyName
-{
-    smallMushroom,
-    smallBat,
-    smallSpider,
-    mediumSpider,
-    bigSpider,
-    earthGolem,
-
-    egglet,
-    ghost, 
-    spook, 
-    shade,  
-    phantom,
-    shadow,
-    
-    vampireBat,
-    gloom, 
-    grimReaper, 
-    batLord,  
-    fireGolem,
-    wraith,
-    
-    seed, 
-    spore, 
-    bumble, 
-    bee,  
-    plantChewer,
-    sting,
-    
-    scorpling, 
-    scorpion, 
-    seed2,
-    flowerPot,
-    toadstool,
-    scorpionKing
-}
 
 public enum EnemyType
 {
@@ -59,8 +20,7 @@ public class EnemySpawner : MonoBehaviour
 
     private Transform player;
     private Dictionary<EnemyName, Queue<GameObject>> monsterPools = new Dictionary<EnemyName, Queue<GameObject>>();
-    private int normalMonsterCount = 0;
-
+   
     private List<SpawnData> spawnDatas;
 
     private void Awake()
@@ -135,7 +95,6 @@ public class EnemySpawner : MonoBehaviour
             var monster = monsterPools[name].Dequeue();
             monster.transform.position = spawnPos;
             monster.SetActive(true);
-            normalMonsterCount++;
         }
 
         if (monsterPools[name].Count < 100)
@@ -231,7 +190,6 @@ public class EnemySpawner : MonoBehaviour
             {
                 monsterPools[name].Enqueue(go);
                 go.SetActive(false);
-                normalMonsterCount--;
             };
 
             monsterPools[name].Enqueue(go);

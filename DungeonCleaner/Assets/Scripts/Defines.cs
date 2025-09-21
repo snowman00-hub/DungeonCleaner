@@ -55,3 +55,41 @@ public class LayerName
     public static readonly string Enemy = "Enemy";
     public static readonly string Wall = "Wall";
 }
+
+public enum EnemyName
+{
+    smallMushroom,
+    smallBat,
+    smallSpider,
+    mediumSpider,
+    bigSpider,
+    earthGolem,
+
+    egglet,
+    ghost,
+    spook,
+    shade,
+    phantom,
+    shadow,
+
+    vampireBat,
+    gloom,
+    grimReaper,
+    batLord,
+    fireGolem,
+    wraith,
+
+    seed,
+    spore,
+    bumble,
+    bee,
+    plantChewer,
+    sting,
+
+    scorpling,
+    scorpion,
+    seed2,
+    flowerPot,
+    toadstool,
+    scorpionKing
+}
