@@ -23,7 +23,7 @@ public class SkillWaterDrop : ActiveSkill
         isUsed = false;
         defaultParticle.SetActive(true);
 
-        SetDirection(7f);
+        SetDirection(25f);
 
         explodeParticle.gameObject.transform.localScale = Vector3.one / 2f * skillData.radius;
         explodeParticle.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);

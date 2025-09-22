@@ -9,7 +9,7 @@ public class SkillDustGun : ActiveSkill
     protected override void OnEnable()
     {
         base.OnEnable();
-        SetDirection(7f);
+        SetDirection(30f);
     }
 
     private void Update()

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5942269659606815441}
   - component: {fileID: 3739170898094727850}
   m_Layer: 6
-  m_Name: dustGun
+  m_Name: airGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49230f20f4857d74ab2bb4eeb8b1474b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillSprite: {fileID: 21300000, guid: 896afe1e5dcae8c49816e5b296cff284, type: 3}
+  skillSprite: {fileID: 21300000, guid: a4f527d57d5f9594fafd0bd8dfc05fa7, type: 3}
   skillName: 5
   skillAttribute: 1
   skillData: {fileID: 11400000, guid: 89a4b08cb3394b0468b11749a4230308, type: 2}
