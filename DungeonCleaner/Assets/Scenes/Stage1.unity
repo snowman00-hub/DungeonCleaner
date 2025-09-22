@@ -26360,9 +26360,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 841312292}
-        m_TargetAssemblyTypeName: StageInfoManager, Assembly-CSharp
-        m_MethodName: GoToMainHome
+      - m_Target: {fileID: 1489952978}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: Click
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -26372,9 +26372,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1489952978}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: Click
+      - m_Target: {fileID: 841312292}
+        m_TargetAssemblyTypeName: StageInfoManager, Assembly-CSharp
+        m_MethodName: SaveReward
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 841312292}
+        m_TargetAssemblyTypeName: StageInfoManager, Assembly-CSharp
+        m_MethodName: GoToMainHome
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -33424,9 +33436,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 841312292}
-        m_TargetAssemblyTypeName: StageInfoManager, Assembly-CSharp
-        m_MethodName: GoToMainHome
+      - m_Target: {fileID: 1489952978}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: Click
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -33436,9 +33448,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1489952978}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: Click
+      - m_Target: {fileID: 841312292}
+        m_TargetAssemblyTypeName: StageInfoManager, Assembly-CSharp
+        m_MethodName: SaveReward
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 841312292}
+        m_TargetAssemblyTypeName: StageInfoManager, Assembly-CSharp
+        m_MethodName: GoToMainHome
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -33985,8 +34009,8 @@ SceneRoots:
   - {fileID: 7150638901902683531}
   - {fileID: 1062114052}
   - {fileID: 236308475}
-  - {fileID: 1898903993}
   - {fileID: 1345996924}
   - {fileID: 245597933}
   - {fileID: 2085537197}
   - {fileID: 1489952979}
+  - {fileID: 1898903993}

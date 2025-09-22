@@ -242,6 +242,12 @@ public class StageInfoManager : MonoBehaviour
         Time.timeScale = 1f;
         SceneManager.LoadScene(0);
     }
+    
+    public void SaveReward()
+    {
+        SaveLoadManager.Data.gold += money;
+        SaveLoadManager.Save();
+    }
 
     // 빌드 테스트 코드
     public void AddOneMinute()

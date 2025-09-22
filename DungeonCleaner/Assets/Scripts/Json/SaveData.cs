@@ -22,9 +22,24 @@ public class SaveDataV1 : SaveData
     public float recoveryPercent;
     public float pickUpRadius;
 
+    public int gold;
+    public int atkUpgradeCount;
+    public int hpUpgradeCount;
+    public int defUpgradeCount;
+    public int speedUpgradeCount;
+
     public SaveDataV1()
     {
         Version = 1;
+        maxHP = 200;
+        atk = 20;
+        finalAttackMultiplier = 1f;
+        finalDamageReduction = 0f;
+        def = 5;
+        speed = 7;
+        activeSkillDurationMultiplier = 1f;
+        recoveryPercent = 0f;
+        pickUpRadius = 2f;
     }
 
     public override SaveData VersionUp()

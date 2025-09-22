@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class MainHomeManager : MonoBehaviour
 {
+    public static MainHomeManager Instance { get; private set; }
+
     public int FinalStageNumber = 5;
     public Image currentImage;
     public TextMeshProUGUI currentStageName;
@@ -14,9 +16,35 @@ public class MainHomeManager : MonoBehaviour
 
     private int selectStageIndex = 1;
 
+    public TextMeshProUGUI myMoneytext;
+    private int myMoney;
+
+    public int MyMoney
+    {
+        get { return  myMoney; }
+        set
+        {
+            myMoney = value;
+            myMoneytext.text = myMoney.ToString();
+        }
+    }
+
     private void Awake()
     {
+        Instance = this;
         UpdateStageInfo();
+    }
+
+    private void Start()
+    {
+        if (!SaveLoadManager.Load())
+        {
+            SaveLoadManager.Save();
+        }
+        else
+        {
+            myMoney = SaveLoadManager.Data.gold;
+        }
     }
 
     public void UpdateStageInfo()

@@ -31,30 +31,20 @@ public class Player : LivingEntity
     {
         Instance = this;
 
-        if (SaveLoadManager.Load())
+        if (!SaveLoadManager.Load())
         {
-            data.maxHP = SaveLoadManager.Data.maxHP;
-            data.atk = SaveLoadManager.Data.atk;
-            data.finalAttackMultiplier = SaveLoadManager.Data.finalAttackMultiplier;
-            data.finalDamageReduction = SaveLoadManager.Data.finalDamageReduction;
-            data.def = SaveLoadManager.Data.def;
-            data.speed = SaveLoadManager.Data.speed;
-            data.activeSkillDurationMultiplier = SaveLoadManager.Data.activeSkillDurationMultiplier;
-            data.recoveryPercent = SaveLoadManager.Data.recoveryPercent;
-            data.pickUpRadius = SaveLoadManager.Data.pickUpRadius;
+            SaveLoadManager.Save();
         }
-        else
-        {
-            data.maxHP = 200;
-            data.atk = 20;
-            data.finalAttackMultiplier = 1f;
-            data.finalDamageReduction = 0f;
-            data.def = 5;
-            data.speed = 7;
-            data.activeSkillDurationMultiplier = 1f;
-            data.recoveryPercent = 0f;
-            data.pickUpRadius = 2f;
-        }
+
+        data.maxHP = SaveLoadManager.Data.maxHP;
+        data.atk = SaveLoadManager.Data.atk;
+        data.finalAttackMultiplier = SaveLoadManager.Data.finalAttackMultiplier;
+        data.finalDamageReduction = SaveLoadManager.Data.finalDamageReduction;
+        data.def = SaveLoadManager.Data.def;
+        data.speed = SaveLoadManager.Data.speed;
+        data.activeSkillDurationMultiplier = SaveLoadManager.Data.activeSkillDurationMultiplier;
+        data.recoveryPercent = SaveLoadManager.Data.recoveryPercent;
+        data.pickUpRadius = SaveLoadManager.Data.pickUpRadius;
 
         anim = GetComponentInChildren<Animation>();
         anim.wrapMode = WrapMode.Loop;
