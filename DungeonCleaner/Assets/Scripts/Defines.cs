@@ -20,6 +20,10 @@ public static class DataTableIds
     public static readonly string[] SpawnTableIds =
     {
         "spawnTable1",
+        "spawnTable2",
+        "spawnTable3",
+        "spawnTable4",
+        "spawnTable5",
     };
 
     public static readonly string MonsterTableId = "MonsterTable";
@@ -70,14 +74,14 @@ public enum EnemyName
     spook,
     shade,
     phantom,
-    shadow,
+    iceGolem,
 
     vampireBat,
     gloom,
     grimReaper,
     batLord,
-    fireGolem,
     wraith,
+    fireGolem,
 
     seed,
     spore,

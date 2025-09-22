@@ -14,6 +14,7 @@ public class EnemySpawner : MonoBehaviour
 {
     public float minRadius = 7f;
     public float maxRadius = 10f;
+    public int stageNumber = 1;
     public List<GameObject> normalMonsters;
     public List<GameObject> miniBossMonsters;
     public GameObject bossMonster;
@@ -25,6 +26,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void Awake()
     {
+        Variables.CurrentStageNumber = stageNumber;
         spawnDatas = DataTableManger.SpawnTable.GetList();
     }
 

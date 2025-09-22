@@ -319,7 +319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 572fb10cef6d60e4c8831173e90d5165, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FinalStageNumber: 5
+  FinalStageNumber: 3
   currentImage: {fileID: 16797052}
   currentStageName: {fileID: 703517370}
   stageSprites:

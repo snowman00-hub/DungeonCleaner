@@ -1,0 +1,167 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &292028652115086889
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2839317654221704044}
+  - component: {fileID: 1727072758177931348}
+  - component: {fileID: 8199841260371160912}
+  m_Layer: 3
+  m_Name: fireGolem
+  m_TagString: Enemy
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2839317654221704044
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292028652115086889}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3869194368207213434}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &1727072758177931348
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292028652115086889}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.5
+  m_Height: 6
+  m_Direction: 1
+  m_Center: {x: 0, y: 2, z: 0.111106396}
+--- !u!114 &8199841260371160912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292028652115086889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5706bb4b8080eaa499044df02dce4952, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 4000
+  enemyData: {fileID: 11400000, guid: 6b96caf41ceda764e9d6f18344919199, type: 2}
+  avoidWeight: 0.5
+  atkType: 1
+  enemyName: 17
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 8
+  dashLine: {fileID: 4388815875878783003, guid: 8f6b1b094a4ab3841b5026dda89719f5, type: 3}
+  Rock: {fileID: 3302153810903460181, guid: 5f5be36e08b24614f9480260202728df, type: 3}
+  skillCoolDown: 6
+  dashChargeTime: 1
+  dashTime: 1
+  dashDistance: 40
+  fireCount: 3
+  fireInterval: 0.3
+  fireChargeTime: 1
+  fireSpeed: 1.7
+--- !u!1001 &67549569456904113
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2839317654221704044}
+    m_Modifications:
+    - target: {fileID: 3845467420191573195, guid: 21dae0b6dcb71dd48a7a4693c36a8c2b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3845467420191573195, guid: 21dae0b6dcb71dd48a7a4693c36a8c2b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3845467420191573195, guid: 21dae0b6dcb71dd48a7a4693c36a8c2b, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3845467420191573195, guid: 21dae0b6dcb71dd48a7a4693c36a8c2b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3845467420191573195, guid: 21dae0b6dcb71dd48a7a4693c36a8c2b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3845467420191573195, guid: 21dae0b6dcb71dd48a7a4693c36a8c2b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3845467420191573195, guid: 21dae0b6dcb71dd48a7a4693c36a8c2b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3845467420191573195, guid: 21dae0b6dcb71dd48a7a4693c36a8c2b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3845467420191573195, guid: 21dae0b6dcb71dd48a7a4693c36a8c2b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3845467420191573195, guid: 21dae0b6dcb71dd48a7a4693c36a8c2b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3845467420191573195, guid: 21dae0b6dcb71dd48a7a4693c36a8c2b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3845467420191573195, guid: 21dae0b6dcb71dd48a7a4693c36a8c2b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3845467420191573195, guid: 21dae0b6dcb71dd48a7a4693c36a8c2b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4473772703222537841, guid: 21dae0b6dcb71dd48a7a4693c36a8c2b, type: 3}
+      propertyPath: m_Name
+      value: Golem Fire
+      objectReference: {fileID: 0}
+    - target: {fileID: 7187169866525613745, guid: 21dae0b6dcb71dd48a7a4693c36a8c2b, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: cf243fafb3f8afb4fb51c1a36a8ad071, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 21dae0b6dcb71dd48a7a4693c36a8c2b, type: 3}
+--- !u!4 &3869194368207213434 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3845467420191573195, guid: 21dae0b6dcb71dd48a7a4693c36a8c2b, type: 3}
+  m_PrefabInstance: {fileID: 67549569456904113}
+  m_PrefabAsset: {fileID: 0}
