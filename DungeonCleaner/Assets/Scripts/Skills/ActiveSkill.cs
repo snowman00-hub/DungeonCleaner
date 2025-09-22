@@ -27,7 +27,7 @@ public class ActiveSkill : MonoBehaviour
 
     protected Vector3 dir;
 
-    public event Action OnUsed;
+    public Action OnUsed;
 
     protected CapsuleCollider capsule;
 
@@ -80,24 +80,30 @@ public class ActiveSkill : MonoBehaviour
         }
     }
 
-    protected void SetDirection()
+    protected void SetDirection(float checkRadius)
     {
-        var colliders = Physics.OverlapSphere(transform.position, skillData.projectileSpeed * skillData.duration, targetLayer);
-        Vector3 sum = Vector3.zero;
-        int count = 0;
+        var colliders = Physics.OverlapSphere(transform.position, checkRadius, targetLayer);
+        Vector3 weightedSum = Vector3.zero;
+        float totalWeight = 0f;
+
         foreach (Collider col in colliders)
         {
-            sum += col.transform.position;
-            count++;
+            float dist = Vector3.Distance(transform.position, col.transform.position);
+
+            // 거리에 따른 가중치
+            float weight = 1f / (dist + 0.001f);
+
+            weightedSum += col.transform.position * weight;
+            totalWeight += weight;
         }
 
-        if (count == 0)
+        if (totalWeight == 0)
         {
             dir = directions[UnityEngine.Random.Range(0, directions.Length)];
         }
         else
         {
-            Vector3 targetCenter = sum / count;
+            Vector3 targetCenter = weightedSum / totalWeight;
             dir = (targetCenter - transform.position).normalized;
             transform.LookAt(targetCenter);
         }
@@ -106,5 +112,5 @@ public class ActiveSkill : MonoBehaviour
     public string GetSkillLevelId(int level)
     {
         return $"{skillName}{level}";
-    }
+    }    
 }

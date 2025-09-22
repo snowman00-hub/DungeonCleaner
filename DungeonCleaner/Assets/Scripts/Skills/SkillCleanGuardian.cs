@@ -2,7 +2,6 @@
 
 public class SkillCleanGuardian : ActiveSkill
 {
-    public float angularSpeed = 90f;
     public float angle;
 
     private Transform target;
@@ -14,7 +13,7 @@ public class SkillCleanGuardian : ActiveSkill
 
     private void Update()
     {
-        angle += angularSpeed * Mathf.Deg2Rad * Time.deltaTime;
+        angle += skillData.projectileSpeed * Mathf.Deg2Rad * Time.deltaTime;
         Vector3 offset = new Vector3(Mathf.Cos(angle), 0f, Mathf.Sin(angle)) * skillData.radius;
         transform.position = target.position + offset;
     }
@@ -31,7 +30,8 @@ public class SkillCleanGuardian : ActiveSkill
         if(other.CompareTag(Tag.Enemy))
         {
             var enemy = other.GetComponent<Enemy>();
-            enemy.OnDamage(skillData.damage, transform.position, transform.forward);
+            int finalDamage = Mathf.FloorToInt((skillData.damage + Player.Instance.data.atk) * Player.Instance.data.finalAttackMultiplier);
+            enemy.OnDamage(finalDamage, enemy.transform.position, transform.forward);
         }
     }
 }

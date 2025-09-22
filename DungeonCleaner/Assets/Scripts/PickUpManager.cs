@@ -89,9 +89,8 @@ public class PickUpManager : MonoBehaviour
 
     private IEnumerator CoMagnet(int value)
     {
-        var radius = Player.Instance.data.pickUpRadius;
         Player.Instance.data.pickUpRadius = 200f;
         yield return new WaitForSeconds(value);
-        Player.Instance.data.pickUpRadius = radius;
+        Player.Instance.data.pickUpRadius = 2f;
     }
 }

@@ -9,7 +9,7 @@ public enum SkillName
     bubbleShield,
     cleanGuardian,
     waterDrop,
-    detergentBomb
+    dustGun,
 }
 
 public class ActiveSkillManager : MonoBehaviour
@@ -72,9 +72,9 @@ public class ActiveSkillManager : MonoBehaviour
         skill.skillData.projectileSpeed = levelData.SKILL_SPEED;
     }
 
-    public void EquipSkill(ActiveSkill skill,int level)
+    public void EquipSkill(ActiveSkill skill, int level)
     {
-        if(level == 1)
+        if (level == 1)
             equippedSkills.Add(skill);
 
         if (skill.skillName == SkillName.bubbleShield)
@@ -108,6 +108,12 @@ public class ActiveSkillManager : MonoBehaviour
 
     private void UseSkill(ActiveSkill skill)
     {
+        if (skill.skillName == SkillName.dustGun || skill.skillName == SkillName.waterDrop)
+        {
+            StartCoroutine(CoUseSkill(skill));
+            return;
+        }
+
         for (int projectileCount = 0; projectileCount < skill.skillData.projectileCount; projectileCount++)
         {
             if (skillPools.TryGetValue(skill.skillName, out var queue))
@@ -133,7 +139,7 @@ public class ActiveSkillManager : MonoBehaviour
                 temp.transform.position = transform.position;
                 temp.SetActive(true);
 
-                if(skill.skillName == SkillName.cleanGuardian)
+                if (skill.skillName == SkillName.cleanGuardian)
                 {
                     var guard = temp.GetComponent<SkillCleanGuardian>();
                     var addAngle = (2 * Mathf.PI) / skill.skillData.projectileCount;
@@ -141,5 +147,36 @@ public class ActiveSkillManager : MonoBehaviour
                 }
             }
         }
-    }    
+    }
+
+    private IEnumerator CoUseSkill(ActiveSkill skill)
+    {
+        for (int projectileCount = 0; projectileCount < skill.skillData.projectileCount; projectileCount++)
+        {
+            if (skillPools.TryGetValue(skill.skillName, out var queue))
+            {
+                if (queue.Count == 0)
+                {
+                    for (int i = 0; i < poolSize; i++)
+                    {
+                        GameObject go = Instantiate(skill.gameObject, skillChest.transform);
+                        go.SetActive(false);
+                        queue.Enqueue(go);
+
+                        var sk = go.GetComponent<ActiveSkill>();
+                        sk.OnUsed += () =>
+                        {
+                            queue.Enqueue(go);
+                            go.SetActive(false);
+                        };
+                    }
+                }
+
+                var temp = queue.Dequeue().gameObject;
+                temp.transform.position = transform.position;
+                temp.SetActive(true);
+                yield return new WaitForSeconds(0.1f);
+            }
+        }
+    }
 }

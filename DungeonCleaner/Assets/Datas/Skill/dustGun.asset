@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ab241f8545ad44459607e09d9a0ed24, type: 3}
-  m_Name: cleanGuardian
+  m_Name: dustGun
   m_EditorClassIdentifier: 
-  skillLevel: 2
-  damage: 16
-  radius: 3
-  coolDown: 9
-  duration: 5
-  tickInterval: 0
-  projectileCount: 2
-  projectileSpeed: 180
+  skillLevel: 1
+  damage: 10
+  radius: 2
+  coolDown: 2
+  duration: 3
+  tickInterval: 0.2
+  projectileCount: 1
+  projectileSpeed: 5

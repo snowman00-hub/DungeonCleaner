@@ -224,7 +224,6 @@ public class Player : LivingEntity
                 timer = Time.time;
 
                 int healAmount = Mathf.FloorToInt(maxHP * data.recoveryPercent);
-                Debug.Log(healAmount);
                 Heal(healAmount);
             }
 

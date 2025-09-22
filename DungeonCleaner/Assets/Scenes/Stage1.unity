@@ -33850,6 +33850,26 @@ PrefabInstance:
       propertyPath: skillChest
       value: 
       objectReference: {fileID: 1345996923}
+    - target: {fileID: 8284988378921404414, guid: ff82fd8887a40af41a4ea10d38991325, type: 3}
+      propertyPath: defaultSkill
+      value: 
+      objectReference: {fileID: 4198963800142228673, guid: 45085ba1d94139347a74c7d6388a4aef, type: 3}
+    - target: {fileID: 8284988378921404414, guid: ff82fd8887a40af41a4ea10d38991325, type: 3}
+      propertyPath: allSkillList.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8284988378921404414, guid: ff82fd8887a40af41a4ea10d38991325, type: 3}
+      propertyPath: 'allSkillList.Array.data[3]'
+      value: 
+      objectReference: {fileID: 4198963800142228673, guid: 45085ba1d94139347a74c7d6388a4aef, type: 3}
+    - target: {fileID: 8284988378921404414, guid: ff82fd8887a40af41a4ea10d38991325, type: 3}
+      propertyPath: 'allSkillList.Array.data[4]'
+      value: 
+      objectReference: {fileID: 3739170898094727850, guid: ef534a18da8cd414eb17636b9ad1bc5e, type: 3}
+    - target: {fileID: 8284988378921404414, guid: ff82fd8887a40af41a4ea10d38991325, type: 3}
+      propertyPath: 'allSkillList.Array.data[5]'
+      value: 
+      objectReference: {fileID: 7897459707635102615, guid: d5a73db6683d3d24197f628a47b137cc, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

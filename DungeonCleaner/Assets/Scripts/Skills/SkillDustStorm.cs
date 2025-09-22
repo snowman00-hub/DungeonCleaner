@@ -22,7 +22,7 @@ public class SkillDustStorm : ActiveSkill
         capsule.radius = skillData.radius;
         particle.transform.localScale = Vector3.one * baseRadius * skillData.radius;
 
-        SetDirection();
+        SetDirection(skillData.duration * skillData.projectileSpeed);
         particle.Play();
     }
 
