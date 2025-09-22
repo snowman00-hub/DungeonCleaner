@@ -149,6 +149,9 @@ public class Player : LivingEntity
             return;
 
         int finalDamage = Mathf.FloorToInt((damage - data.def) * (1f - data.finalDamageReduction));
+        if (finalDamage < 1)
+            finalDamage = 1;
+        
         base.OnDamage(finalDamage, hitPoint, hitNormal);
         OnHurt?.Invoke();
         Handheld.Vibrate();

@@ -9,7 +9,7 @@ public enum SkillName
     bubbleShield,
     cleanGuardian,
     waterDrop,
-    dustGun,
+    airGun,
 }
 
 public class ActiveSkillManager : MonoBehaviour
@@ -108,7 +108,7 @@ public class ActiveSkillManager : MonoBehaviour
 
     private void UseSkill(ActiveSkill skill)
     {
-        if (skill.skillName == SkillName.dustGun || skill.skillName == SkillName.waterDrop)
+        if (skill.skillName == SkillName.airGun || skill.skillName == SkillName.waterDrop)
         {
             StartCoroutine(CoUseSkill(skill));
             return;

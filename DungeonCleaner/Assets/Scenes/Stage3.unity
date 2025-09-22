@@ -33831,6 +33831,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4973352184320433360, guid: ff82fd8887a40af41a4ea10d38991325, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: 395c6176ae993b744aa4e8c5e449c783, type: 3}
     - target: {fileID: 5161693719382903199, guid: ff82fd8887a40af41a4ea10d38991325, type: 3}
       propertyPath: allSkillList.Array.size
       value: 6

@@ -30061,6 +30061,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRadius: 30
   maxRadius: 40
+  stageNumber: 1
   normalMonsters:
   - {fileID: 5737136547460658277, guid: 8623e0eb3fa9cd84e8bb01950ba15f07, type: 3}
   - {fileID: 4555614353155938855, guid: 415014426c8ee26418b9eea59fcb9494, type: 3}

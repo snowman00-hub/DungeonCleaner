@@ -53,9 +53,9 @@ public class SkillBroomSlash : ActiveSkill
         Vector3 oldScale = cube.localScale;
         Vector3 newScale = oldScale;
 
-        newScale.z = scaleAmount;
-        float delta = newScale.z - oldScale.z;
-        cube.position += (Vector3.forward * delta / 2f);
+        newScale.y = scaleAmount * 0.33f;
+        float delta = newScale.y - oldScale.y;
+        cube.position += (Vector3.forward * delta / 0.33f * 0.12f);
         cube.localScale = newScale;
 
         boxCollider.center = new Vector3 (0, 0.7f, scaleAmount / 2f);
