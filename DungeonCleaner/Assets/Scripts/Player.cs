@@ -119,6 +119,7 @@ public class Player : LivingEntity
                     AudioManager.Instance.FoodGet(transform.position);
                     break;
                 case PickUpType.magnet:
+                    AudioManager.Instance.Magnet(transform.position);
                     break;
                 case PickUpType.bomb:
                     AudioManager.Instance.Bomb(transform.position);

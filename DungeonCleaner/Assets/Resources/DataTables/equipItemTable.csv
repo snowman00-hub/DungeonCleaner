@@ -1,0 +1,121 @@
+EQUIPMENT_ID,EQUIPMENT_NAME,EQUIPMENT_GRADE,EQUIPMENT_TYPE,BASE_STAT,BASE_STAT_VALUE,EQ_EXPLAIN,EQ_IMAGE_PILE_NAME
+Dweapon,플라스틱 빗자루,1,1,1,10,,Dweapon
+Dweapon1,+1 플라스틱 빗자루,1,1,1,12,,Dweapon
+Dweapon2,+2 플라스틱 빗자루,1,1,1,14,,Dweapon
+Dweapon3,+3 플라스틱 빗자루,1,1,1,16,,Dweapon
+Dweapon4,+4 플라스틱 빗자루,1,1,1,18,,Dweapon
+Dweapon5,+5 플라스틱 빗자루,1,1,1,20,,Dweapon
+Dshirts,얼룩 묻은 청소복,1,2,2,100,,Dshirts
+Dshirts1,+1 얼룩 묻은 청소복,1,2,2,120,,Dshirts
+Dshirts2,+2 얼룩 묻은 청소복,1,2,2,140,,Dshirts
+Dshirts3,+3 얼룩 묻은 청소복,1,2,2,160,,Dshirts
+Dshirts4,+4 얼룩 묻은 청소복,1,2,2,180,,Dshirts
+Dshirts5,+5 얼룩 묻은 청소복,1,2,2,200,,Dshirts
+Dpants,해진 청소 바지,1,3,3,5,,Dpants
+Dpants1,+1 해진 청소 바지,1,3,3,6,,Dpants
+Dpants2,+2 해진 청소 바지,1,3,3,7,,Dpants
+Dpants3,+3 해진 청소 바지,1,3,3,8,,Dpants
+Dpants4,+4 해진 청소 바지,1,3,3,9,,Dpants
+Dpants5,+5 해진 청소 바지,1,3,3,10,,Dpants
+Dshoes,닳은 고무 슬리퍼,1,4,4,5,,Dshoes
+Dshoes1,+1 닳은 고무 슬리퍼,1,4,4,6,,Dshoes
+Dshoes2,+2 닳은 고무 슬리퍼,1,4,4,7,,Dshoes
+Dshoes3,+3 닳은 고무 슬리퍼,1,4,4,8,,Dshoes
+Dshoes4,+4 닳은 고무 슬리퍼,1,4,4,9,,Dshoes
+Dshoes5,+5 닳은 고무 슬리퍼,1,4,4,10,,Dshoes
+Cweapon,나무 빗자루,2,1,1,20,,Cweapon
+Cweapon1,+1 나무 빗자루,2,1,1,26,,Cweapon
+Cweapon2,+2 나무 빗자루,2,1,1,32,,Cweapon
+Cweapon3,+3 나무 빗자루,2,1,1,38,,Cweapon
+Cweapon4,+4 나무 빗자루,2,1,1,44,,Cweapon
+Cweapon5,+5 나무 빗자루,2,1,1,50,,Cweapon
+Cshirts,방수 청소복,2,2,2,200,,Cshirts
+Cshirts1,+1 방수 청소복,2,2,2,260,,Cshirts
+Cshirts2,+2 방수 청소복,2,2,2,320,,Cshirts
+Cshirts3,+3 방수 청소복,2,2,2,380,,Cshirts
+Cshirts4,+4 방수 청소복,2,2,2,440,,Cshirts
+Cshirts5,+5 방수 청소복,2,2,2,500,,Cshirts
+Cpants,고무 작업 바지,2,3,3,10,,Cpants
+Cpants1,+1 고무 작업 바지,2,3,3,13,,Cpants
+Cpants2,+2 고무 작업 바지,2,3,3,16,,Cpants
+Cpants3,+3 고무 작업 바지,2,3,3,19,,Cpants
+Cpants4,+4 고무 작업 바지,2,3,3,22,,Cpants
+Cpants5,+5 고무 작업 바지,2,3,3,25,,Cpants
+Cshoes,미끄럼 방지 장화,2,4,4,10,,Cshoes
+Cshoes1,+1 미끄럼 방지 장화,2,4,4,13,,Cshoes
+Cshoes2,+2 미끄럼 방지 장화,2,4,4,16,,Cshoes
+Cshoes3,+3 미끄럼 방지 장화,2,4,4,19,,Cshoes
+Cshoes4,+4 미끄럼 방지 장화,2,4,4,22,,Cshoes
+Cshoes5,+5 미끄럼 방지 장화,2,4,4,25,,Cshoes
+Bweapon,강철 빗자루,3,1,1,30,,Bweapon
+Bweapon1,+1 강철 빗자루,3,1,1,42,,Bweapon
+Bweapon2,+2 강철 빗자루,3,1,1,54,,Bweapon
+Bweapon3,+3 강철 빗자루,3,1,1,66,,Bweapon
+Bweapon4,+4 강철 빗자루,3,1,1,78,,Bweapon
+Bweapon5,+5 강철 빗자루,3,1,1,90,,Bweapon
+Bshirts,먼지 차단 청소복,3,2,2,300,,Bshirts
+Bshirts1,+1 먼지 차단 청소복,3,2,2,420,,Bshirts
+Bshirts2,+2 먼지 차단 청소복,3,2,2,540,,Bshirts
+Bshirts3,+3 먼지 차단 청소복,3,2,2,660,,Bshirts
+Bshirts4,+4 먼지 차단 청소복,3,2,2,780,,Bshirts
+Bshirts5,+5 먼지 차단 청소복,3,2,2,900,,Bshirts
+Bpants,강화 청소 바지,3,3,3,20,,Bpants
+Bpants1,+1 강화 청소 바지,3,3,3,28,,Bpants
+Bpants2,+2 강화 청소 바지,3,3,3,36,,Bpants
+Bpants3,+3 강화 청소 바지,3,3,3,44,,Bpants
+Bpants4,+4 강화 청소 바지,3,3,3,52,,Bpants
+Bpants5,+5 강화 청소 바지,3,3,3,60,,Bpants
+Bshoes,쿠션 청소화,3,4,4,20,,Bshoes
+Bshoes1,+1 쿠션 청소화,3,4,4,28,,Bshoes
+Bshoes2,+2 쿠션 청소화,3,4,4,36,,Bshoes
+Bshoes3,+3 쿠션 청소화,3,4,4,44,,Bshoes
+Bshoes4,+4 쿠션 청소화,3,4,4,52,,Bshoes
+Bshoes5,+5 쿠션 청소화,3,4,4,60,,Bshoes
+Aweapon,은 빗자루,4,1,1,40,,Aweapon
+Aweapon1,+1 은 빗자루,4,1,1,60,,Aweapon
+Aweapon2,+2 은 빗자루,4,1,1,80,,Aweapon
+Aweapon3,+3 은 빗자루,4,1,1,100,,Aweapon
+Aweapon4,+4 은 빗자루,4,1,1,120,,Aweapon
+Aweapon5,+5 은 빗자루,4,1,1,140,,Aweapon
+Ashirts,향균 청소복,4,2,2,400,,Ashirts
+Ashirts1,+1 향균 청소복,4,2,2,600,,Ashirts
+Ashirts2,+2 향균 청소복,4,2,2,800,,Ashirts
+Ashirts3,+3 향균 청소복,4,2,2,1000,,Ashirts
+Ashirts4,+4 향균 청소복,4,2,2,1200,,Ashirts
+Ashirts5,+5 향균 청소복,4,2,2,1400,,Ashirts
+Apants,고강도 방수 바지,4,3,3,30,,Apants
+Apants1,+1 고강도 방수 바지,4,3,3,45,,Apants
+Apants2,+2 고강도 방수 바지,4,3,3,60,,Apants
+Apants3,+3 고강도 방수 바지,4,3,3,75,,Apants
+Apants4,+4 고강도 방수 바지,4,3,3,90,,Apants
+Apants5,+5 고강도 방수 바지,4,3,3,105,,Apants
+Ashoes,초경량 청소화,4,4,4,30,,Ashoes
+Ashoes1,+1 초경량 청소화,4,4,4,45,,Ashoes
+Ashoes2,+2 초경량 청소화,4,4,4,60,,Ashoes
+Ashoes3,+3 초경량 청소화,4,4,4,75,,Ashoes
+Ashoes4,+4 초경량 청소화,4,4,4,90,,Ashoes
+Ashoes5,+5 초경량 청소화,4,4,4,105,,Ashoes
+Sweapon,황금 빗자루,5,1,1,50,,Sweapon
+Sweapon1,+1 황금 빗자루,5,1,1,80,,Sweapon
+Sweapon2,+2 황금 빗자루,5,1,1,110,,Sweapon
+Sweapon3,+3 황금 빗자루,5,1,1,140,,Sweapon
+Sweapon4,+4 황금 빗자루,5,1,1,170,,Sweapon
+Sweapon5,+5 황금 빗자루,5,1,1,200,,Sweapon
+Sshrits,자동살균 스마트 청소복,5,2,2,500,,Sshrits
+Sshrits1,+1 자동살균 스마트 청소복,5,2,2,800,,Sshrits
+Sshrits2,+2 자동살균 스마트 청소복,5,2,2,1100,,Sshrits
+Sshrits3,+3 자동살균 스마트 청소복,5,2,2,1400,,Sshrits
+Sshrits4,+4 자동살균 스마트 청소복,5,2,2,1700,,Sshrits
+Sshrits5,+5 자동살균 스마트 청소복,5,2,2,2000,,Sshrits
+Spants,청정 에너지 바지,5,3,3,40,,Spants
+Spants1,+1 청정 에너지 바지,5,3,3,64,,Spants
+Spants2,+2 청정 에너지 바지,5,3,3,88,,Spants
+Spants3,+3 청정 에너지 바지,5,3,3,112,,Spants
+Spants4,+4 청정 에너지 바지,5,3,3,136,,Spants
+Spants5,+5 청정 에너지 바지,5,3,3,160,,Spants
+Sshoes,공중부양 청소 부츠,5,4,4,40,,Sshoes
+Sshoes1,+1 공중부양 청소 부츠,5,4,4,64,,Sshoes
+Sshoes2,+2 공중부양 청소 부츠,5,4,4,88,,Sshoes
+Sshoes3,+3 공중부양 청소 부츠,5,4,4,112,,Sshoes
+Sshoes4,+4 공중부양 청소 부츠,5,4,4,136,,Sshoes
+Sshoes5,+5 공중부양 청소 부츠,5,4,4,160,,Sshoes

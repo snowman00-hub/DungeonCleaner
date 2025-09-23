@@ -1,0 +1,124 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: EquipmentSpriteAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 4e6667a8583743a4f821d64622c42887, type: 3}
+    - {fileID: 2800000, guid: 45075fb6917b0e643990b1b55f8de246, type: 3}
+    - {fileID: 2800000, guid: 4cc5d7b9892646844a86e0b11107e701, type: 3}
+    - {fileID: 2800000, guid: 48e61d57ba4020b4094777ea8037b3b9, type: 3}
+    - {fileID: 2800000, guid: 1896008a908d657429a3b49a5c47b604, type: 3}
+    - {fileID: 2800000, guid: 1bebb7c3892e6e54a9a35889f3ebba5e, type: 3}
+    - {fileID: 2800000, guid: 873c8cff89878ac44924cd218727f9a8, type: 3}
+    - {fileID: 2800000, guid: a2f8edfbe9fd32244be172bd6bb891d6, type: 3}
+    - {fileID: 2800000, guid: 372c4f7bfa80b9642a0677715c86e5ac, type: 3}
+    - {fileID: 2800000, guid: 6376a7227e1053f4aad46249157a2a21, type: 3}
+    - {fileID: 2800000, guid: 429e8fbe1d6045546bf9bde8201a092d, type: 3}
+    - {fileID: 2800000, guid: 85e9c3663a4dfe746a5699177dff99e4, type: 3}
+    - {fileID: 2800000, guid: c651bec6c968ba0478d0d108edda86b0, type: 3}
+    - {fileID: 2800000, guid: 4d575eba518ae714fa2d323378bbbcc9, type: 3}
+    - {fileID: 2800000, guid: 61e412b88b1b89941834539d571e91ff, type: 3}
+    - {fileID: 2800000, guid: d103449f8b48b5245b0eab8138d7c4e5, type: 3}
+    - {fileID: 2800000, guid: 8e646cf03d022124495032247991725b, type: 3}
+    - {fileID: 2800000, guid: 9f2ee1cfdfd29544292c8bc9b8860f46, type: 3}
+    - {fileID: 2800000, guid: da4f9d3fd2e3d404a9775465e0831a4f, type: 3}
+    - {fileID: 2800000, guid: 58a8dd51a0a68b54a82e58bb0d43d5e4, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+    packedSpriteRenderDataKeys:
+    - 8e646cf03d022124495032247991725b: 21300000
+    - 58a8dd51a0a68b54a82e58bb0d43d5e4: 21300000
+    - 6376a7227e1053f4aad46249157a2a21: 21300000
+    - 1bebb7c3892e6e54a9a35889f3ebba5e: 21300000
+    - 85e9c3663a4dfe746a5699177dff99e4: 21300000
+    - 45075fb6917b0e643990b1b55f8de246: 21300000
+    - c651bec6c968ba0478d0d108edda86b0: 21300000
+    - 48e61d57ba4020b4094777ea8037b3b9: 21300000
+    - 4e6667a8583743a4f821d64622c42887: 21300000
+    - 61e412b88b1b89941834539d571e91ff: 21300000
+    - 4cc5d7b9892646844a86e0b11107e701: 21300000
+    - 1896008a908d657429a3b49a5c47b604: 21300000
+    - 4d575eba518ae714fa2d323378bbbcc9: 21300000
+    - 372c4f7bfa80b9642a0677715c86e5ac: 21300000
+    - a2f8edfbe9fd32244be172bd6bb891d6: 21300000
+    - 429e8fbe1d6045546bf9bde8201a092d: 21300000
+    - da4f9d3fd2e3d404a9775465e0831a4f: 21300000
+    - d103449f8b48b5245b0eab8138d7c4e5: 21300000
+    - 9f2ee1cfdfd29544292c8bc9b8860f46: 21300000
+    - 873c8cff89878ac44924cd218727f9a8: 21300000
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 8e646cf03d022124495032247991725b, type: 3}
+  - {fileID: 21300000, guid: 58a8dd51a0a68b54a82e58bb0d43d5e4, type: 3}
+  - {fileID: 21300000, guid: 6376a7227e1053f4aad46249157a2a21, type: 3}
+  - {fileID: 21300000, guid: 1bebb7c3892e6e54a9a35889f3ebba5e, type: 3}
+  - {fileID: 21300000, guid: 85e9c3663a4dfe746a5699177dff99e4, type: 3}
+  - {fileID: 21300000, guid: 45075fb6917b0e643990b1b55f8de246, type: 3}
+  - {fileID: 21300000, guid: c651bec6c968ba0478d0d108edda86b0, type: 3}
+  - {fileID: 21300000, guid: 48e61d57ba4020b4094777ea8037b3b9, type: 3}
+  - {fileID: 21300000, guid: 4e6667a8583743a4f821d64622c42887, type: 3}
+  - {fileID: 21300000, guid: 61e412b88b1b89941834539d571e91ff, type: 3}
+  - {fileID: 21300000, guid: 4cc5d7b9892646844a86e0b11107e701, type: 3}
+  - {fileID: 21300000, guid: 1896008a908d657429a3b49a5c47b604, type: 3}
+  - {fileID: 21300000, guid: 4d575eba518ae714fa2d323378bbbcc9, type: 3}
+  - {fileID: 21300000, guid: 372c4f7bfa80b9642a0677715c86e5ac, type: 3}
+  - {fileID: 21300000, guid: a2f8edfbe9fd32244be172bd6bb891d6, type: 3}
+  - {fileID: 21300000, guid: 429e8fbe1d6045546bf9bde8201a092d, type: 3}
+  - {fileID: 21300000, guid: da4f9d3fd2e3d404a9775465e0831a4f, type: 3}
+  - {fileID: 21300000, guid: d103449f8b48b5245b0eab8138d7c4e5, type: 3}
+  - {fileID: 21300000, guid: 9f2ee1cfdfd29544292c8bc9b8860f46, type: 3}
+  - {fileID: 21300000, guid: 873c8cff89878ac44924cd218727f9a8, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Spants
+  - Sweapon
+  - Cshirts
+  - Bshirts
+  - Cweapon
+  - Ashirts
+  - Dpants
+  - Aweapon
+  - Apants
+  - Dshoes
+  - Ashoes
+  - Bpants
+  - Dshirts
+  - Cpants
+  - Bweapon
+  - Cshoes
+  - Sshoes
+  - Dweapon
+  - Sshirts
+  - Bshoes
+  m_RenderDataMap: {}
+  m_Tag: EquipmentSpriteAtlas
+  m_IsVariant: 0

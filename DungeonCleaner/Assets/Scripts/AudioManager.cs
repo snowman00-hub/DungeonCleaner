@@ -16,6 +16,14 @@ public class AudioManager : MonoBehaviour
     public AudioClip levelUpClip;
     public AudioClip buttonClickClip;
     public AudioClip bubbleShieldUpgradeClip;
+    public AudioClip magnetClip;
+    public AudioClip bossWarningClip;
+    public AudioClip broomSlashClip;
+    public AudioClip clapClip;
+    public AudioClip finalBossWarningClip;
+    public AudioClip gameOverClip;
+    public AudioClip merchantClip;
+    public AudioClip victoryClip;
 
     private void Awake()
     {
@@ -70,6 +78,11 @@ public class AudioManager : MonoBehaviour
         PlaySound(pos, bombClip);
     }
 
+    public void Magnet(Vector3 pos)
+    {
+        PlaySound(pos, magnetClip);
+    }
+
     public void LevelUp()
     {
         PlaySound(Player.Instance.transform.position, levelUpClip);
@@ -83,5 +96,40 @@ public class AudioManager : MonoBehaviour
     public void BubbleShield()
     {
         PlaySound(Player.Instance.transform.position, bubbleShieldUpgradeClip);
+    }
+
+    public void BossWarning()
+    {
+        PlaySound(Player.Instance.transform.position, bossWarningClip);
+    }
+
+    public void BroomSlash()
+    {
+        PlaySound(Player.Instance.transform.position, broomSlashClip);
+    }
+
+    public void Clap()
+    {
+        PlaySound(Player.Instance.transform.position, clapClip);
+    }
+
+    public void FinalBossWarning()
+    {
+        PlaySound(Player.Instance.transform.position, finalBossWarningClip);
+    }
+
+    public void GameOver()
+    {
+        PlaySound(Player.Instance.transform.position, gameOverClip);
+    }
+
+    public void MerchantCome()
+    {
+        PlaySound(Player.Instance.transform.position, merchantClip);
+    }
+
+    public void Victory()
+    {
+        PlaySound(Player.Instance.transform.position, victoryClip);
     }
 }

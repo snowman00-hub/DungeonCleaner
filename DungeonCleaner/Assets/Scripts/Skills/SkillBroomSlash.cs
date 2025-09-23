@@ -5,6 +5,7 @@ public class SkillBroomSlash : ActiveSkill
     public Transform cube;
     private float currentAngle;
     private BoxCollider boxCollider;
+    private bool isSoundOn;
 
     protected override void Awake()
     {
@@ -16,10 +17,17 @@ public class SkillBroomSlash : ActiveSkill
         base.OnEnable();
         ScaleFromEdge(skillData.radius);
         SetStartAngle();
+        isSoundOn = false;
     }
 
     private void Update()
     {
+        if(!isSoundOn)
+        {
+            isSoundOn=true;
+            AudioManager.Instance.BroomSlash();
+        }
+
         transform.position = Player.Instance.transform.position;
         currentAngle += 120f / skillData.duration * Time.deltaTime;
         transform.rotation = Quaternion.Euler(0, currentAngle, 0);

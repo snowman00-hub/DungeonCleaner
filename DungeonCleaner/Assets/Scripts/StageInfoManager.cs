@@ -52,11 +52,13 @@ public class StageInfoManager : MonoBehaviour
             if(currentSeconds == 235 ||  currentSeconds == 475)
             {
                 stageInfoUI.StartWarningMessage();
+                AudioManager.Instance.BossWarning();
             }
 
             if(currentSeconds == 595)
             {
                 stageInfoUI.StartFinalBossWarningMessage();
+                AudioManager.Instance.FinalBossWarning();
             }
 
             if (currentSeconds == 600 && !IsExistWall)
@@ -193,6 +195,7 @@ public class StageInfoManager : MonoBehaviour
         defeatWindow.SetActive(true);
         defeatKillCount.text = stageInfoUI.killCountText.text;
         defeatTimeText.text = stageInfoUI.timeText.text;
+        AudioManager.Instance.GameOver();
     }
 
     public void Victory()
@@ -206,6 +209,7 @@ public class StageInfoManager : MonoBehaviour
         Time.timeScale = 0f;
         victoryWindow.SetActive(true);
         victoryKillCount.text = stageInfoUI.killCountText.text;
+        AudioManager.Instance.Victory();
     }
 
     public void StartBombFlash()
@@ -217,6 +221,7 @@ public class StageInfoManager : MonoBehaviour
     {
         Time.timeScale = 0f;
         storeWindow.SetActive(true);
+        AudioManager.Instance.MerchantCome();
     }
 
     public void CloseStore()

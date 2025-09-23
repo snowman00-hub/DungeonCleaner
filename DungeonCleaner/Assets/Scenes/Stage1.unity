@@ -23163,6 +23163,14 @@ MonoBehaviour:
   levelUpClip: {fileID: 8300000, guid: 9c27a943fb43e9c47aa5af4963d0984f, type: 3}
   buttonClickClip: {fileID: 8300000, guid: 8ccd12ebd779e3d4aa14c064192cc55b, type: 3}
   bubbleShieldUpgradeClip: {fileID: 8300000, guid: ca06442bfa42e3e44a1e3218dbeccee1, type: 3}
+  magnetClip: {fileID: 8300000, guid: 8349557cc246c8c44a1ec6dd1e391075, type: 3}
+  bossWarningClip: {fileID: 8300000, guid: 91133764141e4824a843cdf65bf9c812, type: 3}
+  broomSlashClip: {fileID: 8300000, guid: 6c8d1490315723d4cb33ef99d7d7f811, type: 3}
+  clapClip: {fileID: 8300000, guid: 28844ab877d4c454c8aa28a4de850f41, type: 3}
+  finalBossWarningClip: {fileID: 8300000, guid: df972a67481d7b7489e2eb0e109c1455, type: 3}
+  gameOverClip: {fileID: 8300000, guid: 8fa7f7969515eb14bb857fc64c12afb9, type: 3}
+  merchantClip: {fileID: 8300000, guid: ee8e4d60db917e343ac4a6db8c51992f, type: 3}
+  victoryClip: {fileID: 8300000, guid: 8e3bf0774d222b64288520f4de6e20f8, type: 3}
 --- !u!4 &1489952979
 Transform:
   m_ObjectHideFlags: 0
