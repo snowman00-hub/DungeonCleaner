@@ -17,31 +17,7 @@ public class ItemSlot : MonoBehaviour
     [HideInInspector]
     public EquipItemData itemData;
 
-    private void Update()
-    {
-        if (Input.GetKey(KeyCode.Alpha1))
-        {
-            itemData = DataTableManger.EquipItemTable.GetRandomItem(EquipItemRank.D);
-            UpdateItemSlotUI();
-        }
-        if (Input.GetKey(KeyCode.Alpha2))
-        {
-            itemData = DataTableManger.EquipItemTable.GetRandomItem(EquipItemRank.C);
-            UpdateItemSlotUI();
-        }
-        if (Input.GetKey(KeyCode.Alpha3))
-        {
-            itemData = DataTableManger.EquipItemTable.GetRandomItem(EquipItemRank.B);
-            UpdateItemSlotUI();
-        }
-        if (Input.GetKey(KeyCode.Alpha4))
-        {
-            itemData = DataTableManger.EquipItemTable.GetRandomItem(EquipItemRank.A);
-            UpdateItemSlotUI();
-        }
-    }
-
-    private void UpdateItemSlotUI()
+    public void UpdateItemSlotUI()
     {
         background.color = itemData.EQUIPMENT_GRADE switch
         {
