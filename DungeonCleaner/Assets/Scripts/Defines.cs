@@ -36,6 +36,8 @@ public static class DataTableIds
     public static string Spawn => SpawnTableIds[Variables.CurrentStageNumber - 1];
 
     public static readonly string Item = "ItemTable";
+
+    public static readonly string EquipItemTableId = "equipItemTable";
 }
 
 public static class Variables

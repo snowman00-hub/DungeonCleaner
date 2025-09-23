@@ -50,6 +50,12 @@ public static class DataTableManger
             table.Load(DataTableIds.PassiveSkillTableId);
             tables.Add(DataTableIds.PassiveSkillTableId, table);
         }
+
+        {
+            var table = new EquipItemTable();
+            table.Load(DataTableIds.EquipItemTableId);
+            tables.Add(DataTableIds.EquipItemTableId, table);
+        }
     }
 
     public static StringTable StringTable
@@ -97,6 +103,14 @@ public static class DataTableManger
         get
         {
             return Get<PassiveSkillTable>(DataTableIds.PassiveSkillTableId);
+        }
+    }
+
+    public static EquipItemTable EquipItemTable
+    {
+        get
+        {
+            return Get<EquipItemTable>(DataTableIds.EquipItemTableId);
         }
     }
 
