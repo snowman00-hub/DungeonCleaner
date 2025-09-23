@@ -1,4 +1,4 @@
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -26,6 +26,7 @@ public class ItemSlot : MonoBehaviour
             EquipItemRank.B => BRankColor,
             EquipItemRank.A => ARankColor,
             EquipItemRank.S => SRankColor,
+            _ => DRankColor,
         };
 
         itemImage.sprite = EquipItemImageManager.Instance.GetSprite(itemData.EQ_IMAGE_FILE_NAME);

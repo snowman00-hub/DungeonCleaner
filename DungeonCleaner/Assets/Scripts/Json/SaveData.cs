@@ -28,6 +28,8 @@ public class SaveDataV1 : SaveData
     public int defUpgradeCount;
     public int speedUpgradeCount;
 
+    public List<EquipItemData> inventoryItemList = new List<EquipItemData>();
+
     public SaveDataV1()
     {
         Version = 1;

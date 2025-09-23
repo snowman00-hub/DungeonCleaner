@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System;
 using System.IO;
 using UnityEngine;
 using SaveDataVC = SaveDataV1;
@@ -27,7 +28,7 @@ public class SaveLoadManager
     private static JsonSerializerSettings settings = new JsonSerializerSettings()
     {
         Formatting = Formatting.Indented,
-        TypeNameHandling = TypeNameHandling.All,
+        TypeNameHandling = TypeNameHandling.All
     };
 
     public static bool Save(int slot = 0)
@@ -75,9 +76,9 @@ public class SaveLoadManager
             Data = dataSave as SaveDataVC;
             return true;
         }
-        catch
+        catch (Exception e)
         {
-            Debug.Log("Load 예외 발생");
+            Debug.LogError("Load 예외 발생: " + e);
             return false;
         }
     }

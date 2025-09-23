@@ -16,7 +16,7 @@ public class PlayerStatManager : MonoBehaviour
     private int[] upgradePrices = new int[TypeCount];
 
     private float[] statValues = new float[TypeCount];
-    private float[] reinforceValues = { 3, 30, 3, 3 };
+    private float[] reinforceValues = { 3, 30, 3, 1 };
 
     public int AtkUpgradeCount
     {

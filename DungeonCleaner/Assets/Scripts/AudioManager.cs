@@ -53,14 +53,28 @@ public class AudioManager : MonoBehaviour
         pool.Enqueue(src);
     }
 
-    public void EnemyHurt(Vector3 pos)
-    {
-        PlaySound(pos, enemyHurtClip);
-    }
+    private int MaxExpSoundCount = 15;
+    private int currentExpSoundCount = 0;
 
     public void ExpGet(Vector3 pos)
     {
+        if (currentExpSoundCount >= MaxExpSoundCount)
+            return;
+
+        currentExpSoundCount++;
         PlaySound(pos, expGetClip);
+        StartCoroutine(CoExpCountMinus(expGetClip.length));
+    }
+
+    private IEnumerator CoExpCountMinus(float f)
+    {
+        yield return new WaitForSeconds(f);
+        currentExpSoundCount--;
+    }
+
+    public void EnemyHurt(Vector3 pos)
+    {
+        PlaySound(pos, enemyHurtClip);
     }
 
     public void GoldGet(Vector3 pos)
