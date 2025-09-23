@@ -43,7 +43,7 @@ public class MainHomeManager : MonoBehaviour
         }
         else
         {
-            myMoney = SaveLoadManager.Data.gold;
+            MyMoney = SaveLoadManager.Data.gold;
         }
     }
 
@@ -74,5 +74,17 @@ public class MainHomeManager : MonoBehaviour
     public void StartStage()
     {
         SceneManager.LoadScene(selectStageIndex);
+    }
+
+    // 테스트 코드
+    public void ResetSave()
+    {
+        SaveLoadManager.Data = new SaveDataV1();
+        SaveLoadManager.Save();
+        MyMoney = SaveLoadManager.Data.gold;
+    }
+    public void GetGold()
+    {
+        MyMoney += 5000;
     }
 }

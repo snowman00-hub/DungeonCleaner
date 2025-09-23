@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d091411429227fc4a80393fb01860062, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillSprite: {fileID: 21300000, guid: fa17a124231715f45b7c47031b9bfcdc, type: 3}
+  skillSprite: {fileID: 21300000, guid: 5a125cd0bc8108d43a3d97a82be2b947, type: 3}
   skillName: 3
   skillAttribute: 2
   skillData: {fileID: 11400000, guid: 40a04508fc310e245b73a8b78f5ce58d, type: 2}
