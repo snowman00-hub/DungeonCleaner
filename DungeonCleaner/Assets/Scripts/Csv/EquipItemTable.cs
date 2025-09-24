@@ -77,4 +77,35 @@ public class EquipItemTable : DataTable
         var rand = Random.Range(0, list.Count);
         return list[rand];
     }
+
+    private float Schance = 2.0f;
+    private float Achance = 8.0f;
+    private float Bchance = 15.0f;
+    private float Cchance = 25.0f;
+    //private float Dchance = 50.0f;
+
+    public EquipItemData GetRandomItemWithChance()
+    {
+        float rand = Random.Range(0f, 100f);
+        if (rand <= Schance)
+        {
+            return GetRandomItem(EquipItemRank.S);
+        }
+        else if(rand <= Schance + Achance)
+        {
+            return GetRandomItem(EquipItemRank.A);
+        }
+        else if(rand <= Schance + Achance + Bchance)
+        {
+            return GetRandomItem(EquipItemRank.B);
+        }
+        else if(rand <= Schance + Achance + Bchance + Cchance)
+        {
+            return GetRandomItem(EquipItemRank.C);
+        }
+        else
+        {
+            return GetRandomItem(EquipItemRank.D);
+        }
+    }
 }

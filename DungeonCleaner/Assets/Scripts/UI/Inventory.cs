@@ -57,6 +57,7 @@ public class Inventory : MonoBehaviour
         var equipItemList = new List<EquipItemData>(SaveLoadManager.Data.equipItemList);
         for(int i = 0; i < currentEquipmentSlots.Length; i++)
         {
+            currentEquipmentSlots[i].GetComponent<ItemSlot>().itemData = null;
             InitialEquip(equipItemList[i], i);
         }
 
