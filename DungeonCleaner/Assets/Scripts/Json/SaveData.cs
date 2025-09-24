@@ -28,6 +28,7 @@ public class SaveDataV1 : SaveData
     public int defUpgradeCount;
     public int speedUpgradeCount;
 
+    public EquipItemData[] equipItemList = new EquipItemData[4];
     public List<EquipItemData> inventoryItemList = new List<EquipItemData>();
 
     public SaveDataV1()

@@ -19,6 +19,9 @@ public class ItemInfoWindow : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI statValueText;
 
+    public Button equipButton;
+    public Button unEquipButton;
+
     private ItemSlot currentSlot;
 
     public void SetWindowUI(ItemSlot slot)
@@ -32,10 +35,28 @@ public class ItemInfoWindow : MonoBehaviour
         itemDescText.text = data.EQ_EXPLAIN;
         statTypeText.text = data.BASE_STAT.ToString();
         statValueText.text = data.BASE_STAT_VALUE.ToString();
+
+        if (slot.isEquipped)
+        {
+            equipButton.gameObject.SetActive(false);
+            unEquipButton.gameObject.SetActive(true);
+        }
+        else
+        {
+            equipButton.gameObject.SetActive(true);
+            unEquipButton.gameObject.SetActive(false);
+        }
     }
 
     public void EquipCurrentItem()
     {
-        //Inventory.Instance.EquipItem()
+        int index = (int)currentSlot.itemData.EQUIPMENT_TYPE - 1;
+        Inventory.Instance.EquipItem(currentSlot, index);
+    }
+
+    public void UnEquipCurrentItem()
+    {        
+        int index = (int)currentSlot.itemData.EQUIPMENT_TYPE - 1;
+        Inventory.Instance.UnEquipItem(index);
     }
 }

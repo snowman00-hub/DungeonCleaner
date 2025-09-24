@@ -15,8 +15,8 @@ public enum EquipmentType
 {
     Weapon = 1,
     Top = 2,
-    Shoes = 3,
-    Bottom = 4,
+    Bottom = 3,
+    Shoes = 4,
 }
 
 public enum EquipStatType
@@ -34,7 +34,7 @@ public class EquipItemData
     public int REINFORCE_LEVEL { get; set; }
     public EquipmentType EQUIPMENT_TYPE { get; set; }
     public EquipStatType BASE_STAT { get; set; }
-    public float BASE_STAT_VALUE { get; set; }
+    public int BASE_STAT_VALUE { get; set; }
     public string EQ_EXPLAIN { get; set; }
     public string EQ_IMAGE_FILE_NAME { get; set; }
     public int REINFORCE_FEE { get; set; }
