@@ -2105,17 +2105,17 @@ MonoBehaviour:
   currentImage: {fileID: 16797052}
   currentStageName: {fileID: 703517370}
   stageSprites:
-  - {fileID: 21300000, guid: 3f63aba4c970e4b7f81330bda470bfca, type: 3}
-  - {fileID: 21300000, guid: 7ac9410045bb94a5da87a3e49cf86445, type: 3}
-  - {fileID: 21300000, guid: c39985c70ed814b0a9e895a7ea67bb9b, type: 3}
-  - {fileID: 21300000, guid: 0734201928d9d4557b89b83dd3fa9a1e, type: 3}
-  - {fileID: 21300000, guid: dc96fc3e992424301b0445355eaeb401, type: 3}
+  - {fileID: 21300000, guid: d581c4e69d2747c4589fe6da734ee68c, type: 3}
+  - {fileID: 21300000, guid: 822bff9daa48fc44dab6037689e126aa, type: 3}
+  - {fileID: 21300000, guid: eafe2de4c1594ba40a2635702a15cb75, type: 3}
+  - {fileID: 21300000, guid: c64792b63fd46f14b93cabc43fcbc22e, type: 3}
+  - {fileID: 21300000, guid: 446609257b6b453448eadf0f120ad1b7, type: 3}
   stageName:
-  - "1. \uB4E4\uD310"
-  - "2. \uD559\uAD50"
-  - "3. \uACF5\uC7A5"
-  - "4. \uB0A8\uADF9"
-  - "5. \uD559\uC6D0"
+  - "1. \uB300\uC9C0"
+  - "2. \uC124\uC6D0"
+  - "3. \uC6A9\uC554\uC9C0\uB300"
+  - "4. \uB4E4\uD310"
+  - "5. \uC0AC\uB9C9"
   myMoneytext: {fileID: 1962850472}
 --- !u!4 &469584285
 Transform:
