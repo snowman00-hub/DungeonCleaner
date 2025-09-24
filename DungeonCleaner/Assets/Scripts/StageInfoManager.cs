@@ -40,6 +40,7 @@ public class StageInfoManager : MonoBehaviour
     public float expUpRate = 1.2f;
 
     private bool IsExistWall = false;
+    private float defaultTimeScale = 1f;
 
     public int CurrentSeconds
     {
@@ -154,6 +155,18 @@ public class StageInfoManager : MonoBehaviour
         {
             gameTimer = Mathf.Clamp(gameTimer - 10f, 0, 600);
         }
+        if (Input.GetKeyDown(KeyCode.Keypad1))
+        {
+            SetTimeScale(1f);
+        }
+        if (Input.GetKeyDown(KeyCode.Keypad2))
+        {
+            SetTimeScale(2f);
+        }
+        if (Input.GetKeyDown(KeyCode.Keypad3))
+        {
+            SetTimeScale(3f);
+        }
         if (Input.GetKeyDown(KeyCode.Q))
         {
             Level++;
@@ -186,7 +199,7 @@ public class StageInfoManager : MonoBehaviour
     public void CloseSkillChoice()
     {
         skillChoiceWindow.SetActive(false);
-        Time.timeScale = 1f;
+        Time.timeScale = defaultTimeScale;
     }
 
     public void Defeat()
@@ -226,7 +239,7 @@ public class StageInfoManager : MonoBehaviour
 
     public void CloseStore()
     {
-        Time.timeScale = 1f;
+        Time.timeScale = defaultTimeScale;
         storeWindow.SetActive(false);
     }
 
@@ -238,7 +251,7 @@ public class StageInfoManager : MonoBehaviour
 
     public void ClosePauseWindow()
     {
-        Time.timeScale = 1f;
+        Time.timeScale = defaultTimeScale;
         pauseWindow.SetActive(false);
     }
 
@@ -276,6 +289,11 @@ public class StageInfoManager : MonoBehaviour
     public void MeetBoss()
     {
         gameTimer = 595f;
+    }
+    public void SetTimeScale(float f)
+    {
+        Time.timeScale = f;
+        defaultTimeScale = f;
     }
     //        
 }
