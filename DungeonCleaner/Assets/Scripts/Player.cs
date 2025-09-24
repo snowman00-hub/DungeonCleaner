@@ -87,19 +87,12 @@ public class Player : LivingEntity
             lastHurtTime = Time.time;
             OnDamage(enemy.enemyData.damage, other.ClosestPoint(transform.position), (other.transform.position - transform.position).normalized);
         }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag(Tag.EnemyAttack))
-        {
-            var projectile = other.GetComponent<EnemyProjectile>();
-            projectile.OnUsed?.Invoke();
-            OnDamage(projectile.damage, other.ClosestPoint(transform.position), (other.transform.position - transform.position).normalized);
-        }
 
         if (other.CompareTag(Tag.Exp) || other.CompareTag(Tag.Item))
         {
+            if (Time.timeScale == 0f)
+                return;
+
             var pickup = other.GetComponent<PickUp>();
             pickup.TakeEffect();
 
@@ -131,6 +124,16 @@ public class Player : LivingEntity
                 case PickUpType.invinciblePotion:
                     break;
             }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag(Tag.EnemyAttack))
+        {
+            var projectile = other.GetComponent<EnemyProjectile>();
+            projectile.OnUsed?.Invoke();
+            OnDamage(projectile.damage, other.ClosestPoint(transform.position), (other.transform.position - transform.position).normalized);
         }
     }
 

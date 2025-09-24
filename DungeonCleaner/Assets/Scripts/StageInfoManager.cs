@@ -156,29 +156,9 @@ public class StageInfoManager : MonoBehaviour
         {
             gameTimer = Mathf.Clamp(gameTimer - 10f, 0, 600);
         }
-        if (Input.GetKeyDown(KeyCode.Keypad1))
-        {
-            SetTimeScale(1f);
-        }
-        if (Input.GetKeyDown(KeyCode.Keypad2))
-        {
-            SetTimeScale(2f);
-        }
-        if (Input.GetKeyDown(KeyCode.Keypad3))
-        {
-            SetTimeScale(3f);
-        }
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            Level++;
-        }
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            stageInfoUI.StartWarningMessage();
-        }
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            stageInfoUI.StartBombFlashEffect();
+            LevelUp();
         }
 #endif
 
@@ -284,6 +264,9 @@ public class StageInfoManager : MonoBehaviour
     }
     public void LevelUp()
     {
+        if (Time.timeScale == 0f)
+            return;
+
         Level++;
     }
     public void RestartScene()

@@ -153,7 +153,7 @@ public class Enemy : LivingEntity
         var dir = (transform.position - target.position).normalized;
         float timer = Time.time;
         float speed = knockBackDistance / knockBackTime;
-        while(timer + knockBackTime > Time.time  && !IsDead)
+        while(timer + knockBackTime > Time.time)
         {
             transform.position += dir * speed * Time.deltaTime;
             yield return null;
