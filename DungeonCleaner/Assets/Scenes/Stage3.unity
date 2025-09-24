@@ -3178,7 +3178,7 @@ MonoBehaviour:
   ItemBox: {fileID: 5459802233332470536, guid: b8e902f32b424504a8947501ff23fd07, type: 3}
   generateInterval: 5
   minGenerateRadius: 40
-  maxGenerateRadius: 55
+  maxGenerateRadius: 60
 --- !u!1 &247453006
 GameObject:
   m_ObjectHideFlags: 0

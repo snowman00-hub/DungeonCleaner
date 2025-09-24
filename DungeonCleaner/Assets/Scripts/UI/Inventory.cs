@@ -21,6 +21,8 @@ public class Inventory : MonoBehaviour
 
     private SortType sortType;
 
+    public ItemInfoWindow itemInfoWindow;
+
     private void Awake()
     {
         Instance = this;
@@ -60,23 +62,18 @@ public class Inventory : MonoBehaviour
         var itemSlot = Instantiate(itemSlotPrefab, transform);
         itemSlot.itemData = data;
         itemSlot.UpdateItemSlotUI();
+        itemSlot.button.onClick.AddListener(() =>
+        {
+            itemInfoWindow.gameObject.SetActive(true);
+            itemInfoWindow.SetWindowUI(itemSlot);
+        });
 
         inventoryItemSlots.Add(itemSlot);
     }
 
-    public void EquipItem(ItemSlot slot)
+    public void EquipItem(ItemSlot slot, int index)
     {
-        int equipIndex = (int)slot.itemData.EQUIPMENT_TYPE - 1;
 
-        var currentSlotData = currentEquipmentSlots[equipIndex].itemData;
-        currentEquipmentSlots[equipIndex].itemData = slot.itemData;
-        currentEquipmentSlots[equipIndex].gameObject.SetActive(true);
-        currentEquipmentSlots[equipIndex].UpdateItemSlotUI();
-
-        if(currentSlotData != null)
-        {
-
-        }
     }
 
     public void SortItemSlotsByGrade()

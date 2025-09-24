@@ -64,6 +64,7 @@ public class StageInfoManager : MonoBehaviour
 
             if (currentSeconds == 600 && !IsExistWall)
             {
+                DisappearEnemys();
                 IsExistWall = true;
                 Instantiate(BossWall, Player.Instance.transform.position, Quaternion.identity);
                 bossHpBar.SetActive(true);
@@ -265,6 +266,15 @@ public class StageInfoManager : MonoBehaviour
     {
         SaveLoadManager.Data.gold += money;
         SaveLoadManager.Save();
+    }
+
+    private void DisappearEnemys()
+    {
+        var enemys = GameObject.FindGameObjectsWithTag(Tag.Enemy);
+        foreach (var enemy in enemys)
+        {
+            enemy.SetActive(false);
+        }
     }
 
     // 빌드 테스트 코드

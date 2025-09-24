@@ -19,6 +19,13 @@ public enum EquipmentType
     Bottom = 4,
 }
 
+public enum EquipStatType
+{
+    Atk = 1,
+    HP = 2,
+    Def = 3,
+}
+
 public class EquipItemData
 {
     public string EQUIPMENT_ID { get; set; }
@@ -26,11 +33,11 @@ public class EquipItemData
     public EquipItemRank EQUIPMENT_GRADE { get; set; }
     public int REINFORCE_LEVEL { get; set; }
     public EquipmentType EQUIPMENT_TYPE { get; set; }
-    public int BASE_STAT { get; set; }
+    public EquipStatType BASE_STAT { get; set; }
     public float BASE_STAT_VALUE { get; set; }
     public string EQ_EXPLAIN { get; set; }
     public string EQ_IMAGE_FILE_NAME { get; set; }
-    public int REINFORCE_FEE { get; set;}
+    public int REINFORCE_FEE { get; set; }
 }
 
 public class EquipItemTable : DataTable
@@ -65,8 +72,8 @@ public class EquipItemTable : DataTable
     public EquipItemData GetRandomItem(EquipItemRank rank)
     {
         var rankList = dictionary.Values.Where(x => x.EQUIPMENT_GRADE == rank).ToList();
-        var list = rankList.Where(x=> x.REINFORCE_LEVEL == 0).ToList();
-        
+        var list = rankList.Where(x => x.REINFORCE_LEVEL == 0).ToList();
+
         var rand = Random.Range(0, list.Count);
         return list[rand];
     }

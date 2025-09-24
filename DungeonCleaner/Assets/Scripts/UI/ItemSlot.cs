@@ -13,9 +13,12 @@ public class ItemSlot : MonoBehaviour
     public Image background;
     public Image itemImage;
     public TextMeshProUGUI reinforceCountText;
+    public Button button;
 
     [HideInInspector]
     public EquipItemData itemData;
+    [HideInInspector]
+    public bool isEquipped = false;
 
     public void UpdateItemSlotUI()
     {
