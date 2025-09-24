@@ -24,6 +24,9 @@ public class Inventory : MonoBehaviour
 
     public ItemInfoWindow itemInfoWindow;
 
+    public AudioSource audioSource;
+    public AudioClip clickClip;
+
     private void Awake()
     {
         Instance = this;
@@ -37,6 +40,7 @@ public class Inventory : MonoBehaviour
             {
                 itemInfoWindow.gameObject.SetActive(true);
                 itemInfoWindow.SetWindowUI(slot);
+                audioSource.PlayOneShot(clickClip);
             });
         }
     }
@@ -92,6 +96,7 @@ public class Inventory : MonoBehaviour
         {
             itemInfoWindow.gameObject.SetActive(true);
             itemInfoWindow.SetWindowUI(itemSlot);
+            audioSource.PlayOneShot(clickClip);
         });
 
         inventoryItemSlots.Add(itemSlot);

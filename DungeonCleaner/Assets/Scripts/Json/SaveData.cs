@@ -23,6 +23,7 @@ public class SaveDataV1 : SaveData
     public float pickUpRadius;
 
     public int gold;
+    public int jewel;
     public int atkUpgradeCount;
     public int hpUpgradeCount;
     public int defUpgradeCount;

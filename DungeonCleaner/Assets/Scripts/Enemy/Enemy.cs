@@ -137,5 +137,27 @@ public class Enemy : LivingEntity
     {
         animator.SetTrigger(hashAttack);
     }
+
+    private float knockBackTime = 0.3f;
+
+    public void KnockBack(float knockBackDistance)
+    {
+        if (enemyData is BossEnemyData)
+            return;
+
+        StartCoroutine(CoKnockBack(knockBackDistance));
+    }
+
+    private IEnumerator CoKnockBack(float knockBackDistance)
+    {
+        var dir = (transform.position - target.position).normalized;
+        float timer = Time.time;
+        float speed = knockBackDistance / knockBackTime;
+        while(timer + knockBackTime > Time.time  && !IsDead)
+        {
+            transform.position += dir * speed * Time.deltaTime;
+            yield return null;
+        }
+    }
 }
 

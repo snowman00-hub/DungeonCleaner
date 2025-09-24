@@ -1,8 +1,9 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SkillBroomSlash : ActiveSkill
 {
     public Transform cube;
+
     private float currentAngle;
     private BoxCollider boxCollider;
     private bool isSoundOn;
@@ -40,6 +41,7 @@ public class SkillBroomSlash : ActiveSkill
             var enemy = other.GetComponent<Enemy>();
             int finalDamage = Mathf.FloorToInt((skillData.damage + Player.Instance.data.atk) * Player.Instance.data.finalAttackMultiplier);
             enemy.OnDamage(finalDamage, enemy.transform.position, enemy.transform.forward);
+            enemy.KnockBack(2.5f);
         }
     }
 

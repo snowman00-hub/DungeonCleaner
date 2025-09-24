@@ -17,7 +17,9 @@ public class MainHomeManager : MonoBehaviour
     private int selectStageIndex = 1;
 
     public TextMeshProUGUI myMoneytext;
+    public TextMeshProUGUI myJewelText;
     private int myMoney;
+    private int myJewel;
 
     public int MyMoney
     {
@@ -26,6 +28,16 @@ public class MainHomeManager : MonoBehaviour
         {
             myMoney = value;
             myMoneytext.text = myMoney.ToString();
+        }
+    }
+
+    public int MyJewel
+    {
+        get { return myJewel; }
+        set
+        {
+            myJewel = value;
+            myJewelText.text = myJewel.ToString();
         }
     }
 
@@ -44,7 +56,15 @@ public class MainHomeManager : MonoBehaviour
         else
         {
             MyMoney = SaveLoadManager.Data.gold;
+            MyJewel = SaveLoadManager.Data.jewel;
         }
+    }
+
+    private void OnDisable()
+    {
+        SaveLoadManager.Data.gold = MyMoney;
+        SaveLoadManager.Data.jewel = MyJewel;
+        SaveLoadManager.Save();
     }
 
     public void UpdateStageInfo()
@@ -82,9 +102,15 @@ public class MainHomeManager : MonoBehaviour
         SaveLoadManager.Data = new SaveDataV1();
         SaveLoadManager.Save();
         MyMoney = SaveLoadManager.Data.gold;
+        MyJewel = SaveLoadManager.Data.jewel;
     }
     public void GetGold()
     {
         MyMoney += 5000;
     }
+    public void GetJewel()
+    {
+        MyJewel += 300;
+    }
+    //
 }
