@@ -23,6 +23,7 @@ public class Inventory : MonoBehaviour
     private SortType sortType;
 
     public ItemInfoWindow itemInfoWindow;
+    public ItemReinforceWindow itemReinforceWindow;
 
     public AudioSource audioSource;
     public AudioClip clickClip;
@@ -85,6 +86,9 @@ public class Inventory : MonoBehaviour
         }
         inventoryItemSlots.Clear();
         SaveLoadManager.Save();
+
+        itemInfoWindow.gameObject.SetActive(false);
+        itemReinforceWindow.gameObject.SetActive(false);
     }
 
     public void MakeItemSlot(EquipItemData data)
@@ -94,8 +98,15 @@ public class Inventory : MonoBehaviour
         itemSlot.UpdateItemSlotUI();
         itemSlot.button.onClick.AddListener(() =>
         {
-            itemInfoWindow.gameObject.SetActive(true);
-            itemInfoWindow.SetWindowUI(itemSlot);
+            if (itemReinforceWindow.gameObject.activeSelf)
+            {
+                itemReinforceWindow.DisPlayItemData(itemSlot);
+            }
+            else
+            {
+                itemInfoWindow.gameObject.SetActive(true);
+                itemInfoWindow.SetWindowUI(itemSlot);
+            }
             audioSource.PlayOneShot(clickClip);
         });
 
