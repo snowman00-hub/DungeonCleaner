@@ -102,9 +102,11 @@ public class GachaManager : MonoBehaviour
         isPicking = true;
         resultWindow.gameObject.SetActive(false);
         chestEffect.StartEffect();
-        audioSource.PlayOneShot(chestShakeClip);
+        audioSource.clip = chestShakeClip;
+        audioSource.Play();
         yield return new WaitForSeconds(chestEffect.duration);
         StartCoroutine(CoFlash());
+        audioSource.Stop();
         audioSource.PlayOneShot(chestOpenClip);
         yield return new WaitForSeconds(flashTime);
         resultWindow.DisPlayResult(itemList);

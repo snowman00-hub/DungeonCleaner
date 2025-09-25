@@ -15,6 +15,7 @@ public class ItemBox : MonoBehaviour
     {
         int rand = UnityEngine.Random.Range(4, 10);
         PickUpManager.Instance.CreatePickUp((PickUpType)rand, transform.position);
+        AudioManager.Instance.BoxDestroy(transform.position);
         OnDestroy?.Invoke();
     }
 

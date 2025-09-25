@@ -24,6 +24,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip gameOverClip;
     public AudioClip merchantClip;
     public AudioClip victoryClip;
+    public AudioClip boxDestroy;
 
     private void Awake()
     {
@@ -90,6 +91,11 @@ public class AudioManager : MonoBehaviour
     public void Bomb(Vector3 pos)
     {
         PlaySound(pos, bombClip);
+    }
+
+    public void BoxDestroy(Vector3 pos)
+    {
+        PlaySound(pos, boxDestroy);
     }
 
     public void Magnet(Vector3 pos)

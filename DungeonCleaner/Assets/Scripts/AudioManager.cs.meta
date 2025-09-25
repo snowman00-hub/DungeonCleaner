@@ -1,2 +1,29 @@
 fileFormatVersion: 2
 guid: 3e8799b32ff35634d9de75324e67fa77
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - audioSourcePrefab: {instanceID: 0}
+  - enemyHurtClip: {instanceID: 0}
+  - expGetClip: {instanceID: 0}
+  - goldGetClip: {instanceID: 0}
+  - healClip: {instanceID: 0}
+  - bombClip: {instanceID: 0}
+  - levelUpClip: {instanceID: 0}
+  - buttonClickClip: {instanceID: 0}
+  - bubbleShieldUpgradeClip: {instanceID: 0}
+  - magnetClip: {instanceID: 0}
+  - bossWarningClip: {instanceID: 0}
+  - broomSlashClip: {instanceID: 0}
+  - clapClip: {instanceID: 0}
+  - finalBossWarningClip: {instanceID: 0}
+  - gameOverClip: {instanceID: 0}
+  - merchantClip: {instanceID: 0}
+  - victoryClip: {instanceID: 0}
+  - boxDestroy: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

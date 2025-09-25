@@ -23760,6 +23760,7 @@ MonoBehaviour:
   gameOverClip: {fileID: 8300000, guid: 8fa7f7969515eb14bb857fc64c12afb9, type: 3}
   merchantClip: {fileID: 8300000, guid: ee8e4d60db917e343ac4a6db8c51992f, type: 3}
   victoryClip: {fileID: 8300000, guid: 8e3bf0774d222b64288520f4de6e20f8, type: 3}
+  boxDestroy: {fileID: 8300000, guid: 652bea6cb9b1e3647b9cb263051868f9, type: 3}
 --- !u!4 &1489952979
 Transform:
   m_ObjectHideFlags: 0
