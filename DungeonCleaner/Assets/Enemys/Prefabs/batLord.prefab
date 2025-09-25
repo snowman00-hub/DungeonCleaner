@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3432332710187751898}
   - component: {fileID: 9183783490951861655}
-  - component: {fileID: 6851787839953309069}
+  - component: {fileID: 6641895700022849980}
   m_Layer: 3
   m_Name: batLord
   m_TagString: Enemy
@@ -57,7 +57,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &6851787839953309069
+--- !u!114 &6641895700022849980
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -66,18 +66,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 6764669553277772848}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec00f679e7f952243a5b62be91a495a5, type: 3}
+  m_Script: {fileID: 11500000, guid: 3df0461a524f9ef4d8f4577ea3ee403f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 100
   enemyData: {fileID: 11400000, guid: 87552ff7ec420994e81b8377c7f33a9c, type: 2}
   avoidWeight: 0.5
-  atkType: 2
+  atkType: 1
   enemyName: 15
   enemyMask:
     serializedVersion: 2
     m_Bits: 8
-  projectilename: 0
 --- !u!1001 &6190461090969344323
 PrefabInstance:
   m_ObjectHideFlags: 0
