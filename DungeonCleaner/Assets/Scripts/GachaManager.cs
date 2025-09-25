@@ -1,10 +1,16 @@
-﻿using NUnit.Framework;
-using System.Collections;
+﻿using System.Collections;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GachaManager : MonoBehaviour
 {
+    public Color DRankColor;
+    public Color CRankColor;
+    public Color BRankColor;
+    public Color ARankColor;
+    public Color SRankColor;
+
     public GachaChestEffect chestEffect;
     public GachaResultWindow resultWindow;
 
@@ -12,6 +18,22 @@ public class GachaManager : MonoBehaviour
     public float flashTime = 0.5f;
 
     private bool isPicking = false;
+
+    public AudioClip chestShakeClip;
+    public AudioClip chestOpenClip;
+    private AudioSource audioSource;
+
+
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
+    private void OnEnable()
+    {
+        isPicking = false;
+        resultWindow.gameObject.SetActive(false);
+    }
 
     public void OneDrawItem()
     {
@@ -22,6 +44,7 @@ public class GachaManager : MonoBehaviour
         var data = DataTableManger.EquipItemTable.GetRandomItemWithChance();
         SaveLoadManager.Data.inventoryItemList.Add(data);
         list[0] = data;
+        SetFlashColor(data.EQUIPMENT_GRADE);
 
         MainHomeManager.Instance.MyJewel -= 1;
         SaveLoadManager.Data.jewel = MainHomeManager.Instance.MyJewel;
@@ -38,8 +61,20 @@ public class GachaManager : MonoBehaviour
         var list = new EquipItemData[10];
         for (int i = 0; i < 10; i++)
         {
-            var data = DataTableManger.EquipItemTable.GetRandomItemWithChance();
-            SaveLoadManager.Data.inventoryItemList.Add(data);
+            list[i] = DataTableManger.EquipItemTable.GetRandomItemWithChance();
+        }
+
+        var highestRank = list.Max(x => x.EQUIPMENT_GRADE);
+        if(highestRank < EquipItemRank.B)
+        {
+            list[list.Length - 1] = DataTableManger.EquipItemTable.GetRandomItem(EquipItemRank.B);
+            highestRank = EquipItemRank.B;
+        }
+        SetFlashColor(highestRank);
+
+        for(int i = 0; i < list.Length; i++)
+        {
+            SaveLoadManager.Data.inventoryItemList.Add(list[i]);
         }
 
         MainHomeManager.Instance.MyJewel -= 8;
@@ -49,16 +84,32 @@ public class GachaManager : MonoBehaviour
         StartCoroutine(CoGachaEffect(list));
     }
 
+    private void SetFlashColor(EquipItemRank rank)
+    {
+        flashImage.color = rank switch
+        {
+            EquipItemRank.D => DRankColor,
+            EquipItemRank.C => CRankColor,
+            EquipItemRank.B => BRankColor,
+            EquipItemRank.A => ARankColor,
+            EquipItemRank.S => SRankColor,
+            _ => DRankColor,
+        };
+    }
+
     private IEnumerator CoGachaEffect(EquipItemData[] itemList)
     {
         isPicking = true;
+        resultWindow.gameObject.SetActive(false);
         chestEffect.StartEffect();
+        audioSource.PlayOneShot(chestShakeClip);
         yield return new WaitForSeconds(chestEffect.duration);
         StartCoroutine(CoFlash());
+        audioSource.PlayOneShot(chestOpenClip);
         yield return new WaitForSeconds(flashTime);
         resultWindow.DisPlayResult(itemList);
-        yield return new WaitForSeconds(resultWindow.appearInterval * itemList.Length);
         isPicking = false;
+        yield return new WaitForSeconds(resultWindow.appearInterval * itemList.Length);
     }
 
     private IEnumerator CoFlash()
