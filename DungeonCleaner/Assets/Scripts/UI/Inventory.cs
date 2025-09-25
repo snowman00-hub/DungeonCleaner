@@ -224,7 +224,7 @@ public class Inventory : MonoBehaviour
         sortType= SortType.Level;
 
         var children = transform.Cast<Transform>()
-                     .OrderBy(t => t.GetComponent<ItemSlot>().itemData.REINFORCE_LEVEL)
+                     .OrderByDescending(t => t.GetComponent<ItemSlot>().itemData.REINFORCE_LEVEL)
                      .ToList();
 
         for (int i = 0; i < children.Count; i++)

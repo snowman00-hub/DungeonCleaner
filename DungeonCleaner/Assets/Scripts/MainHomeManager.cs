@@ -106,7 +106,7 @@ public class MainHomeManager : MonoBehaviour
     }
     public void GetGold()
     {
-        MyMoney += 5000;
+        MyMoney += 50000;
     }
     public void GetJewel()
     {
