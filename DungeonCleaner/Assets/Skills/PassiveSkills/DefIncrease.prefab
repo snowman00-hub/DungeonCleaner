@@ -44,5 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc46fe8370dfd534085f95a58533c2b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 5c8273d58797e48e68f48d7fc724979b, type: 3}
+  sprite: {fileID: 21300000, guid: ca36970b1765a934887288f2f0a5d61f, type: 3}
   passiveSkillName: 1
