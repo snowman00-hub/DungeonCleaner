@@ -5,12 +5,12 @@ using UnityEngine;
 public class ItemSynthesisWindow : MonoBehaviour
 {
     public ItemSlot resultSlot;
-    public ItemSlot ingredientSlotLeft;
+    public ItemSlot ingredientSlotLeft; // itemData만 받기
     public ItemSlot ingredientSlotRight;
 
     public TextMeshProUGUI DescText;
 
-    private ItemSlot leftTemp;
+    private ItemSlot leftTemp; // slot 참조 받긴
     private ItemSlot rightTemp;
     private EquipSynthesisData synthesisData;
 
@@ -30,13 +30,15 @@ public class ItemSynthesisWindow : MonoBehaviour
 
         resultSlot.itemData = null;
         ingredientSlotLeft.itemData = null;
-        ingredientSlotRight.itemData = null;        
+        ingredientSlotRight.itemData = null;
+
+        leftTemp = rightTemp = null;
     }
 
     public void SelectSlot(ItemSlot slot)
     {
         if (slot.itemData.EQUIPMENT_GRADE == EquipItemRank.S)
-            return;
+            return;   
 
         var baseId = new string(slot.itemData.EQUIPMENT_ID.Where(c => !char.IsDigit(c)).ToArray());
         synthesisData = DataTableManger.EquipSynthesisTable.Get(baseId);
@@ -57,14 +59,20 @@ public class ItemSynthesisWindow : MonoBehaviour
             $"MAX {resultSlot.itemData.BASE_STAT.ToString().ToUpper()}\n" +
             $"{DataTableManger.EquipItemTable.Get(baseId + "5").BASE_STAT_VALUE} -> {DataTableManger.EquipItemTable.Get(synthesisData.SYN_RESULT + "5").BASE_STAT_VALUE}\n\n" +
             $"{synthesisData.FAIL_REWARD}골드";
+
+        var resultFader = resultSlot.gameObject.GetComponent<UIFader>();
+        resultFader.StartFadeInOut();
+        var rightFader = ingredientSlotRight.gameObject.GetComponent<UIFader>();
+        rightFader.StartFadeInOut();
     }
 
     public void Synthesis()
     {
         float chance = synthesisData.SUC_PER;
         int price = synthesisData.SPENDGOLD;
+
         var rand = Random.Range(0, 100);
-        if(rand < chance)
+        if (rand < chance)
         {
             // 성공
         }
@@ -72,6 +80,7 @@ public class ItemSynthesisWindow : MonoBehaviour
         {
             // 실패
         }
+
         Inventory.Instance.RemoveItemSlot(leftTemp);
         Inventory.Instance.RemoveItemSlot(rightTemp);
         audioSource.PlayOneShot(synthesisClip);

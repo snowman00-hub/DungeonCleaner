@@ -89,6 +89,7 @@ public class Inventory : MonoBehaviour
 
         itemInfoWindow.gameObject.SetActive(false);
         itemReinforceWindow.gameObject.SetActive(false);
+        itemSynthesisWindow.gameObject.SetActive(false);
     }
 
     public void MakeItemSlot(EquipItemData data)
