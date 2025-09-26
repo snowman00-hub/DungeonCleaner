@@ -65,7 +65,6 @@ public class Enemy : LivingEntity
 
     protected void UpdateMove()
     {
-        // target과 y좌표는 같다고 가정
         Vector3 dir = (target.position - transform.position).normalized;
 
         if (dir.magnitude > 0.1f)

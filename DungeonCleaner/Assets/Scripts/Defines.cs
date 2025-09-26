@@ -38,6 +38,8 @@ public static class DataTableIds
     public static readonly string Item = "ItemTable";
 
     public static readonly string EquipItemTableId = "equipItemTable";
+
+    public static readonly string EquipSynthesisTableId = "equipSynthesisTable";
 }
 
 public static class Variables

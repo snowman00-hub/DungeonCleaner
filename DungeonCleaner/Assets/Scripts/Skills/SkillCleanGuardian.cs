@@ -32,7 +32,7 @@ public class SkillCleanGuardian : ActiveSkill
             var enemy = other.GetComponent<Enemy>();
             int finalDamage = Mathf.FloorToInt((skillData.damage + Player.Instance.data.atk) * Player.Instance.data.finalAttackMultiplier);
             enemy.OnDamage(finalDamage, enemy.transform.position, transform.forward);
-            enemy.KnockBack(1.5f);
+            enemy.KnockBack(2.5f);
         }
     }
 }

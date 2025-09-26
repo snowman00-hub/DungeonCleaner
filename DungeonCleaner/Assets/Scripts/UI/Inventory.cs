@@ -20,10 +20,11 @@ public class Inventory : MonoBehaviour
     private List<EquipItemData> inventoryItemList;
     private List<ItemSlot> inventoryItemSlots = new List<ItemSlot>();
 
-    private SortType sortType;
+    private SortType sortType = SortType.Grade;
 
     public ItemInfoWindow itemInfoWindow;
     public ItemReinforceWindow itemReinforceWindow;
+    public ItemSynthesisWindow itemSynthesisWindow;
 
     public AudioSource audioSource;
     public AudioClip clickClip;
@@ -66,7 +67,6 @@ public class Inventory : MonoBehaviour
             InitialEquip(equipItemList[i], i);
         }
 
-        sortType = SortType.Grade;
         SortBySortType();
     }
 
@@ -102,12 +102,16 @@ public class Inventory : MonoBehaviour
             {
                 itemReinforceWindow.DisPlayItemData(itemSlot);
             }
+            else if(itemSynthesisWindow.gameObject.activeSelf)
+            {
+                itemSynthesisWindow.SelectSlot(itemSlot);
+            }
             else
             {
                 itemInfoWindow.gameObject.SetActive(true);
                 itemInfoWindow.SetWindowUI(itemSlot);
             }
-            audioSource.PlayOneShot(clickClip);
+                audioSource.PlayOneShot(clickClip);
         });
 
         inventoryItemSlots.Add(itemSlot);
@@ -247,6 +251,12 @@ public class Inventory : MonoBehaviour
                 SortItemSlotsByType();
                 break;
         }
+    }
+
+    public void RemoveItemSlot(ItemSlot slot)
+    {
+        inventoryItemSlots.Remove(slot);
+        SortBySortType();
     }
 
     // 테스트 코드

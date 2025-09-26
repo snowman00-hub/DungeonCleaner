@@ -56,6 +56,12 @@ public static class DataTableManger
             table.Load(DataTableIds.EquipItemTableId);
             tables.Add(DataTableIds.EquipItemTableId, table);
         }
+
+        {
+            var table = new EquipSynthesisTable();
+            table.Load(DataTableIds.EquipSynthesisTableId);
+            tables.Add(DataTableIds.EquipSynthesisTableId, table);
+        }
     }
 
     public static StringTable StringTable
@@ -111,6 +117,14 @@ public static class DataTableManger
         get
         {
             return Get<EquipItemTable>(DataTableIds.EquipItemTableId);
+        }
+    }
+
+    public static EquipSynthesisTable EquipSynthesisTable
+    {
+        get
+        {
+            return Get<EquipSynthesisTable>(DataTableIds.EquipSynthesisTableId);
         }
     }
 
