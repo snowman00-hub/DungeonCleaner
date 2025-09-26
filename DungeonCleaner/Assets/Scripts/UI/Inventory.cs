@@ -257,6 +257,7 @@ public class Inventory : MonoBehaviour
     public void RemoveItemSlot(ItemSlot slot)
     {
         inventoryItemSlots.Remove(slot);
+        Destroy(slot.gameObject);
         SortBySortType();
     }
 

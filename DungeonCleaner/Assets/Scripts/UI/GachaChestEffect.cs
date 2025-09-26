@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,13 +16,18 @@ public class GachaChestEffect : MonoBehaviour
         image = GetComponent<Image>();
     }
 
+    private void OnEnable()
+    {
+        image.sprite = closeSprite;
+    }
+
     public void StartEffect()
     {
         StartCoroutine(CoEffect());
     }
 
-    public float duration = 0.7f;    // Èçµé¸®´Â ½Ã°£
-    public float strength = 25f;     // Èçµé¸®´Â °­µµ(ÇÈ¼¿ ´ÜÀ§)
+    public float duration = 0.7f;    // í”ë“¤ë¦¬ëŠ” ì‹œê°„
+    public float strength = 25f;     // í”ë“¤ë¦¬ëŠ” ê°•ë„(í”½ì…€ ë‹¨ìœ„)
 
     private IEnumerator CoEffect()
     {
@@ -44,7 +49,7 @@ public class GachaChestEffect : MonoBehaviour
         rect.anchoredPosition = originalPos;
         image.sprite = openSprite;
 
-        // Å×½ºÆ®
+        // í…ŒìŠ¤íŠ¸
         yield return new WaitForSeconds(1f);
         image.sprite = closeSprite;
     }

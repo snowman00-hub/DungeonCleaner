@@ -1,4 +1,4 @@
-using System.Linq;
+﻿using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -29,6 +29,9 @@ public class ItemReinforceWindow : MonoBehaviour
 
     public void ReinforceItem()
     {
+        if (currentSlot == null)
+            return;
+        
         if (MainHomeManager.Instance.MyMoney < currentSlot.itemData.REINFORCE_FEE)
             return;
 

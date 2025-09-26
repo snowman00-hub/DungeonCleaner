@@ -1,4 +1,4 @@
-using System.Collections;
+Ôªøusing System.Collections;
 using UnityEngine;
 
 public class UIFader : MonoBehaviour
@@ -7,6 +7,7 @@ public class UIFader : MonoBehaviour
     private CanvasGroup canvasGroup;
 
     private Coroutine fadeCoroutine;
+    private Coroutine singleFadeCoroutine;
 
     private void Awake()
     {
@@ -25,18 +26,26 @@ public class UIFader : MonoBehaviour
         {
             StopCoroutine(fadeCoroutine);
             fadeCoroutine = null;
-            canvasGroup.alpha = 1.0f;
         }
+
+        if (singleFadeCoroutine != null)
+        {
+            StopCoroutine(singleFadeCoroutine);
+            singleFadeCoroutine = null;
+        }
+
+        canvasGroup.alpha = 1.0f;
     }
 
     private IEnumerator FadeLoop(float duration)
     {
         while (true)
         {
-            // ∆‰¿ÃµÂ æ∆øÙ
-            yield return StartCoroutine(Fade(1, 0, duration));
-            // ∆‰¿ÃµÂ ¿Œ
-            yield return StartCoroutine(Fade(0, 1, duration));
+            singleFadeCoroutine = StartCoroutine(Fade(1, 0, duration));
+            yield return singleFadeCoroutine;
+
+            singleFadeCoroutine = StartCoroutine(Fade(0, 1, duration));
+            yield return singleFadeCoroutine;
         }
     }
 
@@ -52,4 +61,3 @@ public class UIFader : MonoBehaviour
         canvasGroup.alpha = to;
     }
 }
-

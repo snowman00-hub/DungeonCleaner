@@ -28,6 +28,7 @@ public class MainHomeManager : MonoBehaviour
         {
             myMoney = value;
             myMoneytext.text = myMoney.ToString();
+            SaveLoadManager.Data.gold = myMoney;
         }
     }
 

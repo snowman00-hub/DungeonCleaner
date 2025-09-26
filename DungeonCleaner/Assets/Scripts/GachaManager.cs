@@ -31,6 +31,12 @@ public class GachaManager : MonoBehaviour
 
     private void OnEnable()
     {
+        audioSource.Stop();
+        Color c = flashImage.color;
+        c.a = 0;
+        flashImage.color = c;
+        StopAllCoroutines();
+
         isPicking = false;
         resultWindow.gameObject.SetActive(false);
     }
