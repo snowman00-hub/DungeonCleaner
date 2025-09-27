@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System.Collections;
+using System.Diagnostics;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -10,12 +12,15 @@ public class ItemSynthesisWindow : MonoBehaviour
 
     public TextMeshProUGUI DescText;
 
+    public ItemSynthesisEffect effectWindow;
+
     private ItemSlot leftTemp; // slot 참조 받기
     private ItemSlot rightTemp;
     private EquipSynthesisData synthesisData;
 
     public AudioClip synthesisClip;
-    public AudioClip synthesisResultClip;
+    public AudioClip synthesisSuccessClip;
+    public AudioClip synthesisFailClip;
     private AudioSource audioSource;
 
     private bool CanSynthesis = false;
@@ -106,18 +111,28 @@ public class ItemSynthesisWindow : MonoBehaviour
 
         MainHomeManager.Instance.MyMoney -= price;
         var rand = Random.Range(0, 100);
-        if (rand < chance)
+        StartCoroutine(CoSynthesis(rand < chance , price));
+    }
+
+    private IEnumerator CoSynthesis(bool isSuccess, int price)
+    {
+        audioSource.PlayOneShot(synthesisClip);
+        effectWindow.StartEffect(leftTemp.itemData, resultSlot.itemData, isSuccess);
+        yield return new WaitForSeconds(effectWindow.synthesisTime);
+        
+        if (isSuccess)
         {
             Inventory.Instance.MakeItemSlot(resultSlot.itemData);
+            audioSource.PlayOneShot(synthesisSuccessClip);
         }
         else
         {
             MainHomeManager.Instance.MyMoney += price / 2;
+            audioSource.PlayOneShot(synthesisFailClip);
         }
 
         Inventory.Instance.RemoveItemSlot(leftTemp);
         Inventory.Instance.RemoveItemSlot(rightTemp);
-        audioSource.PlayOneShot(synthesisClip);
 
         leftTemp = null;
         rightTemp = null;
