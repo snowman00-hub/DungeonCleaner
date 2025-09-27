@@ -23,7 +23,6 @@ public class SettingWindow : MonoBehaviour
     public void SetVibrate(bool value)
     {
         PlayerPrefs.SetInt(Prefs.Vibrate, value ? 1 : 0);
-        PlayerPrefs.Save();
     }
 
     public void ExitGame()
