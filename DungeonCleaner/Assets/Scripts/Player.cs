@@ -148,7 +148,9 @@ public class Player : LivingEntity
         
         base.OnDamage(finalDamage, hitPoint, hitNormal);
         OnHurt?.Invoke();
-        Handheld.Vibrate();
+
+        if(PlayerPrefs.GetInt(Prefs.Vibrate, 1) == 1)
+            Handheld.Vibrate();
     }
 
     protected override void Die()

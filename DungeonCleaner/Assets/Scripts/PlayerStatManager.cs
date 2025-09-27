@@ -98,17 +98,29 @@ public class PlayerStatManager : MonoBehaviour
         var money = MainHomeManager.Instance.MyMoney;
         for (int i = 0; i < TypeCount; i++)
         {
-            upgradePrices[i] = 1000 + 500 * statUpgradeCounts[i];
-            needMoneyTexts[i].text = upgradePrices[i].ToString();
-
-            reinforceTexts[i].text = $"{statValues[i]} + {reinforceValues[i]}";
-
-            upgradeButtons[i].interactable = (money >= upgradePrices[i]);
+            if (statUpgradeCounts[i] == 5)
+            {
+                needMoneyTexts[i].text = "0";
+                reinforceTexts[i].text = statValues[i].ToString();
+                var buttonText = upgradeButtons[i].GetComponentInChildren<TextMeshProUGUI>();
+                buttonText.text = "MAX";
+                upgradeButtons[i].interactable = false;
+            }
+            else
+            {
+                upgradePrices[i] = 1000 + 500 * statUpgradeCounts[i];
+                needMoneyTexts[i].text = upgradePrices[i].ToString();
+                reinforceTexts[i].text = $"{statValues[i]} + {reinforceValues[i]}";
+                upgradeButtons[i].interactable = (money >= upgradePrices[i]);
+            }
         }
     }
 
     public void Upgrade(int index)
     {
+        if (statUpgradeCounts[index] == 5)
+            return;
+
         MainHomeManager.Instance.MyMoney -= upgradePrices[index];
         statValues[index] += reinforceValues[index];
 

@@ -21,7 +21,7 @@ public class EnemySpawner : MonoBehaviour
 
     private Transform player;
     private Dictionary<EnemyName, Queue<GameObject>> monsterPools = new Dictionary<EnemyName, Queue<GameObject>>();
-   
+
     private List<SpawnData> spawnDatas;
 
     private void Awake()
@@ -56,7 +56,7 @@ public class EnemySpawner : MonoBehaviour
                 if (t >= data.START_TIME && t < data.END_TIME)
                 {
                     if (Random.Range(0f, 100f) <= data.WEIGHT)
-                        SpawnEnemy(data.MON_NAME, data.MON_COUNT, minRadius, maxRadius);
+                        SpawnEnemy(data.MON_NAME, data.MON_COUNT, minRadius, maxRadius,data.IS_SWARM);
                 }
 
                 yield return new WaitForSeconds(data.INTERVAL);
@@ -67,7 +67,7 @@ public class EnemySpawner : MonoBehaviour
             while (StageInfoManager.Instance.gameTimer < data.START_TIME)
                 yield return null;
 
-            if(data.MON_TYPE == EnemyType.Boss)
+            if (data.MON_TYPE == EnemyType.Boss)
             {
                 var spawnPos = Player.Instance.transform.position + new Vector3(0, 0, 18);
                 var monster = monsterPools[data.MON_NAME].Dequeue();
@@ -77,13 +77,13 @@ public class EnemySpawner : MonoBehaviour
             }
 
             if (Random.Range(0f, 100f) <= data.WEIGHT)
-                SpawnEnemy(data.MON_NAME, data.MON_COUNT, minRadius, maxRadius);
+                SpawnEnemy(data.MON_NAME, data.MON_COUNT, minRadius, maxRadius, data.IS_SWARM);
 
             yield break;
         }
     }
 
-    public void SpawnEnemy(EnemyName name, int count, float minRadius, float maxRadius)
+    public void SpawnEnemy(EnemyName name, int count, float minRadius, float maxRadius, bool isSwarm)
     {
         if (!monsterPools.ContainsKey(name))
         {
@@ -91,12 +91,25 @@ public class EnemySpawner : MonoBehaviour
             return;
         }
 
-        for (int i = 0; i < count; i++)
+        if (isSwarm)
         {
             var spawnPos = MyUtils.GetRandomPositionInRing3D(player.position, minRadius, maxRadius);
-            var monster = monsterPools[name].Dequeue();
-            monster.transform.position = spawnPos;
-            monster.SetActive(true);
+            for (int i = 0; i < count; i++)
+            {
+                var monster = monsterPools[name].Dequeue();
+                monster.transform.position = spawnPos;
+                monster.SetActive(true);
+            }
+        }
+        else
+        {
+            for (int i = 0; i < count; i++)
+            {
+                var spawnPos = MyUtils.GetRandomPositionInRing3D(player.position, minRadius, maxRadius);
+                var monster = monsterPools[name].Dequeue();
+                monster.transform.position = spawnPos;
+                monster.SetActive(true);
+            }
         }
 
         if (monsterPools[name].Count < 100)
@@ -168,7 +181,7 @@ public class EnemySpawner : MonoBehaviour
             enemyData.projectileSpeed = csvData.PROJECTILE_MOVE_SPEED;
             enemyData.projectile_count = csvData.PROJECTILE_COUNT;
             enemyData.dropItem1 = csvData.DROP_ITEM1;
-            enemyData.dropItemValue1= csvData.DROP_ITEM_VALUE1;
+            enemyData.dropItemValue1 = csvData.DROP_ITEM_VALUE1;
             enemyData.dropItem2 = csvData.DROP_ITEM2;
             enemyData.dropItemValue2 = csvData.DROP_ITEM_VALUE2;
             enemyData.dropItem3 = csvData.DROP_ITEM3;

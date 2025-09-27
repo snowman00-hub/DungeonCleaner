@@ -24,7 +24,7 @@ public class Enemy : LivingEntity
     protected Transform target;
     protected CapsuleCollider capsuleCollider;
     protected float timer;
-    protected float checkRemoveTime = 10f;
+    protected float checkRemoveTime = 5f;
 
     protected Animator animator;
 
@@ -53,12 +53,13 @@ public class Enemy : LivingEntity
 
         UpdateMove();
 
-        if (timer + checkRemoveTime < Time.time)
+        if (timer + checkRemoveTime < Time.time && !(enemyData is BossEnemyData))
         {
             timer = Time.time;
-            if (Vector3.Distance(transform.position, target.position) > 200f)
+
+            if (Vector3.Distance(transform.position, target.position) > 70f)
             {
-                Die();
+                base.Die();
             }
         }
     }
@@ -120,7 +121,7 @@ public class Enemy : LivingEntity
         StageInfoManager.Instance.KillCount++;
         PickUpManager.Instance.CreatePickUp(enemyData.dropExp, transform.position);
 
-        if(enemyData is BossEnemyData bossData)
+        if (enemyData is BossEnemyData bossData)
         {
             PickUpManager.Instance.CreatePickUp(bossData.dropItem1, transform.position);
             PickUpManager.Instance.CreatePickUp(bossData.dropItem2, transform.position);
@@ -152,11 +153,10 @@ public class Enemy : LivingEntity
         var dir = (transform.position - target.position).normalized;
         float timer = Time.time;
         float speed = knockBackDistance / knockBackTime;
-        while(timer + knockBackTime > Time.time)
+        while (timer + knockBackTime > Time.time)
         {
             transform.position += dir * speed * Time.deltaTime;
             yield return null;
         }
     }
 }
-

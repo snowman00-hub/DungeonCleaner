@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class MainHomeManager : MonoBehaviour
 {
     public static MainHomeManager Instance { get; private set; }
+    public static readonly string StageIndex = "StageIndex";
 
     public int FinalStageNumber = 5;
     public Image currentImage;
@@ -21,9 +22,12 @@ public class MainHomeManager : MonoBehaviour
     private int myMoney;
     private int myJewel;
 
+    public GameObject stageRightButton;
+    public GameObject stageLeftButton;
+
     public int MyMoney
     {
-        get { return  myMoney; }
+        get { return myMoney; }
         set
         {
             myMoney = value;
@@ -59,6 +63,9 @@ public class MainHomeManager : MonoBehaviour
             MyMoney = SaveLoadManager.Data.gold;
             MyJewel = SaveLoadManager.Data.jewel;
         }
+
+        selectStageIndex = PlayerPrefs.GetInt(StageIndex, 1);
+        UpdateStageInfo();
     }
 
     private void OnDisable()
@@ -70,7 +77,21 @@ public class MainHomeManager : MonoBehaviour
 
     public void UpdateStageInfo()
     {
-        currentImage.sprite = stageSprites[selectStageIndex -1];
+        if (selectStageIndex == 1)
+        {
+            stageLeftButton.SetActive(false);
+        }
+        else if (selectStageIndex == FinalStageNumber)
+        {
+            stageRightButton.SetActive(false);
+        }
+        else
+        {
+            stageLeftButton.SetActive(true);
+            stageRightButton.SetActive(true);
+        }
+
+        currentImage.sprite = stageSprites[selectStageIndex - 1];
         currentStageName.text = stageName[selectStageIndex - 1];
     }
 
@@ -80,6 +101,7 @@ public class MainHomeManager : MonoBehaviour
             return;
 
         selectStageIndex++;
+        PlayerPrefs.SetInt(StageIndex, selectStageIndex);
         UpdateStageInfo();
     }
 
@@ -89,6 +111,7 @@ public class MainHomeManager : MonoBehaviour
             return;
 
         selectStageIndex--;
+        PlayerPrefs.SetInt(StageIndex, selectStageIndex);
         UpdateStageInfo();
     }
 
@@ -97,7 +120,6 @@ public class MainHomeManager : MonoBehaviour
         SceneManager.LoadScene(selectStageIndex);
     }
 
-    // 테스트 코드
     public void ResetSave()
     {
         SaveLoadManager.Data = new SaveDataV1();
@@ -105,6 +127,8 @@ public class MainHomeManager : MonoBehaviour
         MyMoney = SaveLoadManager.Data.gold;
         MyJewel = SaveLoadManager.Data.jewel;
     }
+
+    // 테스트 코드
     public void GetGold()
     {
         MyMoney += 50000;

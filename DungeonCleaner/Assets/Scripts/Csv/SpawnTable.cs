@@ -1,7 +1,7 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
+
 public class SpawnData
 {
     public int SPAWN_ID { get; set; }
@@ -12,6 +12,7 @@ public class SpawnData
     public int MON_COUNT { get; set; }
     public float INTERVAL { get; set; }
     public float WEIGHT { get; set; }
+    public bool IS_SWARM {  get; set; }
 }
 
 public class SpawnTable : DataTable
@@ -33,7 +34,7 @@ public class SpawnTable : DataTable
             }
             else
             {
-                Debug.LogError($"Ű �ߺ�: {item.SPAWN_ID}");
+                Debug.LogError($"키 중복: {item.SPAWN_ID}");
             }
         }
     }
