@@ -22098,7 +22098,7 @@ PrefabInstance:
     - target: {fileID: 5585033235431725925, guid: aa06924eced9e6a4c9f3d05e7fd1d7a6, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: b7322759767544856963bfa1e25d944e, type: 3}
+      objectReference: {fileID: 21300000, guid: 0dedef13c8e9042e89b13cabe50ef1d3, type: 3}
     - target: {fileID: 5585033235431725925, guid: aa06924eced9e6a4c9f3d05e7fd1d7a6, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -22117,7 +22117,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6025204162783367097, guid: aa06924eced9e6a4c9f3d05e7fd1d7a6, type: 3}
       propertyPath: m_fontSize
-      value: 71.25
+      value: 56.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -24512,11 +24512,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6025204162783367097, guid: aa06924eced9e6a4c9f3d05e7fd1d7a6, type: 3}
       propertyPath: m_text
-      value: "\uC544\uB2C8"
+      value: "\uC544\uB2C8\uC624 "
       objectReference: {fileID: 0}
     - target: {fileID: 6025204162783367097, guid: aa06924eced9e6a4c9f3d05e7fd1d7a6, type: 3}
       propertyPath: m_fontSize
-      value: 51.95
+      value: 47.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

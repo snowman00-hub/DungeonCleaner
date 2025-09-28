@@ -27,6 +27,11 @@ public class StageInfoManager : MonoBehaviour
 
     public GameObject bossHpBar;
 
+    public StageReward stageReward;
+    public TextMeshProUGUI victoryGoldRewardText;
+    public TextMeshProUGUI victoryJewelRewardText;
+    public TextMeshProUGUI defeatGoldRewardText;
+
     private int currentSeconds;
     private int money;
     private int killCount;
@@ -189,6 +194,11 @@ public class StageInfoManager : MonoBehaviour
         defeatWindow.SetActive(true);
         defeatKillCount.text = stageInfoUI.killCountText.text;
         defeatTimeText.text = stageInfoUI.timeText.text;
+
+        defeatGoldRewardText.text = $"x{money}";
+        SaveLoadManager.Data.gold += money;
+        SaveLoadManager.Save();
+
         AudioManager.Instance.GameOver();
     }
 
@@ -203,6 +213,13 @@ public class StageInfoManager : MonoBehaviour
         Time.timeScale = 0f;
         victoryWindow.SetActive(true);
         victoryKillCount.text = stageInfoUI.killCountText.text;
+
+        var goldreward = stageReward.goldReward + money;
+        victoryGoldRewardText.text = $"x{goldreward}";
+        victoryJewelRewardText.text = $"x{stageReward.jewelReward}";
+        SaveLoadManager.Data.gold += goldreward;
+        SaveLoadManager.Data.jewel += stageReward.jewelReward;
+        SaveLoadManager.Save();
         AudioManager.Instance.Victory();
     }
 
