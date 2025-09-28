@@ -80,9 +80,11 @@ public class MainHomeManager : MonoBehaviour
         if (selectStageIndex == 1)
         {
             stageLeftButton.SetActive(false);
+            stageRightButton.SetActive(true);
         }
         else if (selectStageIndex == FinalStageNumber)
         {
+            stageLeftButton.SetActive(true);
             stageRightButton.SetActive(false);
         }
         else
