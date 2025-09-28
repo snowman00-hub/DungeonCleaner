@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
-using UnityEngine.Diagnostics;
 
 public class SkillChoiceSlotManager : MonoBehaviour
 {
@@ -15,8 +15,16 @@ public class SkillChoiceSlotManager : MonoBehaviour
         selectableSkills.Clear();
         foreach (var skill in ActiveSkillManager.Instance.allSkillList)
         {
-            if (skill.skillData.skillLevel == 5)
+            if (skill.skillData.skillLevel == 6)
                 continue;
+
+            if (skill.skillData.skillLevel == 5)
+            {
+                if(PassiveSkillManager.Instance.equippedSkills.Select(x => x.data.CRAFT_CODE).ToList().Contains(skill.skillData.craftCode))
+                    selectableSkills.Add(skill);
+
+                continue;
+            }
 
             selectableSkills.Add(skill);
         }

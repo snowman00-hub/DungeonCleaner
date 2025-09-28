@@ -1,13 +1,22 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 public class SkillDustGun : ActiveSkill
 {
+    public GameObject defaultAsset;
+    public GameObject awakeningAsset;
+
     [HideInInspector]
     public float waitingTime;
 
     protected override void OnEnable()
     {
+        if (skillData.skillLevel == 6)
+        {
+            defaultAsset.SetActive(false);
+            awakeningAsset.SetActive(true);
+        }
+
         base.OnEnable();
         SetDirection(30f);
     }

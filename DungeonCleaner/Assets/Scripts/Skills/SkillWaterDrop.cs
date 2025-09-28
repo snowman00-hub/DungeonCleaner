@@ -1,10 +1,13 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 public class SkillWaterDrop : ActiveSkill
 {
     public GameObject defaultParticle;
+    public GameObject awakeningParticle;
+    public GameObject defaultExplodeGo;
     public ParticleSystem explodeParticle;
+    public ParticleSystem awakeningExplode;
 
     private SphereCollider sphereCollider;
 
@@ -19,9 +22,20 @@ public class SkillWaterDrop : ActiveSkill
     {
         base.OnEnable();
 
+        if(skillData.skillLevel == 6)
+        {
+            defaultExplodeGo.SetActive(false);
+            defaultParticle.SetActive(false);
+            awakeningParticle.SetActive(true);
+            explodeParticle = awakeningExplode;
+        }
+        else
+        {
+            defaultParticle.SetActive(true);
+        }
+
         sphereCollider.enabled = true;
         isUsed = false;
-        defaultParticle.SetActive(true);
 
         SetDirection(25f);
 

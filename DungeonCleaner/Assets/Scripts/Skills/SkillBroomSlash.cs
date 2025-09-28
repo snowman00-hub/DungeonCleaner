@@ -2,7 +2,11 @@
 
 public class SkillBroomSlash : ActiveSkill
 {
+    public GameObject defaultBroom;
+    public GameObject awakeningBroom;
+
     public Transform cube;
+    public Transform awakeningCube;
 
     private float currentAngle;
     private BoxCollider boxCollider;
@@ -15,6 +19,13 @@ public class SkillBroomSlash : ActiveSkill
 
     protected override void OnEnable()
     {
+        if(skillData.skillLevel == 6)
+        {
+            defaultBroom.SetActive(false);
+            awakeningBroom.SetActive(true);
+            cube = awakeningCube;
+        }
+
         base.OnEnable();
         ScaleFromEdge(skillData.radius);
         SetStartAngle();

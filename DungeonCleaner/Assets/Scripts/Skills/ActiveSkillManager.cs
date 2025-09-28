@@ -62,6 +62,9 @@ public class ActiveSkillManager : MonoBehaviour
         var skillTable = DataTableManger.ActiveSkillTable;
         var levelData = skillTable.Get(skill.GetSkillLevelId(level));
 
+        if (level == 1)
+            skill.currentCoolDown = 0f;
+
         skill.skillData.skillLevel = levelData.CURRENT_LEVEL;
         skill.skillData.damage = levelData.DAMAGE;
         skill.skillData.radius = levelData.SKILL_RADIAL;
@@ -70,6 +73,7 @@ public class ActiveSkillManager : MonoBehaviour
         skill.skillData.tickInterval = levelData.TICK_INTERVAL;
         skill.skillData.projectileCount = levelData.PROJECTILE_COUNT;
         skill.skillData.projectileSpeed = levelData.SKILL_SPEED;
+        skill.skillData.craftCode = levelData.CRAFT_CODE;
     }
 
     public void EquipSkill(ActiveSkill skill, int level)
@@ -83,7 +87,16 @@ public class ActiveSkillManager : MonoBehaviour
         if (level == 1 && skill.skillAttribute == SkillAttribute.Aura)
             Instantiate(skill);
 
+        if (level == 6 && skill.skillName == SkillName.cleanGuardian)
+            StartCoroutine(CoDelayUseSkill(skill, skill.currentCoolDown));
+
         UpdateSkillData(skill, level);
+    }
+
+    private IEnumerator CoDelayUseSkill(ActiveSkill skill, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        UseSkill(skill);
     }
 
     private void Update()

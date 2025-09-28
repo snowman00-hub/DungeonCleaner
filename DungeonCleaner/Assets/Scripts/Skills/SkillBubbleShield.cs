@@ -1,14 +1,9 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SkillBubbleShield : ActiveSkill
 {
-    private ParticleSystem particle;
-
-    protected override void Awake()
-    {
-        base.Awake();
-        particle = GetComponentInChildren<ParticleSystem>();
-    }
+    public ParticleSystem particle;
+    public ParticleSystem awakeningParticle;
 
     protected override void OnEnable()
     {
@@ -17,9 +12,19 @@ public class SkillBubbleShield : ActiveSkill
         particle.transform.localScale = Vector3.one * baseRadius * skillData.radius;
     }
 
+    private bool isUpgrade = false;
+
     private void Update()
     {
         transform.position = Player.Instance.transform.position;
+
+        if(skillData.skillLevel == 6 && !isUpgrade)
+        {
+            isUpgrade = true;
+            particle.gameObject.SetActive(false);
+            awakeningParticle.gameObject.SetActive(true);
+            particle = awakeningParticle;
+        }
 
         if(capsule.radius != skillData.radius)
         {

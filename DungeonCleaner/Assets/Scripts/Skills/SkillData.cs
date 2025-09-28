@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 [CreateAssetMenu(fileName = "SkillData", menuName = "Scriptable Objects/SkillData")]
 public class SkillData : ScriptableObject
@@ -11,4 +11,5 @@ public class SkillData : ScriptableObject
     public float tickInterval;
     public int projectileCount;
     public float projectileSpeed;
+    public int craftCode;
 }

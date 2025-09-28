@@ -6,14 +6,26 @@ public class SkillInvenSlot : MonoBehaviour
 {
     public Image skillIcon;
     public List<Image> starImages;
+    public GameObject defaultStars;
+    public GameObject awakeningStar;
 
     public void ShowActiveSkill(ActiveSkill activeSkill)
     {
-        skillIcon.sprite = activeSkill.skillSprite;
-        for(int i= 0; i < activeSkill.skillData.skillLevel; i++)
+        if(activeSkill.skillData.skillLevel == 6)
         {
-            starImages[i].enabled = true;
+            skillIcon.sprite = activeSkill.awakeningSkillSprite;
+            defaultStars.SetActive(false);
+            awakeningStar.SetActive(true);
         }
+        else
+        {
+            skillIcon.sprite = activeSkill.skillSprite;
+            for (int i = 0; i < activeSkill.skillData.skillLevel; i++)
+            {
+                starImages[i].enabled = true;
+            }
+        }
+
     }
 
     public void ShowPassiveSkill(PassiveSkill passiveSkill)

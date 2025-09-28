@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,7 +11,15 @@ public class EquippedSkillListUI : MonoBehaviour
     {
         for (int i = 0; i < ActiveSkillManager.Instance.equippedSkills.Count; i++)
         {
-            activeSkillImages[i].sprite = ActiveSkillManager.Instance.equippedSkills[i].skillSprite;
+            if (ActiveSkillManager.Instance.equippedSkills[i].skillData.skillLevel == 6)
+            {
+                activeSkillImages[i].sprite = ActiveSkillManager.Instance.equippedSkills[i].awakeningSkillSprite;
+            }
+            else
+            {
+                activeSkillImages[i].sprite = ActiveSkillManager.Instance.equippedSkills[i].skillSprite;
+            }
+
             activeSkillImages[i].enabled = true;
         }
 

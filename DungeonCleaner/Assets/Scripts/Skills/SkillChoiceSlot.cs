@@ -10,6 +10,8 @@ public class SkillChoiceSlot : MonoBehaviour
     public Image skillImage;
     public TextMeshProUGUI skillDescText;
     public List<Image> starImages;
+    public GameObject defaultStarList;
+    public GameObject awakeningStarList;
 
     private Button button;
     private ActiveSkill activeSkill;
@@ -26,9 +28,17 @@ public class SkillChoiceSlot : MonoBehaviour
 
     private void StartEffect()
     {
-        for (int i = 0; i < currentSkillLevel; i++)
+        if(currentSkillLevel == 6)
         {
-            starImages[i].enabled = true;
+            defaultStarList.SetActive(false);
+            awakeningStarList.SetActive(true);
+        }
+        else
+        {
+            for (int i = 0; i < currentSkillLevel; i++)
+            {
+                starImages[i].enabled = true;
+            }
         }
         StartCoroutine(FadeLoop());
     }
@@ -46,8 +56,16 @@ public class SkillChoiceSlot : MonoBehaviour
             levelData = skillTable.Get(skill.GetSkillLevelId(1));
         }
 
+        if (levelData.CURRENT_LEVEL == 6)
+        {
+            skillImage.sprite = skill.awakeningSkillSprite;
+        }
+        else
+        {
+            skillImage.sprite = skill.skillSprite;
+        }
+        
         activeSkill = skill;
-        skillImage.sprite = skill.skillSprite;
         skillNameText.text = levelData.SKILL_NAME;
         skillDescText.text = levelData.DESCRIPTION;
         currentSkillLevel = levelData.CURRENT_LEVEL;

@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public enum ActiveSkillCategory
@@ -31,6 +31,7 @@ public class ActiveSkillData
     public int CURRENT_LEVEL { get; set; }
     public float SKILL_SPEED { get; set; }
     public string DESCRIPTION { get; set; }
+    public int CRAFT_CODE { get; set; }
 }
 
 public class ActiveSkillTable : DataTable
@@ -52,7 +53,7 @@ public class ActiveSkillTable : DataTable
             }
             else
             {
-                Debug.LogError($"Ű �ߺ�: {item.SKILL_ID}");
+                Debug.LogError($"키 중복: {item.SKILL_ID}");
             }
         }
     }

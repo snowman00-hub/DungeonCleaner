@@ -3,13 +3,10 @@
 public class SkillCleanGuardian : ActiveSkill
 {
     public float angle;
+    public GameObject defaultAsset;
+    public GameObject awakeningAsset;
 
     private Transform target;
-
-    protected override void Awake()
-    {
-        base.Awake();
-    }
 
     private void Update()
     {
@@ -23,11 +20,17 @@ public class SkillCleanGuardian : ActiveSkill
         base.OnEnable();
 
         target = Player.Instance.transform;
+
+        if (skillData.skillLevel == 6)
+        {
+            defaultAsset.SetActive(false);
+            awakeningAsset.SetActive(true);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag(Tag.Enemy))
+        if (other.CompareTag(Tag.Enemy))
         {
             var enemy = other.GetComponent<Enemy>();
             int finalDamage = Mathf.FloorToInt((skillData.damage + Player.Instance.data.atk) * Player.Instance.data.finalAttackMultiplier);

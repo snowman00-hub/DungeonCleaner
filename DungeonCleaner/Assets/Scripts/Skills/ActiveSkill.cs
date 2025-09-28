@@ -14,6 +14,7 @@ public enum SkillAttribute
 public class ActiveSkill : MonoBehaviour
 {
     public Sprite skillSprite;
+    public Sprite awakeningSkillSprite;
     public SkillName skillName;
     public SkillAttribute skillAttribute;
     public SkillData skillData;
