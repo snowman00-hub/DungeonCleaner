@@ -175,15 +175,15 @@ public class Player : LivingEntity
 
         if (move != Vector3.zero)
         {
+            player.rotation = Quaternion.LookRotation(move);
+
             Vector3 rayPos = transform.position + Vector3.up * 0.5f;
-            if (Physics.Raycast(rayPos, move.normalized, out RaycastHit hit, 1f, LayerMask.GetMask(LayerName.Wall)))
+            if (Physics.Raycast(rayPos, move.normalized, out RaycastHit hit, 0.5f, LayerMask.GetMask(LayerName.Wall)))
             {
-                move = Vector3.ProjectOnPlane(move, hit.normal);
+                move = Vector3.zero;
             }
 
             transform.position += move;
-
-            player.rotation = Quaternion.LookRotation(move);
 
             if (!anim.IsPlaying(Run))
             {

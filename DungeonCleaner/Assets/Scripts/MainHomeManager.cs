@@ -50,6 +50,11 @@ public class MainHomeManager : MonoBehaviour
     {
         Instance = this;
         UpdateStageInfo();
+#if UNITY_EDITOR
+        Application.targetFrameRate = -1;
+#else
+        Application.targetFrameRate = 60;
+#endif
     }
 
     private void Start()
