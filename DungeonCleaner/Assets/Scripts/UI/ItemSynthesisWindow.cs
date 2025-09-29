@@ -81,7 +81,8 @@ public class ItemSynthesisWindow : MonoBehaviour
 
         DescText.text = $"{resultSlot.itemData.EQUIPMENT_NAME}\n" +
             $"MAX {resultSlot.itemData.BASE_STAT.ToString().ToUpper()}\n" +
-            $"{DataTableManger.EquipItemTable.Get(baseId + "5").BASE_STAT_VALUE} -> {DataTableManger.EquipItemTable.Get(synthesisData.SYN_RESULT + "5").BASE_STAT_VALUE}\n\n" +
+            $"{DataTableManger.EquipItemTable.Get(baseId + "5").BASE_STAT_VALUE} -> {DataTableManger.EquipItemTable.Get(synthesisData.SYN_RESULT + "5").BASE_STAT_VALUE}\n" +
+            $"성공 확률 : {synthesisData.SUC_PER}%\n" +
             $"{synthesisData.SPENDGOLD}골드";
 
         var resultFader = resultSlot.gameObject.GetComponent<UIFader>();
