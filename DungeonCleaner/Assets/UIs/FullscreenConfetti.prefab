@@ -84,9 +84,9 @@ MonoBehaviour:
   _fitRect: 1
   _emitOnSurface: 1
   _emitterThickness: 0
-  _loop: 1
+  _loop: 0
   _prewarm: 0
-  _duration: 1
+  _duration: 1.5
   _playMode: 1
   _startSize:
     separable: 1

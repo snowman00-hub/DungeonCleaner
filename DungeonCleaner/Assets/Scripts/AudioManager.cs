@@ -26,9 +26,12 @@ public class AudioManager : MonoBehaviour
     public AudioClip victoryClip;
     public AudioClip boxDestroy;
 
+    private AudioSource audioSource2D;
+
     private void Awake()
     {
         Instance = this;
+        audioSource2D = GetComponent<AudioSource>();
     }
 
     public void PlaySound(Vector3 pos, AudioClip clip)
@@ -63,7 +66,7 @@ public class AudioManager : MonoBehaviour
             return;
 
         currentExpSoundCount++;
-        PlaySound(pos, expGetClip);
+        audioSource2D.PlayOneShot(expGetClip);
         StartCoroutine(CoExpCountMinus(expGetClip.length));
     }
 
@@ -80,27 +83,27 @@ public class AudioManager : MonoBehaviour
 
     public void GoldGet(Vector3 pos)
     {
-        PlaySound(pos, goldGetClip);
+        audioSource2D.PlayOneShot(goldGetClip);
     }
 
     public void FoodGet(Vector3 pos)
     {
-        PlaySound(pos, healClip);
+        audioSource2D.PlayOneShot(healClip);
     }
 
     public void Bomb(Vector3 pos)
     {
-        PlaySound(pos, bombClip);
+        audioSource2D.PlayOneShot(bombClip);
     }
 
     public void BoxDestroy(Vector3 pos)
     {
-        PlaySound(pos, boxDestroy);
+        audioSource2D.PlayOneShot(boxDestroy);
     }
 
     public void Magnet(Vector3 pos)
     {
-        PlaySound(pos, magnetClip);
+        audioSource2D.PlayOneShot(magnetClip);
     }
 
     public void LevelUp()

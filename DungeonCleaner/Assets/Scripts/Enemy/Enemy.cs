@@ -116,8 +116,7 @@ public class Enemy : LivingEntity
         capsuleCollider.enabled = false;
         IsDead = true;
         animator.SetTrigger(hashDie);
-        yield return new WaitForSeconds(1.1f);
-        base.Die();
+
         StageInfoManager.Instance.KillCount++;
         PickUpManager.Instance.CreatePickUp(enemyData.dropExp, transform.position);
 
@@ -131,6 +130,9 @@ public class Enemy : LivingEntity
                 StageInfoManager.Instance.Victory();
             }
         }
+
+        yield return new WaitForSeconds(1.1f);
+        base.Die();        
     }
 
     public void SetTriggerAttack()
