@@ -44,7 +44,10 @@ public class GachaManager : MonoBehaviour
     public void OneDrawItem()
     {
         if (isPicking || MainHomeManager.Instance.MyJewel < 1)
+        {
+            MainHomeManager.Instance.ErrorSound();
             return;
+        }
 
         var list = new EquipItemData[1];
         var data = DataTableManger.EquipItemTable.GetRandomItemWithChance();
@@ -62,7 +65,10 @@ public class GachaManager : MonoBehaviour
     public void TenDrawItem()
     {
         if (isPicking || MainHomeManager.Instance.MyJewel < 8)
+        {
+            MainHomeManager.Instance.ErrorSound();
             return;
+        }
 
         var list = new EquipItemData[10];
         for (int i = 0; i < 10; i++)

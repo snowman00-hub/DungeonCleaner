@@ -33,7 +33,10 @@ public class ItemReinforceWindow : MonoBehaviour
             return;
         
         if (MainHomeManager.Instance.MyMoney < currentSlot.itemData.REINFORCE_FEE)
+        {
+            MainHomeManager.Instance.ErrorSound();
             return;
+        }
 
         if (currentSlot.itemData.REINFORCE_LEVEL == 5)
             return;

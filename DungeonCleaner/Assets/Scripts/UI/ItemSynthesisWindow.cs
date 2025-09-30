@@ -101,14 +101,14 @@ public class ItemSynthesisWindow : MonoBehaviour
 
     public void Synthesis()
     {
-        if (!CanSynthesis)
-            return;
-
         float chance = synthesisData.SUC_PER;
         int price = synthesisData.SPENDGOLD;
 
-        if (MainHomeManager.Instance.MyMoney < price)
+        if (!CanSynthesis || MainHomeManager.Instance.MyMoney < price)
+        {
+            MainHomeManager.Instance.ErrorSound();
             return;
+        }
 
         MainHomeManager.Instance.MyMoney -= price;
         var rand = Random.Range(0, 100);

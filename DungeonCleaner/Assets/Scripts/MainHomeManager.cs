@@ -25,6 +25,9 @@ public class MainHomeManager : MonoBehaviour
     public GameObject stageRightButton;
     public GameObject stageLeftButton;
 
+    public AudioSource sfxAudio;
+    public AudioClip errorClip;
+
     public int MyMoney
     {
         get { return myMoney; }
@@ -133,6 +136,11 @@ public class MainHomeManager : MonoBehaviour
         SaveLoadManager.Save();
         MyMoney = SaveLoadManager.Data.gold;
         MyJewel = SaveLoadManager.Data.jewel;
+    }
+
+    public void ErrorSound()
+    {
+        sfxAudio.PlayOneShot(errorClip);
     }
 
     // 테스트 코드
