@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Text.RegularExpressions;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SkillArrow : MonoBehaviour
 {

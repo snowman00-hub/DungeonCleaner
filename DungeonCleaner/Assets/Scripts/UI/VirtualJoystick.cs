@@ -19,13 +19,6 @@ public class VirtualJoystick : MonoBehaviour, IDragHandler, IBeginDragHandler, I
         positioner.ApplySafeAreaPosition();
     }
 
-    private void Update()
-    {
-#if UNITY_EDITOR
-        //Debug.Log(Input);
-#endif
-    }
-
     public void OnPointerDown(PointerEventData eventData)
     {
         var touchPosition = eventData.position;

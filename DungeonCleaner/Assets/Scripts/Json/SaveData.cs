@@ -44,6 +44,8 @@ public class SaveDataV1 : SaveData
         activeSkillDurationMultiplier = 1f;
         recoveryPercent = 0f;
         pickUpRadius = 2f;
+        gold = 500000;
+        jewel = 100;
     }
 
     public override SaveData VersionUp()

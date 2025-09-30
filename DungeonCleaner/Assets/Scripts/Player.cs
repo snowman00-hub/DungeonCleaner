@@ -27,9 +27,13 @@ public class Player : LivingEntity
 
     private bool isPowerOn = false;
 
+    [HideInInspector]
+    public AudioSource bgmAudio;
+
     private void Awake()
     {
         Instance = this;
+        bgmAudio = GetComponent<AudioSource>();
 
         if (!SaveLoadManager.Load())
         {

@@ -30498,6 +30498,8 @@ MonoBehaviour:
   merchantClip: {fileID: 8300000, guid: ee8e4d60db917e343ac4a6db8c51992f, type: 3}
   victoryClip: {fileID: 8300000, guid: 8e3bf0774d222b64288520f4de6e20f8, type: 3}
   boxDestroy: {fileID: 8300000, guid: 652bea6cb9b1e3647b9cb263051868f9, type: 3}
+  bossFire: {fileID: 8300000, guid: 5cf95cc1e2a48194a8057bb9fbbeb39a, type: 3}
+  bossDash: {fileID: 8300000, guid: 3fe39db03365da044af3254dbbafa0fe, type: 3}
 --- !u!4 &1489952979
 Transform:
   m_ObjectHideFlags: 0

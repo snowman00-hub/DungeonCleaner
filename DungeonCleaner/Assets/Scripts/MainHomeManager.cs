@@ -140,7 +140,7 @@ public class MainHomeManager : MonoBehaviour
 
     public void ErrorSound()
     {
-        sfxAudio.PlayOneShot(errorClip);
+        sfxAudio.PlayOneShot(errorClip, 3.0f);
     }
 
     // 테스트 코드

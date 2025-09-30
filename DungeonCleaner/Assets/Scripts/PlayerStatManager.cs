@@ -4,6 +4,9 @@ using UnityEngine.UI;
 
 public class PlayerStatManager : MonoBehaviour
 {
+    public static readonly string ReinforceText = "강화하기";
+    public static readonly string MaxText = "MAX";
+
     // Atk, HP, Def, Speed
     private const int TypeCount = 4;
 
@@ -103,7 +106,7 @@ public class PlayerStatManager : MonoBehaviour
                 needMoneyTexts[i].text = "0";
                 reinforceTexts[i].text = statValues[i].ToString();
                 var buttonText = upgradeButtons[i].GetComponentInChildren<TextMeshProUGUI>();
-                buttonText.text = "MAX";
+                buttonText.text = MaxText;
                 upgradeButtons[i].interactable = false;
             }
             else
@@ -112,6 +115,8 @@ public class PlayerStatManager : MonoBehaviour
                 needMoneyTexts[i].text = upgradePrices[i].ToString();
                 reinforceTexts[i].text = $"{statValues[i]} + {reinforceValues[i]}";
                 upgradeButtons[i].interactable = (money >= upgradePrices[i]);
+                var buttonText = upgradeButtons[i].GetComponentInChildren<TextMeshProUGUI>();
+                buttonText.text = ReinforceText;
             }
         }
     }

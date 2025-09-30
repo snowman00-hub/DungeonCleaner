@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Diagnostics;
 using System.Linq;
 using TMPro;
 using UnityEngine;
@@ -49,7 +48,7 @@ public class ItemSynthesisWindow : MonoBehaviour
         if (slot.itemData.EQUIPMENT_GRADE == EquipItemRank.S)
             return;
 
-        if (leftTemp == null)
+        if (leftTemp == null || leftTemp == slot)
         {
             leftTemp = slot;
         }

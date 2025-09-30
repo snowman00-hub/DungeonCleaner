@@ -8,23 +8,25 @@ public class AudioManager : MonoBehaviour
     public AudioSource audioSourcePrefab;
     private Queue<AudioSource> pool = new Queue<AudioSource>();
 
-    public AudioClip enemyHurtClip;
-    public AudioClip expGetClip;
-    public AudioClip goldGetClip;
-    public AudioClip healClip;
-    public AudioClip bombClip;
-    public AudioClip levelUpClip;
-    public AudioClip buttonClickClip;
-    public AudioClip bubbleShieldUpgradeClip;
-    public AudioClip magnetClip;
-    public AudioClip bossWarningClip;
-    public AudioClip broomSlashClip;
-    public AudioClip clapClip;
-    public AudioClip finalBossWarningClip;
-    public AudioClip gameOverClip;
-    public AudioClip merchantClip;
-    public AudioClip victoryClip;
-    public AudioClip boxDestroy;
+    [SerializeField] private AudioClip enemyHurtClip;
+    [SerializeField] private AudioClip expGetClip;
+    [SerializeField] private AudioClip goldGetClip;
+    [SerializeField] private AudioClip healClip;
+    [SerializeField] private AudioClip bombClip;
+    [SerializeField] private AudioClip levelUpClip;
+    [SerializeField] private AudioClip buttonClickClip;
+    [SerializeField] private AudioClip bubbleShieldUpgradeClip;
+    [SerializeField] private AudioClip magnetClip;
+    [SerializeField] private AudioClip bossWarningClip;
+    [SerializeField] private AudioClip broomSlashClip;
+    [SerializeField] private AudioClip clapClip;
+    [SerializeField] private AudioClip finalBossWarningClip;
+    [SerializeField] private AudioClip gameOverClip;
+    [SerializeField] private AudioClip merchantClip;
+    [SerializeField] private AudioClip victoryClip;
+    [SerializeField] private AudioClip boxDestroy;
+    [SerializeField] private AudioClip bossFire;
+    [SerializeField] private AudioClip bossDash;
 
     private AudioSource audioSource2D;
 
@@ -43,9 +45,18 @@ public class AudioManager : MonoBehaviour
         StartCoroutine(CoReturnAfterPlay(src));
     }
 
+    private void PlaySound(Vector3 pos, AudioClip clip, float volume)
+    {
+        AudioSource src = GetSource();
+        src.transform.position = pos;
+        src.clip = clip;
+        src.PlayOneShot(clip, volume);
+        StartCoroutine(CoReturnAfterPlay(src));
+    }
+
     private AudioSource GetSource()
     {
-        if (pool.Count > 0) 
+        if (pool.Count > 0)
             return pool.Dequeue();
 
         return Instantiate(audioSourcePrefab, transform);
@@ -66,7 +77,7 @@ public class AudioManager : MonoBehaviour
             return;
 
         currentExpSoundCount++;
-        audioSource2D.PlayOneShot(expGetClip);
+        audioSource2D.PlayOneShot(expGetClip, 0.7f);
         StartCoroutine(CoExpCountMinus(expGetClip.length));
     }
 
@@ -78,27 +89,27 @@ public class AudioManager : MonoBehaviour
 
     public void EnemyHurt(Vector3 pos)
     {
-        PlaySound(pos, enemyHurtClip);
+        PlaySound(pos, enemyHurtClip, 0.7f);
     }
 
     public void GoldGet(Vector3 pos)
     {
-        audioSource2D.PlayOneShot(goldGetClip);
+        audioSource2D.PlayOneShot(goldGetClip, 2.0f);
     }
 
     public void FoodGet(Vector3 pos)
     {
-        audioSource2D.PlayOneShot(healClip);
+        audioSource2D.PlayOneShot(healClip, 2.0f);
     }
 
     public void Bomb(Vector3 pos)
     {
-        audioSource2D.PlayOneShot(bombClip);
+        audioSource2D.PlayOneShot(bombClip, 4.0f);
     }
 
     public void BoxDestroy(Vector3 pos)
     {
-        audioSource2D.PlayOneShot(boxDestroy);
+        audioSource2D.PlayOneShot(boxDestroy, 3.0f);
     }
 
     public void Magnet(Vector3 pos)
@@ -108,7 +119,7 @@ public class AudioManager : MonoBehaviour
 
     public void LevelUp()
     {
-        PlaySound(Player.Instance.transform.position, levelUpClip);
+        PlaySound(Player.Instance.transform.position, levelUpClip, 0.7f);
     }
 
     public void Click()
@@ -154,5 +165,15 @@ public class AudioManager : MonoBehaviour
     public void Victory()
     {
         PlaySound(Player.Instance.transform.position, victoryClip);
+    }
+
+    public void BossDash()
+    {
+        audioSource2D.PlayOneShot(bossDash, 3.3f);
+    }
+
+    public void BossFire()
+    {
+        audioSource2D.PlayOneShot(bossFire, 4.5f);
     }
 }

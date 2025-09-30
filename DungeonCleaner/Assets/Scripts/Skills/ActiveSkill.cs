@@ -101,6 +101,7 @@ public class ActiveSkill : MonoBehaviour
         if (totalWeight == 0)
         {
             dir = directions[UnityEngine.Random.Range(0, directions.Length)];
+            transform.LookAt(transform.position + dir);
         }
         else
         {

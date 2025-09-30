@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
-using UnityEngine.UI;
 
 public class FinalBoss : Enemy
 {
@@ -14,11 +13,11 @@ public class FinalBoss : Enemy
     public GameObject Rock;
 
     public float skillCoolDown = 5f;
-    public float dashChargeTime =1f;
+    public float dashChargeTime = 1f;
     public float dashTime = 0.5f;
     public float dashDistance = 40f;
 
-    public int fireCount =3;
+    public int fireCount = 3;
     public float fireInterval = 0.3f;
     public float fireChargeTime = 1f;
     public float fireSpeed = 10f;
@@ -56,12 +55,13 @@ public class FinalBoss : Enemy
     {
         animator.SetTrigger(hashCasting);
         yield return new WaitForSeconds(fireChargeTime);
-        for(int i=0;i<fireCount;i++)
+        for (int i = 0; i < fireCount; i++)
         {
             animator.SetTrigger(hashShoot);
             yield return new WaitForSeconds(0.3f);
             var rock = Instantiate(Rock).GetComponent<EnemyProjectile>();
             rock.SetFireInfo(transform.position + transform.forward, target, enemyData.damage * 2, fireSpeed);
+            AudioManager.Instance.BossFire();
             yield return new WaitForSeconds(fireInterval);
         }
 
@@ -74,11 +74,11 @@ public class FinalBoss : Enemy
         float timer = Time.time;
         while (true)
         {
-            if(timer + skillCoolDown < Time.time && !isUsingSkill)
+            if (timer + skillCoolDown < Time.time && !isUsingSkill)
             {
                 timer = Time.time;
                 var rand = Random.Range(0, 1f);
-                if(rand > 0.5f)
+                if (rand > 0.5f)
                     StartCoroutine(CoDash());
                 else
                     StartCoroutine(CoFire());
@@ -93,14 +93,15 @@ public class FinalBoss : Enemy
         isUsingSkill = true;
         capsuleCollider.radius = 3f;
         enemyData.damage *= 2;
-       
+
         Vector3 dir = (target.position - transform.position).normalized;
         transform.LookAt(target.position);
         animator.SetTrigger(hashDashStart);
-        animator.ResetTrigger(hashDashEnd);  
+        animator.ResetTrigger(hashDashEnd);
 
         StartCoroutine(CoDashLine());
         yield return new WaitForSeconds(dashChargeTime);
+        AudioManager.Instance.BossDash();
 
         float timer = 0f;
         while (timer < dashTime)
@@ -127,9 +128,9 @@ public class FinalBoss : Enemy
         float timer = 0f;
         var decalprojector = projector.GetComponentInChildren<DecalProjector>();
         var size = decalprojector.size;
-        var pivot = new Vector3(0, 0,0.1f);
+        var pivot = new Vector3(0, 0, 0.1f);
         size.y = 0;
-        while(timer < dashChargeTime)
+        while (timer < dashChargeTime)
         {
             timer += Time.deltaTime;
             size.y += dashDistance * Time.deltaTime;
