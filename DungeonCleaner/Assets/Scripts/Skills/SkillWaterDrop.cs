@@ -60,6 +60,7 @@ public class SkillWaterDrop : ActiveSkill
             {
                 int finalDamage = Mathf.FloorToInt((skillData.damage + Player.Instance.data.atk) * Player.Instance.data.finalAttackMultiplier);
                 hit.GetComponent<Enemy>()?.OnDamage(finalDamage, hit.ClosestPoint(transform.position), (hit.transform.position - transform.position).normalized);
+                ActiveSkillManager.Instance.damageAmounts[skillName] += finalDamage;
             }
 
             StartCoroutine(CoExplode());

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public enum SkillName
@@ -21,7 +22,9 @@ public class ActiveSkillManager : MonoBehaviour
     public ActiveSkill defaultSkill;
     [HideInInspector]
     public List<ActiveSkill> equippedSkills = new List<ActiveSkill>();
-
+    [HideInInspector]
+    public Dictionary<SkillName, int> damageAmounts = new Dictionary<SkillName, int>();
+        
     private Dictionary<SkillName, Queue<GameObject>> skillPools = new Dictionary<SkillName, Queue<GameObject>>();
     private int poolSize = 10;
 
@@ -29,6 +32,7 @@ public class ActiveSkillManager : MonoBehaviour
     {
         Instance = this;
         equippedSkills.Add(defaultSkill);
+        damageAmounts[defaultSkill.skillName] = 0;
         skillChest.transform.position = Vector3.zero;
 
         foreach (var skill in allSkillList)
@@ -79,7 +83,10 @@ public class ActiveSkillManager : MonoBehaviour
     public void EquipSkill(ActiveSkill skill, int level)
     {
         if (level == 1)
+        {
             equippedSkills.Add(skill);
+            damageAmounts[skill.skillName] = 0;
+        }
 
         if (skill.skillName == SkillName.bubbleShield)
             AudioManager.Instance.BubbleShield();
