@@ -12,6 +12,7 @@ public abstract class SaveData
 [Serializable]
 public class SaveDataV1 : SaveData
 {
+    public string PlayerName;
     public int maxHP;
     public int atk;
     public float finalAttackMultiplier;
@@ -46,6 +47,7 @@ public class SaveDataV1 : SaveData
         pickUpRadius = 2f;
         gold = 100000;
         jewel = 50;
+        PlayerName = "NoName";
     }
 
     public override SaveData VersionUp()

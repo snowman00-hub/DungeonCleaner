@@ -17,6 +17,7 @@ public class MainHomeManager : MonoBehaviour
 
     private int selectStageIndex = 1;
 
+    public TextMeshProUGUI playerNameText;
     public TextMeshProUGUI myMoneytext;
     public TextMeshProUGUI myJewelText;
     private int myMoney;
@@ -26,7 +27,7 @@ public class MainHomeManager : MonoBehaviour
     public GameObject stageLeftButton;
 
     public AudioSource sfxAudio;
-    public AudioClip errorClip;
+    public AudioClip errorClip;    
 
     public int MyMoney
     {
@@ -70,6 +71,7 @@ public class MainHomeManager : MonoBehaviour
         {
             MyMoney = SaveLoadManager.Data.gold;
             MyJewel = SaveLoadManager.Data.jewel;
+            playerNameText.text = SaveLoadManager.Data.PlayerName;
         }
 
         selectStageIndex = PlayerPrefs.GetInt(StageIndex, 1);
@@ -136,11 +138,19 @@ public class MainHomeManager : MonoBehaviour
         SaveLoadManager.Save();
         MyMoney = SaveLoadManager.Data.gold;
         MyJewel = SaveLoadManager.Data.jewel;
+        playerNameText.text = SaveLoadManager.Data.PlayerName;
     }
 
     public void ErrorSound()
     {
         sfxAudio.PlayOneShot(errorClip, 3.0f);
+    }
+
+    public void ChangeName(TMP_InputField inputField)
+    {
+        playerNameText.text = inputField.text;
+        SaveLoadManager.Data.PlayerName = inputField.text;
+        SaveLoadManager.Save();
     }
 
     // 테스트 코드
