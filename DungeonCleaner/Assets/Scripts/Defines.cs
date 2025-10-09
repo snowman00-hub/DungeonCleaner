@@ -108,3 +108,4 @@ public class Prefs
     public static readonly string SfxVolume = "SFX";
     public static readonly string Vibrate = "Vibrate";
 }
+//
