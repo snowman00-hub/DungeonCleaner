@@ -64,27 +64,27 @@ public class Enemy : LivingEntity
         }
     }
 
+    private Collider[] neighborBuffer = new Collider[20];
+
     protected void UpdateMove()
     {
         Vector3 dir = (target.position - transform.position).normalized;
-
         if (dir.magnitude > 0.1f)
             dir = dir.normalized;
         else
             dir = Vector3.zero;
 
-        var neighbors = Physics.OverlapSphere(transform.position, capsuleCollider.radius * 2f, enemyMask);
-
+        int neighborCount = Physics.OverlapSphereNonAlloc(transform.position, capsuleCollider.radius * 2f, neighborBuffer, enemyMask);
         Vector3 avoid = Vector3.zero;
-        foreach (var neighbor in neighbors)
+        for (int i = 0; i < neighborCount; i++)
         {
-            if (neighbor.transform == transform)
+            Collider neighbor = neighborBuffer[i];
+            if (neighbor == null || neighbor.transform == transform)
                 continue;
 
             Vector3 avoidDir = transform.position - neighbor.transform.position;
             float distance = avoidDir.magnitude;
-            // 거리가 가까울수록 미는 힘이 커짐
-            if (distance > 0)
+            if (distance > 0f)
                 avoid += avoidDir.normalized / distance;
         }
 
@@ -132,7 +132,7 @@ public class Enemy : LivingEntity
         }
 
         yield return new WaitForSeconds(1.1f);
-        base.Die();        
+        base.Die();
     }
 
     public void SetTriggerAttack()

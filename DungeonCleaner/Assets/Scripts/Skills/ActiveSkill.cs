@@ -44,7 +44,7 @@ public class ActiveSkill : MonoBehaviour
 
     protected IEnumerator CoCheckExistTime()
     {
-        if(skillData.duration == 0f)
+        if (skillData.duration == 0f)
             yield break;
 
         yield return new WaitForSeconds(skillData.duration * Player.Instance.data.activeSkillDurationMultiplier);
@@ -62,34 +62,46 @@ public class ActiveSkill : MonoBehaviour
         new Vector3(-1, 0, -1).normalized  // 남서
     };
 
+    private Collider[] hitBuffer = new Collider[20];
+
     protected void CheckCollision()
     {
         if (lastAttackTime + skillData.tickInterval > Time.time)
             return;
 
         float overlapRadius = Mathf.Max(capsule.height, capsule.radius * 2) / 2f;
-        Collider[] hits = Physics.OverlapSphere(capsule.bounds.center, overlapRadius, targetLayer);
 
-        if (hits.Length == 0)
+        int hitCount = Physics.OverlapSphereNonAlloc(capsule.bounds.center, overlapRadius, hitBuffer, targetLayer);
+        if (hitCount == 0)
             return;
 
         lastAttackTime = Time.time;
-        foreach (var hit in hits)
+
+        for (int i = 0; i < hitCount; i++)
         {
+            Collider hit = hitBuffer[i];
+            if (hit == null)
+                continue;
+
             int finalDamage = Mathf.FloorToInt((skillData.damage + Player.Instance.data.atk) * Player.Instance.data.finalAttackMultiplier);
             hit.GetComponent<Enemy>()?.OnDamage(finalDamage, hit.ClosestPoint(transform.position), (hit.transform.position - transform.position).normalized);
             ActiveSkillManager.Instance.damageAmounts[skillName] += finalDamage;
         }
     }
+    
+    private Collider[] checkBuffer = new Collider[100];
 
     protected void SetDirection(float checkRadius)
     {
-        var colliders = Physics.OverlapSphere(transform.position, checkRadius, targetLayer);
+        int count = Physics.OverlapSphereNonAlloc(transform.position, checkRadius, checkBuffer, targetLayer);
         Vector3 weightedSum = Vector3.zero;
         float totalWeight = 0f;
 
-        foreach (Collider col in colliders)
+        for(int i = 0; i < count; i++)
         {
+            Collider col = checkBuffer[i];
+            if(col == null)
+                continue;
             float dist = Vector3.Distance(transform.position, col.transform.position);
 
             // 거리에 따른 가중치
@@ -115,5 +127,5 @@ public class ActiveSkill : MonoBehaviour
     public string GetSkillLevelId(int level)
     {
         return $"{skillName}{level}";
-    }    
+    }
 }
