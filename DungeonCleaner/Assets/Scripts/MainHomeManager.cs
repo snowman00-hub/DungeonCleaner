@@ -58,6 +58,7 @@ public class MainHomeManager : MonoBehaviour
         Application.targetFrameRate = -1;
 #else
         Application.targetFrameRate = 60;
+        Debug.unityLogger.logEnabled = false;
 #endif
     }
 
