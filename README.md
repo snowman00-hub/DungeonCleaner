@@ -108,6 +108,16 @@
 
 ---
 
+## 🖼️ 스크린샷
+
+> 게임 플레이 및 UI 예시
+
+| 로비 | 전투 | 레벨업 |
+|------|------|------|
+| ![](./images/lobby.png) | ![](./images/battle.png) | ![](./images/levelup.png) |
+
+---
+
 ## 🔗 링크
 
 * Google Play Store: https://play.google.com/store/apps/details?id=com.Kyungil.DungeonCleaner
